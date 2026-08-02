@@ -23,8 +23,8 @@
     }
   },
   "supabase": {
-    "url": "",
-    "anonKey": "",
+    "url": "https://kpmvklrfzrcvyhbgmogc.supabase.co",
+    "anonKey": "sb_publishable_gErAb7XqDsU8kj-RgqJKHA_h4tGTOGU",
     "table": "page_views",
     "rpc": "increment_view",
     "homeSlug": "__home__"
