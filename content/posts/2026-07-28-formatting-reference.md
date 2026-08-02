@@ -77,7 +77,7 @@ NIHSS 總分  0        無症狀
 
 文章內文可以插圖，寬度一樣不會超過文字區：
 
-![示意圖說明文字](../../assets/hero-cortical-neurons.jpg)
+![示意圖說明文字](../../assets/hero-clinic.jpg)
 
 ## 分隔線
 

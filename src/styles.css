@@ -43,7 +43,9 @@ ol[class] {
 :root {
   --ink: #1c1c1e;
   --ink-soft: #55565b;
-  --ink-faint: #8a8b90;
+  /* 中繼資料、圖說、頁尾都用這個灰。原本的 #8a8b90 對 --paper 只有
+     3.3:1，不到 WCAG AA 的 4.5:1；壓深到剛好過線，維持原本的弱化感。 */
+  --ink-faint: #727378;
   --paper: #fdfcfa;
   --paper-raised: #ffffff;
   --rule: #e6e3dd;
@@ -64,7 +66,8 @@ ol[class] {
   :root {
     --ink: #e9e7e3;
     --ink-soft: #a9a7a3;
-    --ink-faint: #7d7b78;
+    /* 同上：原本的 #7d7b78 對 --paper-raised 只有 3.9:1 */
+    --ink-faint: #8c8a86;
     --paper: #17171a;
     --paper-raised: #1f1f23;
     --rule: #32323a;
@@ -148,9 +151,19 @@ main {
 
 .hero img {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto; /* 等比例，不變形 */
+
+  /* 寬度不超過內容文字區（.wrap 已限制為 --measure）。 */
   max-width: 100%;
+
+  /* 直式照片若只限制寬度，在桌機上會高得把標題和正文整個推出螢幕。
+     再加一道高度上限，瀏覽器會等比例縮小，不會裁切也不會變形。 */
+  max-height: 72vh;
+
+  /* 受高度上限而變得比容器窄時置中 */
+  margin-inline: auto;
+
   border-radius: var(--radius);
   background: var(--accent-soft);
 }
@@ -435,6 +448,23 @@ th {
   background: var(--accent-soft);
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* 首欄釘住。窄螢幕橫向捲動時，若列標題跟著捲走，右側就只剩一排
+   無法對應的數字。border-collapse: collapse 下 sticky 儲存格的框線
+   不會跟著移動，因此分隔線改用 box-shadow。 */
+.table-scroll th:first-child,
+.table-scroll td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--paper);
+  box-shadow: 1px 0 0 var(--rule);
+}
+
+.table-scroll th:first-child {
+  background: var(--accent-soft);
+  z-index: 2;
 }
 
 tbody tr:last-child td {

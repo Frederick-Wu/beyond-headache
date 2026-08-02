@@ -102,29 +102,44 @@ blog/
 
 ---
 
-## Hero 圖片與授權
+## Hero 圖片與版權
 
-首頁與每篇文章上方的圖片來自 Wikimedia Commons，依 CC BY 4.0 授權使用。
-授權要求的姓名標示（作品名、作者、來源連結、授權條款、改作聲明）自動產生在每一頁的頁尾。
+首頁與每篇文章上方的圖片，版權資訊自動產生在每一頁的頁尾，由 `site.config.json`
+的 `hero.credit` 決定。頁尾區塊有兩種模式：
 
-**要換圖的話**，改 `site.config.json` 的 `hero` 區塊，把 `credit` 底下的欄位一併換成新圖的資訊。
-少填會導致標示不完整，那是違反授權條款的。
+- **`license` 有填** → 視為外部授權作品，會輸出「作品名、作者、依 X 授權使用」，
+  也就是 CC 系列授權要求的姓名標示（TASL）。少填欄位等於標示不完整，那是違反授權條款的。
+- **`license` 留空** → 視為自有作品，輸出「作品名，作者攝」，不會出現對自己拍的照片
+  講不通的「依 X 授權使用」。
+
+目前用的是自有照片，所以 `license` 是空的。
+
+**換圖時記得**：`credit` 底下的欄位要跟著換。留著上一張圖的資訊，網站上就會掛著一段
+指向不存在圖片的錯誤說明。
+
+**照片裡有病人的話**，發布前確認已取得公開上網等級的同意 —— 口罩擋不住耳型、耳環、
+下顎線、髮型這些識別特徵。另外手機拍的照片 EXIF 會夾帶拍攝時間、機型，有時還有 GPS，
+處理圖片時要一併清掉。
 
 單篇文章想用不同的圖，在 front matter 加：
 
 ```markdown
 hero: assets/your-image.jpg
-heroWidth: 1600
-heroHeight: 1200
+heroWidth: 1200
+heroHeight: 1600
 heroAlt: 給視障讀者與搜尋引擎看的圖片描述
 heroCaption: 圖說
-heroCreditTitle: 原作品名稱
-heroCreditTitleUrl: https://原始頁面
+heroCreditHeading: 圖片版權
+heroCreditTitle: 作品名稱
+heroCreditTitleUrl: https://原始頁面（自有作品留空）
 heroCreditAuthor: 作者名
-heroCreditLicense: CC BY 4.0
+heroCreditLicense: CC BY 4.0（自有作品留空）
 heroCreditLicenseUrl: https://creativecommons.org/licenses/by/4.0/
-heroCreditModification: 已重新裁切
+heroCreditNote: 補充說明，例如改作聲明或版權宣告
 ```
+
+直式照片不必擔心版面 —— 樣式除了限制寬度不超過內容文字區，還加了 `max-height: 72vh`，
+瀏覽器會等比例縮小，不會裁切也不會變形。
 
 ---
 
