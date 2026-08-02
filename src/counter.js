@@ -58,7 +58,6 @@
     var seenKey = "viewed:" + mySlug;
     try {
       if (sessionStorage.getItem(seenKey)) return Promise.resolve();
-      sessionStorage.setItem(seenKey, "1");
     } catch (err) {
       /* 無痕模式可能擋 sessionStorage，那就每次都算 */
     }
@@ -67,6 +66,18 @@
       method: "POST",
       headers: headers,
       body: JSON.stringify({ page_slug: mySlug }),
+    }).then(function (res) {
+      if (!res.ok) throw new Error("計數失敗：HTTP " + res.status);
+
+      // 「這個分頁已經算過」必須在確認成功之後才記。
+      // 先記再送的話，只要請求失敗一次（網路斷線、資料表還沒建好、
+      // Supabase 暫時性錯誤），這個分頁的這次瀏覽就永遠補不回來了。
+      try {
+        sessionStorage.setItem(seenKey, "1");
+      } catch (err) {
+        /* 同上，擋掉就算了 */
+      }
+      return res;
     });
   }
 
