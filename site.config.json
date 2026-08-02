@@ -1,0 +1,32 @@
+{
+  "title": "頭痛之外",
+  "author": "吳旻陽 醫師",
+  "authorTitle": "神經內科",
+  "description": "神經內科醫師吳旻陽的隨筆。頭痛只是門診的開場白，後面還有更長的故事。",
+  "lang": "zh-Hant-TW",
+  "locale": "zh_TW",
+  "disclaimer": "本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。",
+  "hero": {
+    "src": "assets/hero-cortical-neurons.jpg",
+    "width": 1600,
+    "height": 1200,
+    "alt": "顯微鏡下的小鼠大腦皮質切片，經 Nissl 染色後可見排列成層的神經元胞體，呈深紫色斑點散布於淺色背景。",
+    "caption": "大腦皮質的 Nissl 染色切片",
+    "credit": {
+      "title": "Cortical Neurons, stained",
+      "titleUrl": "https://commons.wikimedia.org/wiki/File:Cortical_Neurons,_stained.jpg",
+      "author": "Ns takes photos",
+      "authorUrl": "",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modification": "為了縮短行動網路載入時間，已重新編碼壓縮（尺寸未變更）"
+    }
+  },
+  "supabase": {
+    "url": "",
+    "anonKey": "",
+    "table": "page_views",
+    "rpc": "increment_view",
+    "homeSlug": "__home__"
+  }
+}

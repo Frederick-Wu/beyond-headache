@@ -1,0 +1,15 @@
+{
+  "name": "beyond-headache",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "頭痛之外｜吳旻陽醫師 — 零相依的靜態部落格產生器",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "dev": "node build.mjs && node serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

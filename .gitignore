@@ -1,0 +1,21 @@
+# 相依套件（本專案零相依，這裡只是保險）
+node_modules/
+
+# Wrangler / Cloudflare 本機狀態與密鑰
+.wrangler/
+.dev.vars
+.dev.vars.*
+wrangler.toml.local
+
+# 作業系統雜物
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+
+# 注意：docs/ 是建置產物，但「要」進版控 —— GitHub Pages 和
+# Cloudflare Pages 都直接發布這個目錄，所以不要把它加進來忽略。

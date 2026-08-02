@@ -1,0 +1,8 @@
+# 統一用 LF 存進版本庫，避免 Windows 編輯後整個檔案顯示為變更
+* text=auto eol=lf
+
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.ico binary

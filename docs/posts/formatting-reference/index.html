@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>排版參考：寫文章可以用的所有格式｜頭痛之外</title>
+  <meta name="description" content="這篇是給自己看的速查表，示範 Markdown 在這個網站上會長成什麼樣子，順便測試窄螢幕不破框。">
+  <meta name="author" content="吳旻陽 醫師">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="排版參考：寫文章可以用的所有格式｜頭痛之外">
+  <meta property="og:description" content="這篇是給自己看的速查表，示範 Markdown 在這個網站上會長成什麼樣子，順便測試窄螢幕不破框。">
+  <meta property="og:locale" content="zh_TW">
+  <link rel="stylesheet" href="../../styles.css">
+  <script id="site-data" type="application/json">{"supabase":{"url":"","anonKey":"","table":"page_views","rpc":"increment_view","homeSlug":"__home__"}}</script>
+</head>
+<body class="page-post" data-page-slug="formatting-reference">
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="site-title"><a href="../../">頭痛之外</a></p>
+      <p class="site-byline">吳旻陽 醫師・神經內科</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <a class="back-link" href="../../">← 回到文章列表</a>
+
+      <article class="post">
+        <header class="post-header">
+          <h1>排版參考：寫文章可以用的所有格式</h1>
+          <p class="meta"><span class="author">吳旻陽 醫師</span>
+          <time datetime="2026-07-28">發布 2026年7月28日</time>
+          <time datetime="2026-08-02">更新 2026年8月2日</time>
+          <span class="views" data-views-for="formatting-reference" hidden></span></p>
+        </header>
+
+      <figure class="hero">
+        <img src="../../assets/hero-cortical-neurons.jpg" width="1600" height="1200" alt="顯微鏡下的小鼠大腦皮質切片，經 Nissl 染色後可見排列成層的神經元胞體，呈深紫色斑點散布於淺色背景。"
+             loading="eager" decoding="async" fetchpriority="high">
+        <figcaption>大腦皮質的 Nissl 染色切片</figcaption>
+      </figure>
+
+        <div class="post-body">
+<p>這篇不是給讀者看的，是寫文章時的速查表。每一種格式都示範一次，也順便驗證在手機上不會撐破版面。</p>
+<h2 id="標題">標題</h2>
+<p>用 <code>##</code> 開二級標題，<code>###</code> 開三級。文章標題已經是一級，內文不要再用 <code>#</code>。</p>
+<h3 id="這是三級標題">這是三級標題</h3>
+<p>三級標題會用強調色，適合放在二級標題底下細分。</p>
+<h2 id="文字強調">文字強調</h2>
+<p><strong>粗體</strong>用兩個星號，<em>斜體</em>用一個，<del>刪除線</del>用兩個波浪號。行內程式碼或藥名之類想凸顯的字用反引號包起來，像 <code>topiramate</code> 這樣。</p>
+<p>段落中間直接換行不會產生斷行，中文會自動接起來，所以可以放心在編輯器裡折行。想要真正的斷行，在行尾打兩個空白。</p>
+<h2 id="清單">清單</h2>
+<p>無序清單：</p>
+<ul><li>第一項</li><li><p>第二項</p>
+<ul><li>巢狀的子項目</li><li>再一個</li></ul></li><li>第三項</li></ul>
+<p>有序清單：</p>
+<ol><li>先問病史</li><li>再做神經學檢查</li><li>最後才決定要不要影像</li></ol>
+<h2 id="引用">引用</h2>
+<blockquote><p>病人不會照著教科書生病。</p>
+<p>引用區塊可以放多個段落，適合放重點提醒或想凸顯的一句話。</p></blockquote>
+<h2 id="表格">表格</h2>
+<p>表格在窄螢幕會變成可以左右滑動的區塊，不會把版面撐開：</p>
+<div class="table-scroll"><table><thead><tr><th>類型</th><th>典型位置</th><th>常見時長</th><th>惡化因子</th></tr></thead><tbody><tr><td>偏頭痛</td><td>單側、搏動性</td><td>4–72 小時</td><td>光、聲音、活動</td></tr><tr><td>緊縮型</td><td>雙側、壓迫感</td><td>30 分鐘–7 天</td><td>壓力、姿勢</td></tr><tr><td>叢發性</td><td>單側眼周</td><td>15–180 分鐘</td><td>酒精、日夜節律</td></tr></tbody></table></div>
+<h2 id="連結">連結</h2>
+<p>一般連結像<a href="https://zh.wikipedia.org/wiki/神經學" target="_blank" rel="noopener noreferrer">這樣</a>寫。外部連結會自動加上在新分頁開啟。</p>
+<p>長網址不會撐破版面，會自己折行，例如：<a href="https://commons.wikimedia.org/wiki/File:Cortical_Neurons,_stained.jpg?uselang=zh-tw&amp;action=view&amp;veryLongQueryString=1234567890" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Cortical_Neurons,_stained.jpg?uselang=zh-tw&amp;action=view&amp;veryLongQueryString=1234567890</a></p>
+<h2 id="程式碼區塊">程式碼區塊</h2>
+<div class="code-scroll"><pre><code class="language-text">NIHSS 總分  0        無症狀
+            1–4      輕微
+            5–15     中度
+            16–20    中重度
+            21–42    重度</code></pre></div>
+<p>程式碼區塊超出寬度時會自己出現水平捲軸，只捲那一塊，不會動到整頁。</p>
+<h2 id="圖片">圖片</h2>
+<p>文章內文可以插圖，寬度一樣不會超過文字區：</p>
+<p><img src="../../assets/hero-cortical-neurons.jpg" alt="示意圖說明文字" loading="lazy" decoding="async"></p>
+<h2 id="分隔線">分隔線</h2>
+<p>三個連字號會變成分隔線：</p>
+<hr>
+<p>以上。新增文章時把這份複製一份改就行。</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="credit">
+        <h2>圖片出處</h2>
+        <p><a href="https://commons.wikimedia.org/wiki/File:Cortical_Neurons,_stained.jpg" target="_blank" rel="noopener noreferrer">Cortical Neurons, stained</a>，作者 Ns takes photos，依 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> 授權使用。為了縮短行動網路載入時間，已重新編碼壓縮（尺寸未變更）。</p>
+      </section>
+      <section class="disclaimer">
+        <p>本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。</p>
+      </section>
+      <p class="colophon">© 2026 吳旻陽 醫師・頭痛之外</p>
+    </div>
+  </footer>
+
+  <script src="../../counter.js" defer></script>
+</body>
+</html>
