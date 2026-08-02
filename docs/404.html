@@ -4,45 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>找不到這一頁｜頭痛之外</title>
-  <meta name="description" content="找不到這一頁">
-  <meta name="author" content="吳旻陽 醫師">
+  <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light dark">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="找不到這一頁｜頭痛之外">
-  <meta property="og:description" content="找不到這一頁">
-  <meta property="og:locale" content="zh_TW">
-  <link rel="stylesheet" href="/styles.css">
-  <script id="site-data" type="application/json">{"supabase":{"url":"","anonKey":"","table":"page_views","rpc":"increment_view","homeSlug":"__home__"}}</script>
+  <style>
+    :root { color-scheme: light dark; --ink:#1c1c1e; --soft:#55565b; --paper:#fdfcfa; --accent:#7b3f3f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink:#e9e7e3; --soft:#a9a7a3; --paper:#17171a; --accent:#d99a9a; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      background: var(--paper); color: var(--ink);
+      font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,system-ui,sans-serif;
+      line-height: 1.85; overflow-wrap: break-word;
+    }
+    main { width: min(100%, 32rem); }
+    h1 { font-size: clamp(1.4rem, 6vw, 1.9rem); line-height: 1.45; margin: 0 0 .75rem; letter-spacing: .02em; }
+    p { color: var(--soft); margin: 0 0 1.5rem; }
+    a { color: var(--accent); }
+  </style>
 </head>
-<body class="page-404" data-page-slug="">
-
-  <header class="site-header">
-    <div class="wrap">
-      <p class="site-title"><a href="/">頭痛之外</a></p>
-      <p class="site-byline">吳旻陽 醫師・神經內科</p>
-    </div>
-  </header>
-
+<body>
   <main>
-    <div class="wrap">
-      <div class="intro">
-        <h1>找不到這一頁</h1>
-        <p>網址可能已經變動，或是這篇文章還沒寫出來。</p>
-      </div>
-      <p><a href="/">← 回到文章列表</a></p>
-    </div>
+    <h1>找不到這一頁</h1>
+    <p>網址可能已經變動，或是這篇文章還沒寫出來。</p>
+    <p><a href="./">← 回到文章列表</a></p>
   </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-
-      <section class="disclaimer">
-        <p>本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。</p>
-      </section>
-      <p class="colophon">© 2026 吳旻陽 醫師・頭痛之外</p>
-    </div>
-  </footer>
-
-  <script src="/counter.js" defer></script>
+  <script>
+    // 回首頁的連結：從目前網址推回站台根目錄。
+    // GitHub Pages 專案站掛在 /<repo>/ 底下，Cloudflare Pages 掛在網域根部，
+    // 兩種情況都要能正確回到首頁。
+    (function () {
+      var host = location.hostname;
+      var home = host.endsWith(".github.io") && location.pathname.split("/")[1]
+        ? "/" + location.pathname.split("/")[1] + "/"
+        : "/";
+      document.querySelector("main a").setAttribute("href", home);
+    })();
+  </script>
 </body>
 </html>
