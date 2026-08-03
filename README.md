@@ -89,8 +89,9 @@ blog/
 ├─ src/
 │  ├─ styles.css         樣式
 │  └─ counter.js         Supabase 瀏覽計數器
-├─ assets/               圖片
-├─ static/               會原樣複製到網站根目錄（放 CNAME、favicon 等）
+├─ assets/               文章與 Hero 圖片
+├─ static/               會原樣複製到網站根目錄（網站圖示、_redirects 等）
+├─ tools/                圖示產生器（平常不會動到）
 ├─ docs/                 ← 建置產物，發布的就是這個目錄。不要手動編輯。
 ├─ build.mjs             靜態產生器
 ├─ serve.mjs             本機預覽伺服器
@@ -99,6 +100,36 @@ blog/
 ```
 
 `docs/` 是建置產物，但**要**進版控 —— GitHub Pages 和 Cloudflare Pages 都直接發布它。
+
+---
+
+## 網站圖示（favicon）
+
+圖案是一個突觸：兩個神經終末隔著間隙相對。檔案都在 `static/`，建置時會複製到網站根目錄。
+
+| 檔案 | 用途 |
+|---|---|
+| `favicon.ico` | 瀏覽器不管 HTML 寫什麼，都會自己去要這個檔。沒有就是每次吃一個 404 |
+| `favicon.svg` | 較新的瀏覽器優先採用，任何尺寸都不會糊 |
+| `favicon-16.png` / `favicon-32.png` | 舊瀏覽器的分頁圖示 |
+| `apple-touch-icon.png` | iOS 加到主畫面。刻意做成滿版方形，圓角由 iOS 自己切 |
+| `icon-192.png` / `icon-512.png` | Android 與 PWA，由 `site.webmanifest` 指定 |
+
+**要改設計的話**，改 `tools/make-favicons.ps1` 裡的 `Draw-Icon` 函式，然後：
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/make-favicons.ps1
+node tools/make-ico.mjs
+node build.mjs
+```
+
+`favicon.svg` 要另外手動改成一致的圖案 —— 它跟 PNG 是兩套獨立的畫法（一個是
+SVG 路徑，一個是 GDI+ 繪圖），改了其中一邊記得同步另一邊，否則會出現
+分頁圖示和主畫面圖示長得不一樣的情形。
+
+> `make-favicons.ps1` 存檔時必須帶 UTF-8 BOM。Windows PowerShell 5.1 讀沒有 BOM 的
+> `.ps1` 會用系統的 ANSI 編碼（繁中系統是 CP950）解析，中文註解會被誤讀，
+> 導致註解沒有正確結束、吃掉後面的程式碼，錯誤訊息還會指到錯的行號。
 
 ---
 
