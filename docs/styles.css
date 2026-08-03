@@ -206,6 +206,30 @@ main {
   gap: 0.5rem;
 }
 
+/* ---------- 門診專長 ---------- */
+/* Hero 圖片裡也有這些字，但那是烤進像素的，手機上縮到讀不了，
+   搜尋引擎與螢幕閱讀器也讀不到。這裡是真正的網頁文字版本。 */
+.specialty-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  list-style: none;
+}
+
+.specialty-list li {
+  background: var(--accent-soft);
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  min-width: 0;
+}
+
 .card-list {
   display: grid;
   gap: 1rem;
