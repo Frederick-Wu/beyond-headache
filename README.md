@@ -133,6 +133,36 @@ SVG 路徑，一個是 GDI+ 繪圖），改了其中一邊記得同步另一邊�
 
 ---
 
+## 社群分享預覽圖（og:image）
+
+連結被貼到 LINE、Facebook、Threads 時展開的那張縮圖，**刻意與頁面 Hero 分開**。
+
+規則寫在 `build.mjs` 的 `headMeta()`：
+
+- 文章自己在 front matter 指定了 `hero:` → 社群預覽就用那張
+- 沒有指定 → 用 `site.config.json` 的 `social.src`（品牌卡），**不會**退回首頁 Hero
+
+會這樣設計，是因為首頁 Hero 是診間照、畫面裡有病人。頁面上看到那張圖，
+和連結被轉貼時自動展開一張縮圖，是兩種量級的傳播 —— 後者還會被各平台快取，
+事後撤掉也收不回來。
+
+品牌卡由 `tools/make-og-image.ps1` 產生（1200×630，社群平台的標準比例）：
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools/make-og-image.ps1
+node build.mjs
+```
+
+站名與作者從 `site.config.json` 讀取，改站名不必動腳本。
+
+> 這支腳本同樣必須帶 UTF-8 BOM，原因與 `make-favicons.ps1` 相同。
+>
+> 另外，卡片上的突觸圖示是直接畫的，不是貼 `icon-512.png`。貼圖的話，
+> 那張圖的圓角有半透明邊緣，GDI+ 以 8 位元合成會產生 1～2 階的捨入誤差；
+> 單一像素看不出來，但誤差沿著圓角連成一圈，會看到一個淺色方框浮在卡片上。
+
+---
+
 ## Hero 圖片與版權
 
 首頁與每篇文章上方的圖片，版權資訊自動產生在每一頁的頁尾，由 `site.config.json`

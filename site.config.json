@@ -12,6 +12,13 @@
     "sameAs": []
   },
   "disclaimer": "本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。",
+  "social": {
+    "comment": "轉貼到 LINE、Facebook、Threads 時的預覽縮圖。刻意與首頁 Hero 分開 —— Hero 是診間照，裡面有病人，而預覽縮圖的傳播範圍遠大於網站本身。文章若自行指定 hero，則用該文章的圖。由 tools/make-og-image.ps1 產生。",
+    "src": "og-image.png",
+    "width": 1200,
+    "height": 630,
+    "alt": "「頭痛之外」網站標誌卡：磚紅底色上有白色的突觸圖示，下方是站名與作者吳旻陽醫師・神經內科。"
+  },
   "hero": {
     "src": "assets/hero-clinic.jpg",
     "width": 1400,
