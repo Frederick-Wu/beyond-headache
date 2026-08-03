@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="頭痛之外">
+  <title>頭痛之外</title>
+  <desc>兩個突觸終末隔著間隙相對。</desc>
+  <rect width="32" height="32" rx="7" fill="#7b3f3f"/>
+  <g fill="none" stroke="#fdfcfa" stroke-width="2.9" stroke-linecap="round">
+    <path d="M4 6.5 C7 8 9 9.6 10.2 11.2"/>
+    <path d="M28 25.5 C25 24 23 22.4 21.8 20.8"/>
+  </g>
+  <circle cx="11.4" cy="12.6" r="4.3" fill="#fdfcfa"/>
+  <circle cx="20.6" cy="19.4" r="4.3" fill="#fdfcfa"/>
+</svg>

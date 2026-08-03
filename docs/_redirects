@@ -1,0 +1,5 @@
+# 舊網址 → 新網址（301 永久轉址）
+# 這篇曾以 /posts/found-by-ai/ 短暫發布過，改標題後 slug 一併更換。
+# 保留轉址，讓舊連結、既有分享與搜尋引擎索引不會斷掉。
+/posts/found-by-ai/  /posts/ai-doesnt-know-you/  301
+/posts/found-by-ai   /posts/ai-doesnt-know-you/  301
