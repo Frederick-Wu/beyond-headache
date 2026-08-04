@@ -20,7 +20,7 @@ $outDir = Join-Path $root 'static'
 if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
 
 # --- 設計參數（座標以 32x32 為基準，與 favicon.svg 一致）---
-$BG     = [System.Drawing.ColorTranslator]::FromHtml('#7b3f3f')
+$BG     = [System.Drawing.ColorTranslator]::FromHtml('#182A55')
 $FG     = [System.Drawing.ColorTranslator]::FromHtml('#fdfcfa')
 $RADIUS = 7.0      # 圓角
 $STROKE = 2.9      # 軸突筆畫寬度

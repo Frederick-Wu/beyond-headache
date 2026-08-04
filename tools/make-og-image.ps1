@@ -22,9 +22,9 @@ $cfg = Get-Content (Join-Path $root 'site.config.json') -Raw -Encoding UTF8 | Co
 
 $W = 1200
 $H = 630
-$BG = [System.Drawing.ColorTranslator]::FromHtml('#7b3f3f')
+$BG = [System.Drawing.ColorTranslator]::FromHtml('#182A55')
 $FG = [System.Drawing.ColorTranslator]::FromHtml('#fdfcfa')
-$MUTED = [System.Drawing.ColorTranslator]::FromHtml('#e2b9b9')
+$MUTED = [System.Drawing.ColorTranslator]::FromHtml('#b9c6e2')
 
 # 找一個系統上真的存在的中文字型，避免落到預設字型變成方框
 $fontName = @('Noto Sans TC', 'Microsoft JhengHei UI', 'Microsoft JhengHei', 'PMingLiU') |

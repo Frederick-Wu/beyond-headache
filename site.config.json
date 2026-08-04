@@ -12,6 +12,8 @@
     "sameAs": []
   },
   "disclaimer": "本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。",
+  "brandColor": "#182A55",
+  "brandColorComment": "品牌純色，用於 theme-color、favicon 底色、社群卡色塊。網頁上的連結色不用這個值 —— 它太接近內文的近黑，讀者會分不出哪些字可以點；連結色是 styles.css 裡提亮過的 --accent。",
   "specialtiesComment": "門診專長。刻意以網頁文字輸出，不只存在於 Hero 圖片裡 —— 圖片在手機上會縮到 0.28 倍，圖中的字約剩 8px 讀不了，而且搜尋引擎與螢幕閱讀器都讀不到烤進 JPEG 的文字。這些又正好是病人會搜尋的詞。",
   "specialties": [
     "頭痛",

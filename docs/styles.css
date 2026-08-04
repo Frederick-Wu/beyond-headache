@@ -41,16 +41,20 @@ ol[class] {
 
 /* ---------- 設計變數 ---------- */
 :root {
-  --ink: #1c1c1e;
-  --ink-soft: #55565b;
-  /* 中繼資料、圖說、頁尾都用這個灰。原本的 #8a8b90 對 --paper 只有
-     3.3:1，不到 WCAG AA 的 4.5:1；壓深到剛好過線，維持原本的弱化感。 */
-  --ink-faint: #727378;
-  --paper: #fdfcfa;
+  /* 品牌色 #182A55。這個深藍直接當連結色會太接近內文的近黑，
+     讀者分不出哪些字可以點，所以 --accent 提亮到 #23417d，
+     對 --paper 有 9.6:1，既明顯是藍、也明顯不是內文。
+     #182A55 本身留給 favicon、社群卡與 theme-color 這些純色塊用途。 */
+  --ink: #191c24;
+  --ink-soft: #4d515c;
+  /* 中繼資料、圖說、頁尾都用這個灰。偏冷以配合藍色系，
+     對 --paper 為 4.7:1，過 WCAG AA 的 4.5:1，維持弱化感。 */
+  --ink-faint: #6e727c;
+  --paper: #fbfcfd;
   --paper-raised: #ffffff;
-  --rule: #e6e3dd;
-  --accent: #7b3f3f;
-  --accent-soft: #f4eeee;
+  --rule: #e0e4ec;
+  --accent: #23417d;
+  --accent-soft: #edf1f8;
   --focus: #2b6cb0;
 
   --measure: 40rem; /* 內容文字區寬度，Hero 圖以此為上限 */
@@ -64,15 +68,17 @@ ol[class] {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #e9e7e3;
-    --ink-soft: #a9a7a3;
-    /* 同上：原本的 #7d7b78 對 --paper-raised 只有 3.9:1 */
-    --ink-faint: #8c8a86;
-    --paper: #17171a;
-    --paper-raised: #1f1f23;
-    --rule: #32323a;
-    --accent: #d99a9a;
-    --accent-soft: #2a2224;
+    /* 深色模式下 #182A55 幾乎和背景一樣暗，連結會看不見，
+       所以反過來提亮成淺藍。對 --paper 為 9.2:1。 */
+    --ink: #e7e9ee;
+    --ink-soft: #a6abb6;
+    /* 同上：對 --paper-raised 為 5.2:1 */
+    --ink-faint: #8a8f9a;
+    --paper: #12151c;
+    --paper-raised: #1a1e27;
+    --rule: #2c3140;
+    --accent: #9fb9e6;
+    --accent-soft: #1b2233;
     --focus: #7cb3ea;
   }
 }
