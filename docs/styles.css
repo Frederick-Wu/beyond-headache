@@ -68,17 +68,20 @@ ol[class] {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* 深色模式下 #182A55 幾乎和背景一樣暗，連結會看不見，
-       所以反過來提亮成淺藍。對 --paper 為 9.2:1。 */
-    --ink: #e7e9ee;
-    --ink-soft: #a6abb6;
-    /* 同上：對 --paper-raised 為 5.2:1 */
-    --ink-faint: #8a8f9a;
-    --paper: #12151c;
-    --paper-raised: #1a1e27;
-    --rule: #2c3140;
-    --accent: #9fb9e6;
-    --accent-soft: #1b2233;
+    /* 底色刻意用帶藍的深色而不是近黑，和品牌色 #182A55 同一個色調家族。
+       但仍然壓得夠暗 —— 深色模式的用途是降低夜間閱讀的眩光，
+       底色太淺就失去意義，文字的層次也會變扁。
+
+       連結則反過來提亮：#182A55 在深底上幾乎融進背景，看不出是連結。 */
+    --ink: #e9ebf1;
+    --ink-soft: #adb3c1;
+    /* 對 --paper-raised 為 4.8:1，過 WCAG AA */
+    --ink-faint: #9298a8;
+    --paper: #1b2338;
+    --paper-raised: #232c45;
+    --rule: #363f5c;
+    --accent: #a8c0ea;
+    --accent-soft: #252f4a;
     --focus: #7cb3ea;
   }
 }
