@@ -109,6 +109,11 @@
   ]
 }</script>
   <script id="site-data" type="application/json">{"supabase":{"url":"https://kpmvklrfzrcvyhbgmogc.supabase.co","anonKey":"sb_publishable_gErAb7XqDsU8kj-RgqJKHA_h4tGTOGU","table":"page_views","rpc":"increment_view","homeSlug":"__home__"}}</script>
+  <!-- 這行必須同步執行、而且在 body 之前：
+       CSS 只有在 .js 存在時才把長條圖歸零等待動畫。
+       改用 defer 的話會先畫出完整長條再瞬間歸零，看得到閃動；
+       沒有這行則代表 JS 不可用，長條就維持最終寬度不做動畫。 -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body class="page-post" data-page-slug="why-beyond-headache">
 
@@ -135,6 +140,11 @@
         <img src="../../assets/hero-clinic-banner.jpg" width="1200" height="628" alt="吳旻陽醫師的門診介紹橫幅。左半是診間治療照片：醫師戴著口罩與手套，為病人施打頭部注射，病人面部已做馬賽克處理。右半的文字為「吳旻陽醫師・神經內科」，以及專長項目：頭痛與偏頭痛、肉毒桿菌與單株抗體、頭痛口服標靶與神經阻斷、腦血管疾病與動作障礙、神經退化疾病。"
              loading="eager" decoding="async" fetchpriority="high">
       </figure>
+
+        <nav class="toc" aria-labelledby="toc-heading">
+          <h2 class="toc-heading" id="toc-heading">本篇目錄</h2>
+          <ul class="toc-list"><li><a href="#之外是什麼">之外是什麼</a></li><li><a href="#這裡會寫什麼">這裡會寫什麼</a></li><li><a href="#給讀到這裡的你">給讀到這裡的你</a></li></ul>
+        </nav>
 
         <div class="post-body">
 <p>門診叫號進來，坐下，第一句話常常是「醫師，我頭很痛」。</p>
@@ -170,6 +180,14 @@
     </div>
   </footer>
 
+  <button type="button" class="to-top" id="to-top" hidden aria-label="回到頁面頂部">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script src="../../counter.js" defer></script>
+  <script src="../../enhance.js" defer></script>
 </body>
 </html>

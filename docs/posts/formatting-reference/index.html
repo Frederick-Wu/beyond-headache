@@ -21,7 +21,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="吳旻陽醫師的介紹卡。左半是深藍色塊，上面是穿白袍的醫師半身肖像；右半白底寫著「吳旻陽醫師・神經內科」，以及門診專長：頭痛與偏頭痛、肉毒桿菌與單株抗體、頭痛口服標靶與神經阻斷、腦血管疾病與動作障礙、神經退化疾病。">
   <meta property="article:published_time" content="2026-07-28T00:00:00+08:00">
-  <meta property="article:modified_time" content="2026-08-02T16:19:50+08:00">
+  <meta property="article:modified_time" content="2026-08-04T23:05:13+08:00">
   <meta property="article:author" content="吳旻陽 醫師">
   <meta property="article:tag" content="站務">
   <meta name="twitter:card" content="summary_large_image">
@@ -44,7 +44,7 @@
       "headline": "排版參考：寫文章可以用的所有格式",
       "description": "這篇是給自己看的速查表，示範 Markdown 在這個網站上會長成什麼樣子，順便測試窄螢幕不破框。",
       "datePublished": "2026-07-28T00:00:00+08:00",
-      "dateModified": "2026-08-02T16:19:50+08:00",
+      "dateModified": "2026-08-04T23:05:13+08:00",
       "author": {
         "@id": "https://beyond-headache.pages.dev/#author"
       },
@@ -109,6 +109,11 @@
   ]
 }</script>
   <script id="site-data" type="application/json">{"supabase":{"url":"https://kpmvklrfzrcvyhbgmogc.supabase.co","anonKey":"sb_publishable_gErAb7XqDsU8kj-RgqJKHA_h4tGTOGU","table":"page_views","rpc":"increment_view","homeSlug":"__home__"}}</script>
+  <!-- 這行必須同步執行、而且在 body 之前：
+       CSS 只有在 .js 存在時才把長條圖歸零等待動畫。
+       改用 defer 的話會先畫出完整長條再瞬間歸零，看得到閃動；
+       沒有這行則代表 JS 不可用，長條就維持最終寬度不做動畫。 -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body class="page-post" data-page-slug="formatting-reference">
 
@@ -128,7 +133,7 @@
           <h1>排版參考：寫文章可以用的所有格式</h1>
           <p class="meta"><span class="author">吳旻陽 醫師</span>
           <time datetime="2026-07-28">發布 2026年7月28日</time>
-          <time datetime="2026-08-02">更新 2026年8月2日</time>
+          <time datetime="2026-08-04">更新 2026年8月4日</time>
           <span class="views" data-views-for="formatting-reference" hidden></span></p>
         </header>
 
@@ -136,6 +141,11 @@
         <img src="../../assets/hero-clinic-banner.jpg" width="1200" height="628" alt="吳旻陽醫師的門診介紹橫幅。左半是診間治療照片：醫師戴著口罩與手套，為病人施打頭部注射，病人面部已做馬賽克處理。右半的文字為「吳旻陽醫師・神經內科」，以及專長項目：頭痛與偏頭痛、肉毒桿菌與單株抗體、頭痛口服標靶與神經阻斷、腦血管疾病與動作障礙、神經退化疾病。"
              loading="eager" decoding="async" fetchpriority="high">
       </figure>
+
+        <nav class="toc" aria-labelledby="toc-heading">
+          <h2 class="toc-heading" id="toc-heading">本篇目錄</h2>
+          <ul class="toc-list"><li><a href="#標題">標題</a><ul class="toc-sub"><li><a href="#這是三級標題">這是三級標題</a></li></ul></li><li><a href="#文字強調">文字強調</a></li><li><a href="#清單">清單</a></li><li><a href="#引用">引用</a></li><li><a href="#表格">表格</a></li><li><a href="#連結">連結</a></li><li><a href="#程式碼區塊">程式碼區塊</a></li><li><a href="#圖片">圖片</a></li><li><a href="#長條圖">長條圖</a></li><li><a href="#數值">數值</a></li><li><a href="#關於這些動畫">關於這些動畫</a></li><li><a href="#分隔線">分隔線</a></li></ul>
+        </nav>
 
         <div class="post-body">
 <p>這篇不是給讀者看的，是寫文章時的速查表。每一種格式都示範一次，也順便驗證在手機上不會撐破版面。</p>
@@ -170,7 +180,56 @@
 <p>程式碼區塊超出寬度時會自己出現水平捲軸，只捲那一塊，不會動到整頁。</p>
 <h2 id="圖片">圖片</h2>
 <p>文章內文可以插圖，寬度一樣不會超過文字區：</p>
-<p><img src="../../assets/hero-clinic.jpg" alt="示意圖說明文字" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/hero-clinic-banner.jpg" alt="示意圖說明文字" loading="lazy" decoding="async"></p>
+<h2 id="長條圖">長條圖</h2>
+<p>用 <code> </code>`<code>chart </code> 開一個區塊，每行寫「名稱 | 數值」。捲到這一段時長條會自己長出來，數字會跑上去。</p>
+<figure class="chart reveal" role="img" aria-label="各型頭痛的一年盛行率（示範數字）。緊縮型頭痛 38%，偏頭痛 14.4%，慢性每日頭痛 4%，叢發性頭痛 0.1%。">
+        <figcaption class="chart-title">各型頭痛的一年盛行率（示範數字）</figcaption>
+        <ul class="chart-bars" aria-hidden="true">
+          <li class="chart-row">
+            <span class="chart-label">緊縮型頭痛</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:84.44%"></span></span>
+            <span class="chart-value" data-count-to="38" data-unit="%">38%</span>
+          </li>
+          <li class="chart-row">
+            <span class="chart-label">偏頭痛</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:32.00%"></span></span>
+            <span class="chart-value" data-count-to="14.4" data-unit="%">14.4%</span>
+          </li>
+          <li class="chart-row">
+            <span class="chart-label">慢性每日頭痛</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:8.89%"></span></span>
+            <span class="chart-value" data-count-to="4" data-unit="%">4%</span>
+          </li>
+          <li class="chart-row">
+            <span class="chart-label">叢發性頭痛</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:0.22%"></span></span>
+            <span class="chart-value" data-count-to="0.1" data-unit="%">0.1%</span>
+          </li>
+        </ul>
+        <p class="chart-source">這一行是 source，用來寫出處。正式引用時務必填上，並附連結。</p>
+      </figure>
+<p><code>title</code>、<code>unit</code>、<code>max</code>、<code>source</code> 四個都可以省略。<code>max</code> 省略時會取資料裡的最大值當滿格。</p>
+<h2 id="數值">數值</h2>
+<p>用 <code> </code>`<code>stats </code> 開區塊，每行寫「數值 | 單位 | 說明」。單位可以留空，但分隔線要留著。</p>
+<div class="stats reveal">
+        <div class="stat">
+          <p class="stat-value" data-count-to="38" data-unit="%">38%</p>
+          <p class="stat-label">成人一年內曾有緊縮型頭痛</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value" data-count-to="4" data-unit="小時">4小時</p>
+          <p class="stat-label">偏頭痛發作的最短病程</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value" data-count-to="72" data-unit="小時">72小時</p>
+          <p class="stat-label">偏頭痛發作的最長病程</p>
+        </div>
+      </div>
+<h2 id="關於這些動畫">關於這些動畫</h2>
+<p>長條和數字<strong>只在第一次捲到時播一次</strong>，來回捲動不會重複播放。</p>
+<p>數字在原始碼裡就是最終值，動畫只是先歸零再跑上去 —— 所以搜尋引擎、螢幕閱讀器、以及關掉 JavaScript 的讀者，看到的都是正確的數字。</p>
+<p>讀者若在系統設定裡開啟「減少動態效果」，全部動畫會自動關閉，內容照常呈現。前庭功能障礙和偏頭痛患者對動態特別敏感，這個站不該讓他們不舒服。</p>
 <h2 id="分隔線">分隔線</h2>
 <p>三個連字號會變成分隔線：</p>
 <hr>
@@ -193,6 +252,14 @@
     </div>
   </footer>
 
+  <button type="button" class="to-top" id="to-top" hidden aria-label="回到頁面頂部">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script src="../../counter.js" defer></script>
+  <script src="../../enhance.js" defer></script>
 </body>
 </html>

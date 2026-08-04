@@ -329,10 +329,15 @@ main {
 
 .post-body {
   min-width: 0;
+  /* 中文方塊字沒有西文的上下伸部當視覺呼吸空間，行距要比英文版面寬。
+     2.05 是長文久讀不累、又不至於散掉的落點。 */
+  line-height: 2.05;
 }
 
+/* 段落之間的距離明顯大於行距，讀者一眼看得出哪裡是段落邊界。
+   行距 2.05 約 2.2rem，段距取 2rem 已能清楚區隔。 */
 .post-body > * + * {
-  margin-top: 1.35rem;
+  margin-top: 2rem;
 }
 
 .post-body h2 {
@@ -357,7 +362,7 @@ main {
 }
 
 .post-body li + li {
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
 }
 
 .post-body blockquote {
@@ -502,6 +507,310 @@ th {
 
 tbody tr:last-child td {
   border-bottom: 0;
+}
+
+/* ---------- 本篇目錄 ---------- */
+.toc {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem 1.2rem;
+  margin-bottom: 2.25rem;
+  min-width: 0;
+}
+
+.toc-heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+.toc-list,
+.toc-sub {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list > li + li {
+  margin-top: 0.55rem;
+}
+
+.toc-sub {
+  margin: 0.45rem 0 0 0.9rem;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--rule);
+}
+
+.toc-sub li + li {
+  margin-top: 0.4rem;
+}
+
+.toc a {
+  text-decoration: none;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  display: inline-block;
+}
+
+.toc-sub a {
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+}
+
+.toc a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* 目前讀到的段落。用邊框而非只變色，色盲讀者也分得出來。 */
+.toc a[aria-current] {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* 點目錄跳過去時，標題不要黏在視窗最上緣 */
+.post-body :is(h2, h3) {
+  scroll-margin-top: 1.5rem;
+}
+
+/* ---------- 捲動揭露 ---------- */
+/* 沒有 JS（html 沒有 .js）時，這些規則完全不生效，
+   內容直接是最終狀態。動畫是加分，不是前提。 */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 長條圖 ---------- */
+.chart {
+  margin: 0;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.15rem 1.25rem 1.25rem;
+  min-width: 0;
+}
+
+.chart-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.chart-bars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chart-row {
+  /* 標籤與數值同一列、長條獨立一列。
+     三欄並排在窄螢幕會把長條壓到只剩一小截，這樣排就沒有那個問題。 */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label value"
+    "track track";
+  gap: 0.3rem 0.75rem;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.chart-row + .chart-row {
+  margin-top: 1.05rem;
+}
+
+.chart-label {
+  grid-area: label;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  min-width: 0;
+}
+
+.chart-value {
+  grid-area: value;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  /* 數字跑動時位數會變，等寬數字才不會讓右緣抖動 */
+}
+
+.chart-track {
+  grid-area: track;
+  display: block;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.chart-fill {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.08s;
+}
+
+.js .reveal:not(.is-visible) .chart-fill {
+  width: 0;
+}
+
+.chart-source {
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+/* ---------- 數值 ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.stat {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.05rem;
+  min-width: 0;
+}
+
+.stat-value {
+  font-size: clamp(1.5rem, 6vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.stat-label {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+/* ---------- 回到頂部 ---------- */
+.to-top {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 20;
+
+  width: 2.875rem;
+  height: 2.875rem;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper-raised);
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.12);
+  animation: to-top-in 0.25s ease both;
+}
+
+.to-top[hidden] {
+  display: none;
+}
+
+.to-top svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.to-top:hover {
+  border-color: var(--accent);
+}
+
+@keyframes to-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ---------- 頁面切換 ---------- */
+/* 原生跨文件轉場。支援的瀏覽器會在換頁時交叉淡入淡出，
+   不支援的瀏覽器直接照舊，不需要任何 JS。 */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-new(root) {
+  animation-duration: 0.28s;
+}
+
+/* 不支援 view transition 的瀏覽器退而求其次：進站時淡入 */
+@supports not (view-transition-name: none) {
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      animation: page-fade-in 0.3s ease both;
+    }
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- 動態偏好 ---------- */
+/* 前庭功能障礙與偏頭痛患者對動態特別敏感。這是一個神經內科的
+   部落格，這件事不能只當作勾選項目 —— 全部關掉，內容照常呈現。 */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .js .reveal:not(.is-visible) .chart-fill {
+    width: var(--w);
+  }
+
+  .chart-fill {
+    transition: none;
+  }
+
+  .to-top {
+    animation: none;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 /* ---------- 返回連結 ---------- */

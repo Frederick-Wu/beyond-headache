@@ -110,6 +110,11 @@
   ]
 }</script>
   <script id="site-data" type="application/json">{"supabase":{"url":"https://kpmvklrfzrcvyhbgmogc.supabase.co","anonKey":"sb_publishable_gErAb7XqDsU8kj-RgqJKHA_h4tGTOGU","table":"page_views","rpc":"increment_view","homeSlug":"__home__"}}</script>
+  <!-- 這行必須同步執行、而且在 body 之前：
+       CSS 只有在 .js 存在時才把長條圖歸零等待動畫。
+       改用 defer 的話會先畫出完整長條再瞬間歸零，看得到閃動；
+       沒有這行則代表 JS 不可用，長條就維持最終寬度不做動畫。 -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body class="page-post" data-page-slug="ai-doesnt-know-you">
 
@@ -137,6 +142,11 @@
              loading="eager" decoding="async" fetchpriority="high">
         <figcaption>威廉·哈維《心血運動論》，1628 年。書上講的是通則；那幾隻手，按的是某一個人的手臂。</figcaption>
       </figure>
+
+        <nav class="toc" aria-labelledby="toc-heading">
+          <h2 class="toc-heading" id="toc-heading">本篇目錄</h2>
+          <ul class="toc-list"><li><a href="#先講好的那一面">先講好的那一面</a></li><li><a href="#麻煩的不是-ai-講錯是它講得太有把握">麻煩的不是 AI 講錯，是它講得太有把握</a></li><li><a href="#ai-不知道你是誰">AI 不知道你是誰</a></li><li><a href="#把它當成問題清單不要當成結論">把它當成問題清單，不要當成結論</a></li></ul>
+        </nav>
 
         <div class="post-body">
 <p>「醫師，我來之前先問過 AI 了。」</p>
@@ -193,6 +203,14 @@
     </div>
   </footer>
 
+  <button type="button" class="to-top" id="to-top" hidden aria-label="回到頁面頂部">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script src="../../counter.js" defer></script>
+  <script src="../../enhance.js" defer></script>
 </body>
 </html>
