@@ -514,17 +514,34 @@ tbody tr:last-child td {
   background: var(--paper-raised);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
-  padding: 1.1rem 1.25rem 1.2rem;
-  margin-bottom: 2.25rem;
+  padding: 1.35rem 1.4rem 1.45rem;
+  margin-bottom: 2.5rem;
   min-width: 0;
 }
 
+/* 標題要有份量，讀者一眼認出「這裡是目錄」而不是某段引言。
+   用實心底線把標題和清單分開，區塊結構更明確；
+   前面那截強調色短線提示這是導覽而非內文。 */
 .toc-heading {
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  color: var(--ink-faint);
-  margin: 0 0 0.75rem;
-  font-weight: 600;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.5;
+}
+
+.toc-heading::before {
+  content: "";
+  display: inline-block;
+  width: 0.95rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  vertical-align: 0.3em;
+  margin-right: 0.6rem;
 }
 
 .toc-list,
@@ -550,14 +567,14 @@ tbody tr:last-child td {
 
 .toc a {
   text-decoration: none;
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--ink-soft);
   display: inline-block;
 }
 
 .toc-sub a {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--ink-faint);
 }
 
