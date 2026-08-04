@@ -3,12 +3,12 @@
 # 用法（在專案根目錄執行）：
 #   powershell -ExecutionPolicy Bypass -File tools\make-og-image.ps1
 #
-# 這張圖只在別人把網站連結貼到 LINE、Facebook、Threads 時出現，
-# 網站本身看不到它。刻意跟首頁 Hero 分開，是為了讓轉貼預覽不帶病人影像。
+# 這張圖只在別人把網站連結貼到 LINE、Facebook、Threads 時出現，網站本身看不到它。
+# 刻意跟首頁 Hero 分開：Hero 是診間照，畫面裡有病人，而轉貼預覽的傳播範圍
+# 遠大於網站本身，還會被各平台快取、撤不回來。
 #
-# 標題與作者從 site.config.json 讀取，不寫死，改站名時不會忘了同步。
-# 中央的圖示直接載入 static/icon-512.png，保證跟 favicon 是同一個圖案；
-# 該圖的底色與這張卡片相同，透明圓角疊上去看不出接縫。
+# 版面：左半色塊放去背肖像，右半白底放姓名、科別與門診專長。
+# 文字全部從 site.config.json 讀取，改設定就會跟著變。
 #
 # 注意：本檔必須以 UTF-8 BOM 儲存。Windows PowerShell 5.1 讀沒有 BOM 的 .ps1
 # 會用系統 ANSI 編碼解析，中文會整段壞掉。
@@ -20,13 +20,23 @@ $root = Split-Path -Parent $PSScriptRoot
 $static = Join-Path $root 'static'
 $cfg = Get-Content (Join-Path $root 'site.config.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 
+# 肖像原始檔放在 source/，這個目錄不會被 build.mjs 複製到網站，
+# 訪客不必為了一張只在建置時用到的 1.2MB 大圖付流量。
+$portraitPath = Join-Path $root 'source\portrait.png'
+if (-not (Test-Path $portraitPath)) { throw "找不到肖像檔：$portraitPath" }
+
 $W = 1200
 $H = 630
-$BG = [System.Drawing.ColorTranslator]::FromHtml('#182A55')
-$FG = [System.Drawing.ColorTranslator]::FromHtml('#fdfcfa')
-$MUTED = [System.Drawing.ColorTranslator]::FromHtml('#b9c6e2')
+$PANEL = 600      # 左半色塊寬度
 
-# 找一個系統上真的存在的中文字型，避免落到預設字型變成方框
+# 色塊用的藍比品牌色 #182A55 淺一階 —— 同樣的深藍鋪滿 600x630
+# 會過於沉重，這個亮度在動態牆上仍然夠跳，但不壓迫。
+$PANEL_BLUE = [System.Drawing.ColorTranslator]::FromHtml('#24406F')
+$PAPER = [System.Drawing.ColorTranslator]::FromHtml('#fbfcfd')
+$INK = [System.Drawing.ColorTranslator]::FromHtml('#191c24')
+$INK_SOFT = [System.Drawing.ColorTranslator]::FromHtml('#4d515c')
+$RULE = [System.Drawing.ColorTranslator]::FromHtml('#dfe3ea')
+
 $fontName = @('Noto Sans TC', 'Microsoft JhengHei UI', 'Microsoft JhengHei', 'PMingLiU') |
   Where-Object {
     $f = New-Object System.Drawing.FontFamily($_) -ErrorAction SilentlyContinue
@@ -35,65 +45,84 @@ $fontName = @('Noto Sans TC', 'Microsoft JhengHei UI', 'Microsoft JhengHei', 'PM
 if (-not $fontName) { throw '找不到可用的中文字型' }
 "使用字型：$fontName"
 
+# 專長兩兩一組排成五行，與首頁的清單同一份資料
+$items = @($cfg.specialties)
+$lines = @()
+for ($i = 0; $i -lt $items.Count; $i += 2) {
+  if ($i + 1 -lt $items.Count) { $lines += "$($items[$i]) | $($items[$i+1])" }
+  else { $lines += $items[$i] }
+}
+
 $bmp = New-Object System.Drawing.Bitmap($W, $H, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
 $g = [System.Drawing.Graphics]::FromImage($bmp)
 $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
 $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
 $g.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::HighQuality
+$g.CompositingQuality = [System.Drawing.Drawing2D.CompositingQuality]::HighQuality
 $g.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::AntiAliasGridFit
 
-# 底色
-$bgBrush = New-Object System.Drawing.SolidBrush($BG)
-$g.FillRectangle($bgBrush, 0, 0, $W, $H)
+$g.FillRectangle([System.Drawing.SolidBrush]::new([System.Drawing.Color]$PAPER), 0, 0, $W, $H)
+$g.FillRectangle([System.Drawing.SolidBrush]::new([System.Drawing.Color]$PANEL_BLUE), 0, 0, $PANEL, $H)
 
-# 突觸圖示
-#
-# 這裡直接畫，不是貼 icon-512.png。貼圖的話，那張圖的圓角有半透明邊緣，
-# GDI+ 以 8 位元做 alpha 合成會產生 1～2 階的捨入誤差；單一像素看不出來，
-# 但誤差沿著圓角連成一圈，肉眼會看到一個淺色方框浮在卡片上。
-#
-# 座標與 favicon 同一組（32 單位基準）。改圖案時記得三個地方要一起改：
-# favicon.svg、make-favicons.ps1、這裡。
-$markSize = 136
-$mx = 88
-$my = 104
-$ms = $markSize / 32.0
+# 肖像。去背 PNG 直接疊上色塊，不會有照片的方形邊界。
+# 超出色塊的部分裁掉，肩膀自然出血到底邊。
+# 原圖中頭頂約在 y=145、人物水平中心約在 x=560。
+$src = [System.Drawing.Image]::FromFile($portraitPath)
+$scale = 0.50
+$headTop = 60
+$saved = $g.Save()
+$g.SetClip((New-Object System.Drawing.Rectangle(0, 0, $PANEL, $H)))
+$g.DrawImage($src,
+  [int][Math]::Round($PANEL / 2 - 560 * $scale),
+  [int][Math]::Round($headTop - 145 * $scale),
+  [int][Math]::Round($src.Width * $scale),
+  [int][Math]::Round($src.Height * $scale))
+$g.Restore($saved)
+$src.Dispose()
 
-$markPen = New-Object System.Drawing.Pen([System.Drawing.Color]$FG, [single](2.9 * $ms))
-$markPen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
-$markPen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
-$mp = { param($x, $y) New-Object System.Drawing.PointF(($mx + $x * $ms), ($my + $y * $ms)) }
+# 右半文字
+$centerX = 918
+$center = New-Object System.Drawing.StringFormat
+$center.Alignment = [System.Drawing.StringAlignment]::Center
 
-$g.DrawBezier($markPen, (& $mp 4 6.5),   (& $mp 7 8),   (& $mp 9 9.6),    (& $mp 10.2 11.2))
-$g.DrawBezier($markPen, (& $mp 28 25.5), (& $mp 25 24), (& $mp 23 22.4),  (& $mp 21.8 20.8))
+$fName = New-Object System.Drawing.Font($fontName, 74, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
+$fSub = New-Object System.Drawing.Font($fontName, 52, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
+$fLine = New-Object System.Drawing.Font($fontName, 30, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
+$bInk = [System.Drawing.SolidBrush]::new([System.Drawing.Color]$INK)
+$bSoft = [System.Drawing.SolidBrush]::new([System.Drawing.Color]$INK_SOFT)
+$bRule = [System.Drawing.SolidBrush]::new([System.Drawing.Color]$RULE)
+$pRule = New-Object System.Drawing.Pen([System.Drawing.Color]$RULE, [single]2)
 
-$markBrush = New-Object System.Drawing.SolidBrush($FG)
-foreach ($c in @(@(11.4, 12.6), @(20.6, 19.4))) {
-  $r = 4.3 * $ms
-  $g.FillEllipse($markBrush, ($mx + $c[0] * $ms - $r), ($my + $c[1] * $ms - $r), ($r * 2), ($r * 2))
+$g.DrawString($cfg.author.Replace(' ', ''), $fName, $bInk, $centerX, 78, $center)
+$g.DrawLine($pRule, 700, 186, 1136, 186)
+$g.DrawString($cfg.authorTitle, $fSub, $bSoft, $centerX, 208, $center)
+
+# 細分隔線，中間留一個小點
+$g.DrawLine($pRule, 700, 300, 890, 300)
+$g.DrawLine($pRule, 946, 300, 1136, 300)
+$g.FillEllipse($bRule, 913, 295, 10, 10)
+
+$y = 336
+foreach ($l in $lines) {
+  $g.DrawString($l, $fLine, $bSoft, 702, $y)
+  $y += 46
 }
-$markPen.Dispose(); $markBrush.Dispose()
-
-# 站名
-$titleFont = New-Object System.Drawing.Font($fontName, 76, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Pixel)
-$fgBrush = New-Object System.Drawing.SolidBrush($FG)
-$g.DrawString($cfg.title, $titleFont, $fgBrush, 84, 288)
-
-# 分隔短線
-$rulePen = New-Object System.Drawing.Pen([System.Drawing.Color]$MUTED, [single]3)
-$g.DrawLine($rulePen, 92, 412, 172, 412)
-
-# 作者與科別
-$bylineFont = New-Object System.Drawing.Font($fontName, 34, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Pixel)
-$mutedBrush = New-Object System.Drawing.SolidBrush($MUTED)
-$g.DrawString("$($cfg.author)・$($cfg.authorTitle)", $bylineFont, $mutedBrush, 84, 446)
 
 $g.Dispose()
 
-$out = Join-Path $static 'og-image.png'
-$bmp.Save($out, [System.Drawing.Imaging.ImageFormat]::Png)
+# 存成 JPEG 而非 PNG：卡片有一半是照片，PNG 會到 300KB 以上。
+# q88 是取捨點 —— 再低會在文字邊緣出現振鈴，再高就沒省到。
+$out = Join-Path $static 'og-image.jpg'
+$enc = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
+$encParams = New-Object System.Drawing.Imaging.EncoderParameters(1)
+$encParams.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]88)
+$bmp.Save($out, $enc, $encParams)
 $bmp.Dispose()
-$titleFont.Dispose(); $bylineFont.Dispose()
-$bgBrush.Dispose(); $fgBrush.Dispose(); $mutedBrush.Dispose(); $rulePen.Dispose()
 
-"og-image.png  ${W}x${H}  $([math]::Round((Get-Item $out).Length / 1KB, 1)) KB"
+# 舊的 PNG 版本若還在就清掉，免得兩個檔案並存造成混淆
+$oldPng = Join-Path $static 'og-image.png'
+if (Test-Path $oldPng) { Remove-Item $oldPng -Force }
+$fName.Dispose(); $fSub.Dispose(); $fLine.Dispose()
+$bInk.Dispose(); $bSoft.Dispose(); $bRule.Dispose(); $pRule.Dispose(); $center.Dispose()
+
+"og-image.jpg  ${W}x${H}  $([math]::Round((Get-Item $out).Length / 1KB, 1)) KB"
