@@ -14,17 +14,35 @@
       "name": "羅東博愛醫院",
       "url": "https://www.pohai.org.tw/"
     },
-    "sameAsComment": "同一個人在網路上的其他身分頁面。這是實體識別最關鍵的欄位 —— 它告訴機器這些網址講的是同一位醫師。日後若取得 ORCID、PubMed 作者頁、學會會員頁，一併加進來。",
+    "sameAsComment": "同一個人在網路上的其他身分頁面。這是實體識別最關鍵的欄位 ⸺ 它告訴機器這些網址講的是同一位醫師。日後若取得 ORCID、PubMed 作者頁、學會會員頁，一併加進來。",
     "sameAs": [
       "https://www.pohai.org.tw/doctor_detail.php?PKey=422",
       "https://minyangwu.blogspot.com/",
       "https://minyangwu.blogspot.com/2024/06/blog-post.html"
     ]
   },
+  "authorBioComment": "「關於作者」區塊：讀者看得見、點得到的連結。上面的 sameAs 是寫給機器的身分宣告，這裡是寫給人的 ⸺ 兩者並存才完整，而且真實超連結的權重高於只寫在 sameAs 裡的宣告。links 的順序就是顯示順序。注意「門診時間與掛號資訊」刻意不放進 sameAs：那是實用資訊，不是身分頁面，語意不同。介紹句沿用 authorProfile.description，不在這裡重複維護。",
+  "authorBio": {
+    "heading": "關於作者",
+    "links": [
+      {
+        "label": "羅東博愛醫院 神經內科主治醫師",
+        "url": "https://www.pohai.org.tw/doctor_detail.php?PKey=422"
+      },
+      {
+        "label": "門診時間與掛號資訊",
+        "url": "https://minyangwu.blogspot.com/2024/08/blog-post.html"
+      },
+      {
+        "label": "舊部落格：吳旻陽醫師",
+        "url": "https://minyangwu.blogspot.com/"
+      }
+    ]
+  },
   "disclaimer": "本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。",
   "brandColor": "#182A55",
-  "brandColorComment": "品牌純色，用於 theme-color、favicon 底色、社群卡色塊。網頁上的連結色不用這個值 —— 它太接近內文的近黑，讀者會分不出哪些字可以點；連結色是 styles.css 裡提亮過的 --accent。",
-  "specialtiesComment": "門診專長。刻意以網頁文字輸出，不只存在於 Hero 圖片裡 —— 圖片在手機上會縮到 0.28 倍，圖中的字約剩 8px 讀不了，而且搜尋引擎與螢幕閱讀器都讀不到烤進 JPEG 的文字。這些又正好是病人會搜尋的詞。",
+  "brandColorComment": "品牌純色，用於 theme-color、favicon 底色、社群卡色塊。網頁上的連結色不用這個值 ⸺ 它太接近內文的近黑，讀者會分不出哪些字可以點；連結色是 styles.css 裡提亮過的 --accent。",
+  "specialtiesComment": "門診專長。刻意以網頁文字輸出，不只存在於 Hero 圖片裡 ⸺ 圖片在手機上會縮到 0.28 倍，圖中的字約剩 8px 讀不了，而且搜尋引擎與螢幕閱讀器都讀不到烤進 JPEG 的文字。這些又正好是病人會搜尋的詞。",
   "specialties": [
     "頭痛",
     "偏頭痛",
@@ -37,7 +55,7 @@
     "神經退化疾病"
   ],
   "social": {
-    "comment": "轉貼到 LINE、Facebook、Threads 時的預覽縮圖。刻意與首頁 Hero 分開 —— Hero 是診間照，裡面有病人，而預覽縮圖的傳播範圍遠大於網站本身。文章若自行指定 hero，則用該文章的圖。由 tools/make-og-image.ps1 產生。",
+    "comment": "轉貼到 LINE、Facebook、Threads 時的預覽縮圖。刻意與首頁 Hero 分開 ⸺ Hero 是診間照，裡面有病人，而預覽縮圖的傳播範圍遠大於網站本身。文章若自行指定 hero，則用該文章的圖。由 tools/make-og-image.ps1 產生。",
     "src": "og-image.jpg",
     "width": 1200,
     "height": 630,

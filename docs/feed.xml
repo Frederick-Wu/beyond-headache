@@ -6,17 +6,8 @@
     <description>神經內科醫師吳旻陽的隨筆。頭痛只是門診的開場白，後面還有更長的故事。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Wed, 05 Aug 2026 21:31:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 21:35:32 +0800</lastBuildDate>
     <atom:link href="https://beyond-headache.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>為什麼叫「頭痛之外」</title>
-      <link>https://beyond-headache.pages.dev/posts/why-beyond-headache/</link>
-      <guid isPermaLink="true">https://beyond-headache.pages.dev/posts/why-beyond-headache/</guid>
-      <pubDate>Sun, 02 Aug 2026 00:00:00 +0800</pubDate>
-      <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。</description>
-      <category>關於本站</category>
-    </item>
     <item>
       <title>AI 講得沒錯，但它不認識你</title>
       <link>https://beyond-headache.pages.dev/posts/ai-doesnt-know-you/</link>
@@ -26,6 +17,15 @@
       <description>越來越多病人在進診間之前，已經先問過 AI 了。 先做功課是好事，但查到的東西有時候讓人更緊張⸺這是我在門診看到的，和幾句建議。</description>
       <category>門診觀察</category>
       <category>就醫準備</category>
+    </item>
+    <item>
+      <title>為什麼叫「頭痛之外」</title>
+      <link>https://beyond-headache.pages.dev/posts/why-beyond-headache/</link>
+      <guid isPermaLink="true">https://beyond-headache.pages.dev/posts/why-beyond-headache/</guid>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。</description>
+      <category>關於本站</category>
     </item>
     <item>
       <title>排版參考：寫文章可以用的所有格式</title>
