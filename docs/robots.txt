@@ -60,4 +60,4 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-Sitemap: https://beyond-headache.pages.dev/sitemap.xml
+Sitemap: https://drminyangwu.com/sitemap.xml

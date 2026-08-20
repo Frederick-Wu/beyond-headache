@@ -306,26 +306,68 @@ main {
 
 /* ---------- 門診專長 ---------- */
 /* Hero 圖片裡也有這些字，但那是烤進像素的，手機上縮到讀不了，
-   搜尋引擎與螢幕閱讀器也讀不到。這裡是真正的網頁文字版本。 */
-.specialty-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0;
+   搜尋引擎與螢幕閱讀器也讀不到。這裡是真正的網頁文字版本。
+
+   曾經做成一排藥丸（圓角、有框、底色 --accent-soft），但那違反了這個站
+   已經成立的視覺規則：有框的圓角塊 = 可以點（文章卡、目錄都是這樣）。
+   專長清單點不下去，於是每個讀者都要試一次才知道。現在改成
+   「組名 + 一句文字」的描述清單 ⸺ 沒有外框、沒有底色、沒有 hover，
+   項目之間用真正的頓號分隔（頓號在 HTML 裡，不是 ::after 生的，
+   否則 textContent 會把所有詞黏成一串），一眼就是文字，不是控制項。 */
+.specialty-groups {
   margin: 0 0 2.5rem;
-  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
 }
 
-.specialty-list li {
-  background: var(--accent-soft);
-  color: var(--ink-soft);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  white-space: nowrap;
+.specialty-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.1rem;
   min-width: 0;
+}
+
+/* 組與組之間只用一條細線，不是每組各自框起來 ⸺ 線是分隔，框是容器。 */
+.specialty-group + .specialty-group {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.85rem;
+}
+
+.specialty-group dt {
+  margin: 0;
+  min-width: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+/* 這條短線刻意沿用 .toc-heading::before（只把 0.95rem × 3px 收成
+   0.75rem × 2px 以配合較小的組名）。它在這個站上的既有意思是
+   「這是一個小節的名字」，不是「這裡可以點」⸺ 別把它換成別的記號，
+   也別在其他可點元素上重複使用，那會把這個約定弄糊。 */
+.specialty-group dt::before {
+  content: "";
+  display: inline-block;
+  width: 0.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  vertical-align: 0.32em;
+  margin-right: 0.5rem;
+}
+
+/* 字級與行高跟內文同一套，不是 UI 小字：這是給人讀的一句話。
+   --accent 只留給那條短線，文字色一律 --ink / --ink-soft，
+   免得又被誤認成連結。 */
+.specialty-group dd {
+  margin: 0;
+  min-width: 0;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
 }
 
 /* ---------- 關於作者 ---------- */
@@ -1126,15 +1168,22 @@ tbody tr:last-child td {
     margin-top: auto;
   }
 
-  /* 門診專長：640px 時九個標籤要擠三行，寬版面下一行排得開，
-     順勢把標籤放大一點，免得一長排小藥丸浮在 1000px 的版面上。 */
-  .page-home .specialty-list {
-    gap: 0.6rem;
+  /* 門診專長：窄版面下組名在上、項目在下（兩行）；到了 1000px 的版面，
+     組名收成左欄、項目排在右欄的同一條基線上，兩組的組名對齊成一直行。
+     左欄給 10rem ⸺ 目前最長的組名「頭痛與偏頭痛」是六個中文字，
+     16px 字級下約 100px，留了餘裕但不至於把右欄擠窄。 */
+  .page-home .specialty-groups {
+    gap: 0.7rem;
   }
 
-  .page-home .specialty-list li {
-    padding: 0.4rem 1rem;
-    font-size: 0.9375rem;
+  .page-home .specialty-group {
+    grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+    gap: 0 1.5rem;
+    align-items: baseline;
+  }
+
+  .page-home .specialty-group + .specialty-group {
+    padding-top: 0.7rem;
   }
 
   /* 「關於作者」在寬版面下左右分欄：左邊是「他是誰」，右邊是「可以去哪」。

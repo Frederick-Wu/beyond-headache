@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://beyond-headache.pages.dev/</loc>
+    <loc>https://drminyangwu.com/</loc>
     <lastmod>2026-08-03T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://beyond-headache.pages.dev/posts/ai-doesnt-know-you/</loc>
+    <loc>https://drminyangwu.com/posts/ai-doesnt-know-you/</loc>
     <lastmod>2026-08-03T00:00:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://beyond-headache.pages.dev/posts/why-beyond-headache/</loc>
+    <loc>https://drminyangwu.com/posts/why-beyond-headache/</loc>
     <lastmod>2026-08-02T00:00:00+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://beyond-headache.pages.dev/posts/formatting-reference/</loc>
-    <lastmod>2026-07-28T00:00:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
