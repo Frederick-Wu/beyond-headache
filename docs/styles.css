@@ -131,23 +131,41 @@ main {
 }
 
 /* ---------- 頁首 ---------- */
+/* 一列兩端：左邊是身分（站名＋副標），右邊是導覽（只有首頁會有）。
+   文章頁不傳 headerNav，右邊就是空的，身分靠左，看起來和以前一樣。
+
+   border-bottom 不能拿掉。淺色模式 --paper 與 --paper-raised 的對比只有
+   1.03:1，深色也才 1.13:1，肉眼等於同一個顏色 ⸺ 少了這條線，頁首就沒有
+   下緣。底色的作用是配合這條線，不是取代它。 */
 .site-header {
   border-bottom: 1px solid var(--rule);
   background: var(--paper-raised);
-  padding-block: 0.9rem;
+  padding-block: 1rem;
 }
 
 .site-header .wrap {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.75rem;
+  /* 站名（1.375rem）與導覽（0.875rem）字級差很多，baseline 對齊會讓
+     導覽看起來掉在站名下面。改成垂直置中。 */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+/* 站名與副標綁成一組，兩者之間的關係不受右邊導覽影響 */
+.site-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
 .site-title {
-  font-size: 1.15rem;
+  font-size: 1.375rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1.4;
   margin: 0;
   min-width: 0;
 }
@@ -163,6 +181,7 @@ main {
 
 .site-byline {
   font-size: 0.8125rem;
+  line-height: 1.5;
   color: var(--ink-faint);
   min-width: 0;
 }
@@ -234,15 +253,27 @@ main {
 }
 
 /* ---------- 首頁錨點導覽 ---------- */
-/* 目的是讓第一次來的人一眼看到站上有什麼。刻意做得很輕 ⸺
-   這不是入口網站，導覽條應該像一行小字，不是一排按鈕。
-   上下兩條髮絲線把它和上面的站名描述、下面的內容分開，
-   除此之外沒有底色、沒有外框、沒有圓角。
-   也刻意不做 sticky：手機上一直吃掉垂直空間，這個站的調性是克制的。 */
+/* 只有首頁會輸出，位置在頁首右側（build.mjs 的 layout({ headerNav })）。
+   目的是讓第一次來的人一眼看到站上有什麼。刻意做得很輕 ⸺
+   這不是入口網站，導覽應該像一行小字，不是一排按鈕：沒有底色、
+   沒有外框、沒有圓角，也不標示當前位置。
+   也刻意不做 sticky：手機上一直吃掉垂直空間，這個站的調性是克制的。
+
+   下面這組 margin 與上下髮絲線，是這個元件「自己獨立成一條橫幅」時的
+   樣子。實際擺進頁首之後由 .site-header .site-nav 覆寫，見下一段。
+   保留預設值是為了讓元件不必知道自己被放在哪裡。 */
 .site-nav {
   margin: 1.75rem 0 2.5rem;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
+}
+
+/* 進了頁首就要把自帶的兩條髮絲線拿掉：頁首本身已經有 border-bottom，
+   再加上下兩條，右上角會圈成一個框，比導覽本身還搶眼。 */
+.site-header .site-nav {
+  margin: 0;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 .site-nav ul {
@@ -251,7 +282,9 @@ main {
   padding: 0;
   display: flex;
   flex-wrap: wrap; /* 窄螢幕自動換行，不擠爆也不橫向溢出 */
-  gap: 0 1.75rem;
+  /* row-gap 不能是 0：字級放大到 140% 以上時三個項目會折成兩列，
+     沒有列距的話兩列觸控目標會直接貼在一起。正常寬度不折行，看不出差別。 */
+  gap: 0.25rem 1.75rem;
   min-width: 0;
 }
 
@@ -344,9 +377,11 @@ main {
 
 .author-links a {
   /* inline 元素的命中範圍只有字身高度（約 21.6px），指頭點不準。
-     改成 inline-block 讓上下內距撐開：24px 行高 + 上下各 10px = 44px。 */
+     改成 inline-block 讓上下內距撐開：15px×1.6 = 24px 行高，
+     加上下各 0.7rem（11.2px），實測總高 46.4px。
+     留了 2.4px 餘裕，日後微調 font-size 也不會靜默掉到 44px 以下。 */
   display: inline-block;
-  padding-block: 0.625rem;
+  padding-block: 0.7rem;
   color: var(--accent);
   font-size: 0.9375rem;
   font-weight: 600;
@@ -1040,6 +1075,13 @@ tbody tr:last-child td {
     padding-block: 2.5rem 4.5rem;
   }
 
+  /* 站名放大之後頁首變高，Hero 直接接在下面會顯得擠。
+     只補首頁的 Hero，不動共用的 main padding ⸺ 那會連帶把文章頁的
+     .back-link 一起往下推。 */
+  .page-home .hero {
+    margin-top: 0.5rem;
+  }
+
   .card {
     padding: 1.35rem 1.5rem 1.1rem;
   }
@@ -1133,6 +1175,46 @@ tbody tr:last-child td {
   .page-home .credit p,
   .page-home .disclaimer p {
     max-width: var(--measure);
+  }
+}
+
+/* ---------- 手機：頁首拆成上下兩段 ---------- */
+/* 640px 以下，站名與導覽並排會把導覽擠成兩到三列。改成站名一段、
+   導覽一段，導覽補回一條上緣髮絲線當作兩段之間的分隔。
+
+   和下面 max-width: 22.5rem 那段是兩件事，不要合併 ⸺ 那一段調的是
+   --gutter 與基礎字級，套用範圍與時機都不同。 */
+@media (max-width: 39.999rem) {
+  .site-header {
+    padding-block: 0.875rem;
+  }
+
+  .site-header .wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  /* 垂直空間在手機上比較貴：站名與副標改成同一列橫排，擠不下才折行 */
+  .site-identity {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.75rem;
+  }
+
+  .site-title {
+    font-size: 1.25rem;
+  }
+
+  .site-header .site-nav {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* 320px 三項要排得下，橫向間距從 1.75rem 收到 1.5rem。
+     列距維持 0.25rem，放大字級折行時兩列觸控目標才不會貼在一起。 */
+  .site-header .site-nav ul {
+    gap: 0.25rem 1.5rem;
   }
 }
 

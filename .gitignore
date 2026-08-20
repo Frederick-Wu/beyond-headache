@@ -19,3 +19,9 @@ desktop.ini
 
 # 注意：docs/ 是建置產物，但「要」進版控 —— GitHub Pages 和
 # Cloudflare Pages 都直接發布這個目錄，所以不要把它加進來忽略。
+
+# 三總監評鑑的評分表與各輪紀錄，屬於過程檔案不進版控
+.review/
+
+# 新文章產線的工作單與查核表，同樣是過程檔案
+.workroom/

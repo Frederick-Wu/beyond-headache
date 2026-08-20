@@ -11,9 +11,27 @@
   "use strict";
 
   var root = document.documentElement;
+
+  /* 兩個偏好判斷，極性刻意不同，不是筆誤：
+   *
+   *  reduceMotion ⸺ reduce 才關。揭露動畫與數值跑動預設會播，
+   *    只有使用者「明確要求」減少動態時才直接呈現最終狀態。
+   *    這是動畫的慣例極性，也對應 styles.css 裡預設會播的那份。
+   *
+   *  smoothScroll ⸺ no-preference 才開。平滑捲動預設不做，
+   *    只有使用者「明確表示沒有偏好」時才平滑。偵測不到偏好
+   *    （舊瀏覽器、不支援 matchMedia）就安靜地直接跳過去。
+   *    這是為了對齊 styles.css 的 scroll-behavior ⸺ 那邊寫在
+   *    (prefers-reduced-motion: no-preference) 裡，JS 若用另一種
+   *    極性，同一個瀏覽器會出現 CSS 直接跳、JS 平滑捲的分歧。
+   */
   var reduceMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var smoothScroll = !!(
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: no-preference)").matches
+  );
 
   /* ---------------------------------------------------------------
    * 捲動進入視窗時揭露
@@ -117,7 +135,7 @@
     toTop.addEventListener("click", function () {
       window.scrollTo({
         top: 0,
-        behavior: reduceMotion ? "auto" : "smooth",
+        behavior: smoothScroll ? "smooth" : "auto",
       });
       // 捲回頂部後把焦點交還給頁首，鍵盤操作才不會停在按鈕上
       var header = document.querySelector(".site-title a");
