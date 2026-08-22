@@ -45,13 +45,40 @@ $fontName = @('Noto Sans TC', 'Microsoft JhengHei UI', 'Microsoft JhengHei', 'PM
 if (-not $fontName) { throw '找不到可用的中文字型' }
 "使用字型：$fontName"
 
-# 專長兩兩一組排成五行，與首頁的清單同一份資料
-$items = @($cfg.specialties)
-$lines = @()
-for ($i = 0; $i -lt $items.Count; $i += 2) {
-  if ($i + 1 -lt $items.Count) { $lines += "$($items[$i]) | $($items[$i+1])" }
-  else { $lines += $items[$i] }
+# 門診專長，與首頁的清單同一份資料。
+#
+# ── 依賴的 site.config.json 結構（改 config 前請先讀這段）──────────────
+#
+#   "specialties": [ { "group": "組名", "items": ["項目", "項目", ...] }, ... ]
+#
+# 也就是「物件陣列」，不是扁平字串陣列。build.mjs 的 specialtyBlock()
+# 讀的是同一份資料、同一個形狀，兩邊要一起改。
+#
+# 這裡曾經壞過一次：config 從扁平字串陣列改成分組物件之後，這支腳本還在
+# 對元素做字串內插，於是品牌卡上印出 "@{group=頭痛與偏頭痛; items=System.Object[]}"。
+# 而且是「靜靜地壞」⸺ 腳本不會報錯，要等到有人真的去看圖才發現。
+# 所以下面改成明確驗證形狀，對不上就 throw，寧可整支停掉也不要產出壞圖。
+#
+# 排版採用與首頁 specialtyBlock() 一致的「組名：項目、項目」，右半的寬度
+# 放不下就自動折行（見後面的 Get-WrappedLines）⸺ 項目數量再變也不會爆版。
+$groups = @()
+foreach ($g0 in @($cfg.specialties)) {
+  if ($null -eq $g0.PSObject.Properties['group'] -or $null -eq $g0.PSObject.Properties['items']) {
+    throw "site.config.json 的 specialties 不是 [{group, items}] 的形狀，請同步更新本腳本（見上方註解）"
+  }
+  $name = "$($g0.group)".Trim()
+  $its = @(@($g0.items) | ForEach-Object { "$_".Trim() } | Where-Object { $_ })
+  if (-not $name -or $its.Count -eq 0) { continue }
+  # 拆成「不可拆的排版單位」：組名帶著冒號、每個項目帶著後面的頓號。
+  # 折行只會發生在單位之間，所以不會出現「肉毒桿菌、單 / 株抗體」
+  # 這種把一個專有名詞從中間切開的斷法。
+  $tokens = @("${name}：")
+  for ($i = 0; $i -lt $its.Count; $i++) {
+    $tokens += if ($i -lt $its.Count - 1) { "$($its[$i])、" } else { $its[$i] }
+  }
+  $groups += , $tokens
 }
+if ($groups.Count -eq 0) { throw 'site.config.json 讀不出任何門診專長' }
 
 $bmp = New-Object System.Drawing.Bitmap($W, $H, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
 $g = [System.Drawing.Graphics]::FromImage($bmp)
@@ -102,10 +129,46 @@ $g.DrawLine($pRule, 700, 300, 890, 300)
 $g.DrawLine($pRule, 946, 300, 1136, 300)
 $g.FillEllipse($bRule, 913, 295, 10, 10)
 
+# 專長清單。右半的可用寬度是從 x=702 到右邊界 1136，與上面兩條分隔線對齊。
+# 中文沒有空格可以斷行，所以改用前面切好的排版單位逐一量測、放不下就折。
+# 續行縮排一點，讓人看得出來它還屬於上一組。
+$LIST_X = 702
+$LIST_W = 1136 - $LIST_X
+$LIST_INDENT = 28
+
+# 把一組排版單位貪婪地塞成幾行。單一單位就超寬的話讓它自己佔一行、
+# 由畫布去裁 ⸺ 那代表 config 裡出現了異常長的項目名，不是這裡該補救的事。
+function Get-WrappedLines($tokens, $font, $graphics, $firstWidth, $restWidth) {
+  $out = @()
+  $cur = ''
+  $limit = $firstWidth
+  foreach ($tk in $tokens) {
+    $try = $cur + $tk
+    if ($cur -and $graphics.MeasureString($try, $font).Width -gt $limit) {
+      $out += $cur
+      $cur = $tk
+      $limit = $restWidth
+    } else {
+      $cur = $try
+    }
+  }
+  if ($cur) { $out += $cur }
+  return $out
+}
+
 $y = 336
-foreach ($l in $lines) {
-  $g.DrawString($l, $fLine, $bSoft, 702, $y)
-  $y += 46
+foreach ($grp in $groups) {
+  $wrapped = Get-WrappedLines $grp $fLine $g $LIST_W ($LIST_W - $LIST_INDENT)
+  for ($i = 0; $i -lt $wrapped.Count; $i++) {
+    $x = if ($i -eq 0) { $LIST_X } else { $LIST_X + $LIST_INDENT }
+    $g.DrawString($wrapped[$i], $fLine, $bSoft, $x, $y)
+    $y += 46
+  }
+}
+# 畫布是固定 630 高，超出去的行會被默默裁掉 ⸺ 那正是上一次沒被發現的那種錯誤，
+# 所以這裡明講。要修就是減少項目，或把 $fLine 調小。
+if ($y -gt $H) {
+  Write-Warning "專長清單超出畫布下緣（畫到 y=$y，畫布高 $H），底部的行會被裁掉"
 }
 
 $g.Dispose()
