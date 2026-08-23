@@ -115,7 +115,8 @@ blog/
 │  └─ counter.js         Supabase 瀏覽計數器
 ├─ assets/               文章與 Hero 圖片
 ├─ static/               會原樣複製到網站根目錄（網站圖示、_redirects 等）
-├─ tools/                圖示產生器（平常不會動到）
+├─ tools/                圖示產生器與圖片中繼資料檢查器（平常不會動到）
+├─ .githooks/            進版控的 git hook（要跑一行設定才會生效，見下）
 ├─ docs/                 ← 建置產物，發布的就是這個目錄。不要手動編輯。
 ├─ build.mjs             靜態產生器
 ├─ serve.mjs             本機預覽伺服器
@@ -225,6 +226,75 @@ heroCreditNote: 補充說明，例如改作聲明或版權宣告
 
 直式照片不必擔心版面 ⸺ 樣式除了限制寬度不超過內容文字區，還加了 `max-height: 72vh`，
 瀏覽器會等比例縮小，不會裁切也不會變形。
+
+---
+
+## 圖片中繼資料（進版控前一定要剝）
+
+圖檔裡看不見的欄位會跟著檔案一起進 git、一起上 CDN，撤不回來。這一節是
+實際處理 `source/portrait.png` 時踩過的六件事：
+
+1. **Canva 匯出的 PNG 會夾帶身分資訊。** XMP 裡有 `Attrib:FbId`、Canva 的
+   user／brand／document ID、`pdf:Author` 的真實姓名，還有原始設計檔的名稱。
+   這些欄位在任何看圖軟體裡都不會顯示，但檔案裡確實有。進版控前必須剝掉。
+
+2. **不要用 `strings` 判斷圖檔乾不乾淨。** 文字 chunk 可能是壓縮過的
+   `zTXt`／`iTXt`，`strings` 看不到；就算是明文，UTF-8 的中文也會被
+   ASCII 掃描漏掉。要按 chunk 解析，逐一列出型別，不要用「搜不到關鍵字」當通過。
+
+3. **剝除要無損。** 逐 chunk 原封搬移（含 CRC 一起複製，不重算），只丟掉
+   `tEXt`／`zTXt`／`iTXt`／`eXIf`／`tIME`，保留 `sRGB`／`gAMA`／`iCCP`／`pHYs` ⸺
+   這幾個是色彩與解析度描述，丟了顏色會跑掉。不要用會重新編碼像素的工具
+   （轉存、壓縮、「最佳化」都算），那不是剝中繼資料，是換一張圖。
+
+4. **驗收標準是像素，不是檔案大小。** 剝除前後把 PNG unfilter 之後的 RGBA
+   buffer 各算一次 SHA-256，兩邊必須完全相同。只比檔案小了幾 KB、或肉眼看
+   兩張圖一樣，都不算驗過。
+
+5. **JPEG 的 `APP2 ICC_PROFILE` 要留。** 那是色彩描述檔不是中繼資料，
+   一起剝掉會讓照片在廣色域螢幕上偏色。該剝的是 `APP1` 的 EXIF 與 XMP。
+
+6. **手機拍的照片風險更高。** 除了時間與機型，還會帶 GPS 座標與機身序號。
+   對一個會出現診間場景的衛教站，那是實質的隱私風險，不是理論上的。
+
+### 這件事已經自動化了：提交前會自動擋
+
+上面六條不必每次靠記性。`tools/check-image-metadata.mjs` 會按 chunk／segment
+解析圖檔，驗到 PNG 的 `tEXt`／`zTXt`／`iTXt`／`eXIf`／`tIME`，或 JPEG 的
+`APP1`（Exif／XMP）／`APP13`（Photoshop IRB）／`COM`，就擋下提交並告訴你
+哪個檔、哪些欄位、怎麼剝。`APP2 ICC_PROFILE` 與 PNG 的
+`sRGB`／`gAMA`／`iCCP`／`pHYs` 一律放行 ⸺ 那些是色彩描述，不是身分資訊。
+
+**啟用（每台機器 clone 之後跑一次）：**
+
+```bash
+git config core.hooksPath .githooks
+```
+
+`.git/hooks/` 不進版控，所以 hook 放在 `.githooks/` 並納入版控，
+上面這行只是告訴 git 去那裡找。沒跑這行，hook 不會生效。
+
+**不裝 hook 也能手動跑：**
+
+```bash
+node tools/check-image-metadata.mjs              # 掃全站（git 追蹤中的圖檔）
+node tools/check-image-metadata.mjs a.png b.jpg  # 只掃指定檔案
+node tools/check-image-metadata.mjs --staged     # 只掃這次 staged 的（hook 用的就是這個）
+```
+
+**被擋下來的時候**，照它印的指令剝乾淨再重新 `git add`：
+
+```bash
+node tools/check-image-metadata.mjs --strip assets/新照片.jpg
+```
+
+`--strip` 逐 chunk／segment 原封搬移（PNG 連 CRC 一起複製、不重算），
+寫回前會比對影像資料是否逐位元組相同，對不上就放棄寫入。它一定要明確指定檔案，
+不會整站亂改。
+
+hook 看的是 **staged 的內容**而不是工作目錄的檔案 ⸺ 先 `git add` 髒檔、
+再把工作目錄換成乾淨版，提交進去的還是髒的那份，這種情況一樣擋得下來。
+真的要跳過（例如 Node 壞了）用 `git commit --no-verify`，但那要自己負責。
 
 ---
 

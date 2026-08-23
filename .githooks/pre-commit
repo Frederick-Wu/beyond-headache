@@ -1,0 +1,17 @@
+#!/bin/sh
+# 提交前擋下帶身分中繼資料的圖檔。
+#
+# 這裡刻意只是一層薄殼：真正的邏輯在 tools/check-image-metadata.mjs，
+# 那支可以單獨執行（不帶參數掃全站、帶檔名只掃指定檔），所以沒裝 hook 的人
+# 也能手動跑同一套檢查。
+#
+# 啟用方式（每台機器 clone 之後跑一次）：
+#   git config core.hooksPath .githooks
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit：找不到 node，無法檢查圖片中繼資料。" >&2
+  echo "裝好 Node 再提交，或用 git commit --no-verify 明確跳過（你要自己負責）。" >&2
+  exit 1
+fi
+
+exec node "$(git rev-parse --show-toplevel)/tools/check-image-metadata.mjs" --staged

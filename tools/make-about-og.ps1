@@ -1,4 +1,4 @@
-﻿# 產生「關於作者」頁的社群分享圖 assets/og-about-portrait.jpg（1200×630）
+﻿# 產生「關於醫師」頁的社群分享圖 assets/og-about-portrait.jpg（1200×630）
 #
 # 用法（在專案根目錄執行）：
 #   powershell -ExecutionPolicy Bypass -File tools\make-about-og.ps1
@@ -41,7 +41,7 @@ $RULE = [System.Drawing.ColorTranslator]::FromHtml('#dfe3ea')
 # 理由：社群卡的字數是版面的一部分，一行放不下就會破版；而 config 裡的
 # authorProfile.jobTitle 是寫給搜尋引擎的欄位，隨時可能加上第二個職稱而變長。
 # 姓名與站名短且穩定，仍然從 config 讀。
-$LABEL = '關於作者'
+$LABEL = '關於醫師'
 $JOB = '神經內科主治醫師'
 $PLACE = '羅東博愛醫院'
 

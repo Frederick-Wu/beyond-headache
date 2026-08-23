@@ -1,5 +1,5 @@
 ---
-title: 關於作者
+title: 關於醫師
 # 讓這一頁的 JSON-LD 輸出 ProfilePage 並把 mainEntity 指回站台的 Person，
 # 也就是明確宣告「這一頁就是這個人的身分頁」。build.mjs 讀這個欄位決定型別，
 # 不看檔名。一般頁面不填就是 WebPage。
@@ -14,7 +14,7 @@ description: >
 socialImage: assets/og-about-portrait.jpg
 socialImageWidth: 1200
 socialImageHeight: 630
-socialImageAlt: 左半是深藍色塊，上面是穿白袍、打深藍色領帶的醫師半身肖像，白袍胸前繡著「吳旻陽醫師」；右半白底由上而下寫著「關於作者」、「吳旻陽醫師」、「神經內科主治醫師」、「羅東博愛醫院」，以及站名「頭痛之外」。
+socialImageAlt: 左半是深藍色塊，上面是穿白袍、打深藍色領帶的醫師半身肖像，白袍胸前繡著「吳旻陽醫師」；右半白底由上而下寫著「關於醫師」、「吳旻陽醫師」、「神經內科主治醫師」、「羅東博愛醫院」，以及站名「頭痛之外」。
 ---
 
 你可能是先讀到某一篇文章，才點進這一頁的。
