@@ -6,15 +6,34 @@
     <description>神經內科醫師吳旻陽的隨筆。頭痛只是門診的開場白，後面還有更長的故事。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Mon, 03 Aug 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>AI 講得沒錯，但它不認識你</title>
-      <link>https://drminyangwu.com/posts/ai-doesnt-know-you/</link>
-      <guid isPermaLink="true">https://drminyangwu.com/posts/ai-doesnt-know-you/</guid>
-      <pubDate>Mon, 03 Aug 2026 00:00:00 +0800</pubDate>
+      <title>來看診前，先記下這幾件事</title>
+      <link>https://drminyangwu.com/posts/before-your-visit/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/before-your-visit/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
       <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>越來越多病人在進診間之前，已經先問過 AI 了。 先做功課是好事，但查到的東西有時候讓人更緊張 ⸺ 這是我在門診看到的，和幾句建議。</description>
+      <description>最有用的準備是記錄，不是查資料。進診間前如果講得出這次是什麼時候開始的、 一個月痛幾天、止痛藥一週吃幾天，門診時間就能省下來討論下一步。 文末也附上哪些狀況不要等門診、該當天就醫。</description>
+      <category>就醫準備</category>
+      <category>頭痛</category>
+    </item>
+    <item>
+      <title>頭痛不是只能吃止痛藥</title>
+      <link>https://drminyangwu.com/posts/beyond-painkillers/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/beyond-painkillers/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。 這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、 肉毒桿菌注射、神經阻斷術。沒有哪一種比較好，但如果你以為只剩下忍耐，那不一定是真的。</description>
+      <category>頭痛</category>
+    </item>
+    <item>
+      <title>神經內科門診的三種病人</title>
+      <link>https://drminyangwu.com/posts/three-kinds-of-patients/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/three-kinds-of-patients/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>我的門診大致分成三條線：頭痛與其他慢性疼痛、腦血管疾病、神經退化。 另外還有一群不太好歸類的症狀 ⸺ 頭暈、手腳發麻、顫抖、走路不穩、記性變差。 這篇說明每一條線大概是什麼樣的人，讓你先知道自己的狀況落在哪裡。</description>
       <category>門診觀察</category>
       <category>就醫準備</category>
     </item>
@@ -24,8 +43,18 @@
       <guid isPermaLink="true">https://drminyangwu.com/posts/why-beyond-headache/</guid>
       <pubDate>Sun, 02 Aug 2026 00:00:00 +0800</pubDate>
       <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。</description>
+      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。 這篇講站名的由來、我為什麼把重心放在頭痛， 以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
       <category>關於本站</category>
+    </item>
+    <item>
+      <title>AI 講得沒錯，但它不認識你</title>
+      <link>https://drminyangwu.com/posts/ai-doesnt-know-you/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/ai-doesnt-know-you/</guid>
+      <pubDate>Mon, 03 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>越來越多病人在進診間之前，已經先問過 AI 了。 先做功課是好事，但查到的東西有時候讓人更緊張 ⸺ 這是我在門診看到的，和幾句建議。</description>
+      <category>門診觀察</category>
+      <category>就醫準備</category>
     </item>
   </channel>
 </rss>
