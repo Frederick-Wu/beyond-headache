@@ -38,15 +38,6 @@
       <category>就醫準備</category>
     </item>
     <item>
-      <title>為什麼叫「頭痛之外」</title>
-      <link>https://drminyangwu.com/posts/why-beyond-headache/</link>
-      <guid isPermaLink="true">https://drminyangwu.com/posts/why-beyond-headache/</guid>
-      <pubDate>Sun, 02 Aug 2026 00:00:00 +0800</pubDate>
-      <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。 這篇講站名的由來、我為什麼把重心放在頭痛， 以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
-      <category>關於本站</category>
-    </item>
-    <item>
       <title>AI 講得沒錯，但它不認識你</title>
       <link>https://drminyangwu.com/posts/ai-doesnt-know-you/</link>
       <guid isPermaLink="true">https://drminyangwu.com/posts/ai-doesnt-know-you/</guid>
@@ -55,6 +46,15 @@
       <description>越來越多病人在進診間之前，已經先問過 AI 了。 先做功課是好事，但查到的東西有時候讓人更緊張 ⸺ 這是我在門診看到的，和幾句建議。</description>
       <category>門診觀察</category>
       <category>就醫準備</category>
+    </item>
+    <item>
+      <title>為什麼叫「頭痛之外」</title>
+      <link>https://drminyangwu.com/posts/why-beyond-headache/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/why-beyond-headache/</guid>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。 這篇講站名的由來、我為什麼把重心放在頭痛， 以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
+      <category>關於本站</category>
     </item>
   </channel>
 </rss>

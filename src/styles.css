@@ -374,6 +374,48 @@ main {
 /* site.config.json 的 sameAs 與 worksFor 是寫給機器的身分宣告，讀者看不到。
    這一區是同一份資訊的可見版本：病人搜尋進來，要知道這位醫師在哪裡看診、
    怎麼掛號。卡片外觀刻意與文章卡、目錄一致，讀者一眼認得出是同一個系統。 */
+
+/* 「關於醫師」標題列的頭貼變體。首頁與文章頁的這一區都會用到。
+   .section-label 預設是 justify-content: space-between ⸺ 那是給
+   「衛教文章 / 共 N 篇」兩端對齊用的。這裡多了一個子元素（頭貼），
+   不覆寫的話會變成頭貼靠最左、標籤被推到最右，中間空一千 px。 */
+.section-label--avatar {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* 尺寸用 rem 不用 px：使用者字級 140% 時實測長到 56px，比例才不會垮。
+   flex: 0 0 auto 是必要的 ⸺ 沒有它，窄螢幕上圓會被壓成橢圓。
+   HTML 那邊 width/height 標 256/256（intrinsic ratio），兩軸在這裡都寫死，
+   所以圖片載入前後不會有 CLS。 */
+.author-avatar {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  /* 這一圈不是框，是補圓周對比。頭貼是照片，背景偏亮的那一段圓周在淺色
+     --paper（#fbfcfd，L=0.9722）上會破口 ⸺ 實測最外緣有 9.6% 的像素對
+     背景低於 1.5:1，最長一段連續低對比弧 28°（40px 直徑上約 9.8px）。
+     10% 不透明度的髮絲圈剛好把那個口補起來。
+
+     用 box-shadow 不用 border 有兩個理由：它不佔盒模型，不推動版面；而且
+     站上的既有約定是「有框的圓角塊 = 可以點」，頭貼不可點，不該長 border。
+     非 inset，所以會跟著 border-radius 走完整個圓。
+     深色模式關掉，見緊接在後面的覆寫。 */
+  box-shadow: 0 0 0 1px rgba(25, 28, 36, 0.1);
+}
+
+/* 深色底本來就分得出邊界，不需要補：實測頭貼外圈環對 --paper（#1b2338）
+   7.78:1，最暗的 5% 像素也有 6.98:1。留著那圈深色反而是多餘的噪點。 */
+@media (prefers-color-scheme: dark) {
+  .author-avatar {
+    box-shadow: none;
+  }
+}
+
 .author-body {
   /* <address> 預設是斜體，中文字型只能合成假斜體，很難看 */
   font-style: normal;
@@ -587,7 +629,13 @@ main {
   margin-top: 0.6rem;
 }
 
-.post-body blockquote {
+/* 引言的外觀由下面這條規則定義，而且與首頁的「來看診前」引導區共用同一條，
+   不是各寫一份 ⸺ 站主在文章裡用 > 的地方，意思一向是「這一段我最希望你
+   看到」，讀者已經認得這個外觀。首頁的召喚區沿用同一個語彙，不是多發明一個
+   記號。之後誰調了引言的樣子，那一區會跟著動，這正是我們要的。
+   引導區自己的間距微調緊接在後面，見「首頁『來看診前』引導區」。 */
+.post-body blockquote,
+.visit-callout {
   border-left: 3px solid var(--accent);
   background: var(--accent-soft);
   padding: 0.85rem 1rem;
@@ -597,6 +645,75 @@ main {
 
 .post-body blockquote > * + * {
   margin-top: 0.75rem;
+}
+
+/* ---------- 首頁「來看診前」引導區 ---------- */
+/* 只有首頁輸出（build.mjs 的 visitCalloutBlock()），文案在 site.config.json
+   的 visitCallout。外觀共用上面那條引言規則，這裡只補間距與字級。
+
+   這一段刻意就放在引言規則的正後方：.visit-callout 的 padding-bottom 覆寫
+   與共用規則裡的 padding 同分（兩邊都是 0,1,0），純靠原始碼順序取勝。
+   搬到檔案前面（例如併進「首頁」那一節）覆寫就會靜默失效。
+
+   整塊不可點、只有連結可點：這個站「有框的圓角塊 = 可以點」是給卡片的，
+   這塊只有左色條、只有右側圓角，它講的是引言的話，不是卡片的話。 */
+.visit-callout {
+  margin: 2rem 0 2.5rem;
+  /* 收窄整塊，不是只收字。首頁寬螢幕容器是 1000px，但裡面的標題與內文
+     各自 max-width: 34rem，色帶卻仍然拉滿 1000px ⸺ 實測 1280px 下文字
+     最右緣停在 x=561，右邊 571px 是空的色帶，ink 填滿率只有 42.9%
+     （對照文章卡摘要 90%）。站上沒有第二個「有底色但字只佔四成」的塊：
+     .page-home .credit p 同樣用 max-width 收字，但它沒有底色，收不滿也
+     不會露出空帶；這一塊有底色，收不滿就會。
+     37rem = 34rem 文字 + 左右各 1rem 內距 + 3px 左色條，色帶剛好貼著文字
+     收邊，實測填滿率回到約 72%。 */
+  max-width: 37rem;
+  /* 連結自帶 0.7rem 上下內距（撐觸控目標）。底部若維持 0.85rem，
+     實測會變成上 13.6px、下 24.8px 的歪頭。收到 0.25rem 之後
+     實測上 13.6px、下 15.2px。 */
+  padding-bottom: 0.25rem;
+}
+
+.visit-callout-title {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+.visit-callout-text {
+  margin: 0.35rem 0 0;
+  /* 首頁寬螢幕容器是 1000px，字不能跟著拉到 1000px。
+     34rem 實測每行 35.85 字，落在 28-40 之內。
+     同樣手法頁尾已經用過（.page-home .credit p）。 */
+  max-width: 34rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+.visit-callout-action {
+  margin: 0.15rem 0 0;
+}
+
+.visit-callout-action a {
+  /* 整組數值沿用 .author-links a：15px x 1.6 = 24px 行高，
+     上下各 0.7rem（11.2px），實測命中高度 46.38px，過 44px。 */
+  display: inline-block;
+  padding-block: 0.7rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--accent);
+  text-decoration: none;
+  min-width: 0;
+}
+
+.visit-callout-action a:hover {
+  text-decoration: underline;
 }
 
 .post-body img {
