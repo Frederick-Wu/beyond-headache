@@ -129,6 +129,23 @@
        改用 defer 的話會先畫出完整長條再瞬間歸零，看得到閃動；
        沒有這行則代表 JS 不可用，長條就維持最終寬度不做動畫。 -->
   <script>document.documentElement.classList.add("js");</script>
+  <!-- Google Analytics 4（本機預覽不載入） -->
+  <script>
+    (function () {
+      var h = location.hostname;
+      if (h === "localhost" || h === "127.0.0.1" || h === "::1" || h.endsWith(".local")) return;
+      var id = "G-QZS7SQ553Q";
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", id);
+    })();
+  </script>
 </head>
 <body class="page-post" data-page-slug="ai-doesnt-know-you">
 

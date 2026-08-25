@@ -88,6 +88,10 @@
       "note": "照片經病人同意後公開使用。版權所有，未經同意請勿轉載。"
     }
   },
+  "analyticsComment": "Google Analytics 4。填入評估 ID（G- 開頭）就會啟用，留空則整段程式碼不輸出 ⸺ 沒填時頁面上不會有任何第三方請求。本機預覽（localhost）一律不送資料，免得自己開發時的瀏覽污染統計。",
+  "analytics": {
+    "ga4Id": "G-QZS7SQ553Q"
+  },
   "supabase": {
     "url": "https://kpmvklrfzrcvyhbgmogc.supabase.co",
     "anonKey": "sb_publishable_gErAb7XqDsU8kj-RgqJKHA_h4tGTOGU",
