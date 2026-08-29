@@ -19,6 +19,9 @@ const TYPES = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  // 線上是 Cloudflare 回 application/manifest+json；本機不補的話會退成
+  // octet-stream，Chrome 預覽時會誤報 manifest 讀不到。
+  ".webmanifest": "application/manifest+json; charset=utf-8",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".png": "image/png",
