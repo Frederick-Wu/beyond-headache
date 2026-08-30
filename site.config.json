@@ -17,8 +17,8 @@
     "sameAsComment": "同一個人在網路上的其他身分頁面。這是實體識別最關鍵的欄位 ⸺ 它告訴機器這些網址講的是同一位醫師。日後若取得 ORCID、PubMed 作者頁、學會會員頁，一併加進來。",
     "sameAs": [
       "https://www.pohai.org.tw/doctor_detail.php?PKey=422",
-      "https://minyangwu.blogspot.com/",
-      "https://minyangwu.blogspot.com/2024/06/blog-post.html"
+      "https://blog.drminyangwu.com/",
+      "https://blog.drminyangwu.com/2024/06/blog-post.html"
     ]
   },
   "authorBioComment": "「關於醫師」區塊：讀者看得見、點得到的連結。上面的 sameAs 是寫給機器的身分宣告，這裡是寫給人的 ⸺ 兩者並存才完整，而且真實超連結的權重高於只寫在 sameAs 裡的宣告。links 的順序就是顯示順序，站內的 /about/ 放第一筆 ⸺ 讀者想多知道一點的時候，第一個該點的是站內那頁完整的簡歷，不是外站。url 只要不是 http(s) 開頭就會被當成站內連結：不開新分頁、也不加 ↗ 記號（那個記號在這個站的意思是「會離開本站」）。注意「門診時間與掛號資訊」刻意不放進 sameAs：那是實用資訊，不是身分頁面，語意不同。介紹句沿用 authorProfile.description，不在這裡重複維護。",
@@ -35,11 +35,11 @@
       },
       {
         "label": "門診時間與掛號資訊",
-        "url": "https://minyangwu.blogspot.com/2024/08/blog-post.html"
+        "url": "https://blog.drminyangwu.com/2024/08/blog-post.html"
       },
       {
         "label": "舊部落格：吳旻陽醫師",
-        "url": "https://minyangwu.blogspot.com/"
+        "url": "https://blog.drminyangwu.com/"
       }
     ]
   },

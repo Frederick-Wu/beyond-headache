@@ -22,7 +22,7 @@ socialImageAlt: 左半是深藍色塊，上面是穿白袍、打深藍色領帶�
 
 如果你是要來看診的，這幾篇大概比履歷有用：[神經內科門診的三種病人](../posts/three-kinds-of-patients/)、[頭痛不是只能吃止痛藥](../posts/beyond-painkillers/)，還有[頭痛看診前，先記下這幾件事](../posts/before-your-visit/)。
 
-門診時間與掛號方式在[這裡](https://minyangwu.blogspot.com/2024/08/blog-post.html)。
+門診時間與掛號方式在[這裡](https://blog.drminyangwu.com/2024/08/blog-post.html)。
 
 ---
 

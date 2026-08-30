@@ -31,9 +31,9 @@ tags: [頭痛]
 
 上面每一項我在舊部落格都寫過完整的一篇，需要細節的話從這裡進去：
 
-- [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://minyangwu.blogspot.com/2025/06/migraine-medication-User-guide-prevention.html) ⸺ 跟這篇講同一件事，講得更完整。用煮水比喻：止痛藥是倒冰水，預防藥是關爐火。如果你只讀一篇，讀這篇。
-- [偏頭痛「預防藥治療」攻略：傳統口服藥（一）](https://minyangwu.blogspot.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html) ⸺ 四類老藥的學名和商品名都列出來了。也寫了什麼情況該開始吃預防藥，以及「起步要慢、規律吃 6 到 12 個月」這個最常被忽略的原則。
-- [偏頭痛「預防藥治療」攻略：長效針劑（二）](https://minyangwu.blogspot.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html) ⸺ 單株抗體與肉毒桿菌各自的機轉、劑量、施打間隔，與健保給付條件。
-- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇（三）](https://minyangwu.blogspot.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html) ⸺ 健保給付要先記三個月頭痛日記、試過三種傳統藥；自費一個月大概多少錢；兩種針怎麼選。要談錢和條件、還有門診常見問題，看這篇。
-- [偏頭痛 2 種標靶藥比較｜Atogepant & Rimegepant](https://minyangwu.blogspot.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html) ⸺ 艾妥達與紐舒泰的服藥頻率和療效差別。這兩種目前在台灣都是全自費，健保還沒有給付。
-- [市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛](https://minyangwu.blogspot.com/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html) ⸺ 急性止痛藥一週不超過 2 天，這個數字的由來；哪些是高危險族群，如何自我檢視，以及嚴重的時候為什麼要住院調藥。
+- [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html) ⸺ 跟這篇講同一件事，講得更完整。用煮水比喻：止痛藥是倒冰水，預防藥是關爐火。如果你只讀一篇，讀這篇。
+- [偏頭痛「預防藥治療」攻略：傳統口服藥（一）](https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html) ⸺ 四類老藥的學名和商品名都列出來了。也寫了什麼情況該開始吃預防藥，以及「起步要慢、規律吃 6 到 12 個月」這個最常被忽略的原則。
+- [偏頭痛「預防藥治療」攻略：長效針劑（二）](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html) ⸺ 單株抗體與肉毒桿菌各自的機轉、劑量、施打間隔，與健保給付條件。
+- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇（三）](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html) ⸺ 健保給付要先記三個月頭痛日記、試過三種傳統藥；自費一個月大概多少錢；兩種針怎麼選。要談錢和條件、還有門診常見問題，看這篇。
+- [偏頭痛 2 種標靶藥比較｜Atogepant & Rimegepant](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html) ⸺ 艾妥達與紐舒泰的服藥頻率和療效差別。這兩種目前在台灣都是全自費，健保還沒有給付。
+- [市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛](https://blog.drminyangwu.com/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html) ⸺ 急性止痛藥一週不超過 2 天，這個數字的由來；哪些是高危險族群，如何自我檢視，以及嚴重的時候為什麼要住院調藥。
