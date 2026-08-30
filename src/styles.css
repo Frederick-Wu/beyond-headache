@@ -616,7 +616,9 @@ main {
 .post-body h3 {
   font-size: 1.125rem;
   line-height: 1.6;
-  margin-top: 2rem;
+  /* 與粗體小標同一個數值 ⸺ 「新一組開始」的留白訊號，不該因為作者寫 ### 還是
+     **粗體** 而不同。 */
+  margin-top: 2.75rem;
   color: var(--accent);
 }
 
@@ -744,6 +746,56 @@ main {
   height: auto;
   border-radius: var(--radius);
   margin-inline: auto;
+}
+
+/* 標題和它底下的第一段是一組。標題浮在半空中、跟前後距離一樣遠的話，
+   讀者得多花一次判斷才知道它在替哪一段命名。 */
+.post-body h3 + * {
+  margin-top: 0.75rem;
+}
+
+/* 整段只有一個粗體句子時，那是小標而不是段落 ⸺ 例如「1. 偏頭痛 Migraine」。
+   它跟緊接在後的說明是一組：上面拉開、下面收緊。這樣不必為了分層而多開一級標題，
+   也就不會讓文章長出一堆三級標題。 */
+.post-body > p:has(> strong:only-child) {
+  margin-top: 2.75rem;
+}
+
+.post-body > p:has(> strong:only-child) + * {
+  margin-top: 0.75rem;
+}
+
+/* 圖片和它底下的說明文字是一組。段距一律 2rem 的話，讀者分不出哪段文字在講哪張圖
+   ⸺ 尤其像頭痛地圖那種「一張圖配一段說明」連續排下來的文章，會糊成一片。
+   作法是圖片前面拉開、後面收緊：分組不必畫線或加框，靠留白就看得出來。
+
+   :has() 用來認出「整段只有一張圖」的段落。舊瀏覽器不支援時，整條規則會被跳過，
+   退回原本的均勻段距 ⸺ 只是少了分組感，不會破版。 */
+.post-body > p:has(> img:only-child) {
+  margin-top: 3.5rem;
+}
+
+/* 圖片正下方那一段（通常是標題或圖說）緊跟著圖，這是分組的另一半。 */
+.post-body > p:has(> img:only-child) + * {
+  margin-top: 0.75rem;
+}
+
+/* 說明文字跟上面的標籤是同一組，一起收緊 ⸺ 圖、標籤、說明三者讀起來要像一塊，
+   而不是三段各自獨立的內容。排除掉圖片段落，免得連續兩張圖也被收緊；
+   也排除掉小標 ⸺ 小標是新一組的開頭，該保留它上方的間距，不能被收進上一組。 */
+.post-body > p:has(> img:only-child) + * + p:not(:has(> img)):not(:has(> strong:only-child)) {
+  margin-top: 0.75rem;
+}
+
+/* 小標剛好接在圖片下面時，以圖片那一組的間距為準 ⸺ 圖已經是分組的開頭，
+   小標不該再往下推。這條寫在後面、選擇器也更明確，確保它勝出。 */
+.post-body > p:has(> img:only-child) + :is(p:has(> strong:only-child), h3) {
+  margin-top: 0.75rem;
+}
+
+/* 圖片是內文第一個元素時不需要額外的上距，那裡本來就是文章開頭。 */
+.post-body > p:has(> img:only-child):first-child {
+  margin-top: 0;
 }
 
 .post-body hr {
