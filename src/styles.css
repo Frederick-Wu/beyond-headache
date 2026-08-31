@@ -992,9 +992,12 @@ tbody tr:last-child td {
   table-layout: fixed;
 }
 
-/* 時段那一欄固定寬，剩下的由 fixed layout 均分給七天。 */
+/* 時段那一欄固定寬，剩下的由 fixed layout 均分給每一天。
+   5.5rem = 88px，扣掉 9.6px 右內距還有 78.4px；「08:30–12:00」實測需要
+   69px。原本設 4.5rem 只放得下 62.4px，時間那一行會溢出去壓到第一個色塊
+   ⸺ table-layout: fixed 不會替你把欄撐開，欄寬只認這裡寫的值。 */
 .clinic-hours thead td {
-  width: 4.5rem;
+  width: 5.5rem;
 }
 
 .clinic-hours th,
@@ -1019,7 +1022,6 @@ tbody tr:last-child td {
 /* 時段那一欄。釘住的規則來自 .table-scroll，這裡只管長相。 */
 .clinic-hours .table-scroll tbody th {
   text-align: left;
-  white-space: nowrap;
   padding-right: 0.6rem;
   background: var(--paper);
   box-shadow: none;
@@ -1027,6 +1029,7 @@ tbody tr:last-child td {
 
 .clinic-session {
   display: block;
+  white-space: nowrap;
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--ink);
@@ -1099,7 +1102,7 @@ tbody tr:last-child td {
   }
 
   .clinic-hours thead td {
-    width: 3.5rem;
+    width: 5.25rem;
   }
 
   .clinic-hours td > span {
