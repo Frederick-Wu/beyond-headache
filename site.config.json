@@ -17,6 +17,7 @@
     "sameAsComment": "同一個人在網路上的其他身分頁面。這是實體識別最關鍵的欄位 ⸺ 它告訴機器這些網址講的是同一位醫師。日後若取得 ORCID、PubMed 作者頁、學會會員頁，一併加進來。",
     "sameAs": [
       "https://www.pohai.org.tw/doctor_detail.php?PKey=422",
+      "https://www.facebook.com/WuMY039543131",
       "https://blog.drminyangwu.com/",
       "https://blog.drminyangwu.com/2024/06/blog-post.html"
     ]
@@ -36,6 +37,10 @@
       {
         "label": "門診時間與掛號資訊",
         "url": "/#clinic"
+      },
+      {
+        "label": "Facebook：神經內科 吳旻陽醫師",
+        "url": "https://www.facebook.com/WuMY039543131"
       },
       {
         "label": "舊部落格：吳旻陽醫師",
