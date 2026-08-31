@@ -810,8 +810,11 @@ a {
   overflow-wrap: anywhere;
 }
 
+/* [tabindex] 也要 ⸺ 門診時段表的捲動容器是 tabindex="0" 的 div，
+   不加的話它拿到的是瀏覽器預設焦點框，跟全站其他焦點框長得不一樣。 */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 3px;
@@ -942,7 +945,7 @@ tbody tr:last-child td {
 
 /* 看診格的底色與字色成對出現，所以獨立成一組變數 ⸺ 深色模式的 --accent
    會反過來變成淺藍（#a8c0ea），那時候白字會糊掉，字色必須跟著翻面。
-   對比：淺色 9.89:1、深色 9.40:1，都遠高於 AA 的 4.5:1。 */
+   對比：淺色 9.89:1、深色 6.40:1，都遠高於 AA 的 4.5:1。 */
 :root {
   --clinic-open-bg: var(--accent);
   --clinic-open-ink: #ffffff;
@@ -964,15 +967,6 @@ tbody tr:last-child td {
   margin-bottom: 2.5rem;
 }
 
-/* 表格上方的一句話。網格回答「週四早上有沒有」，這句回答「他哪天有診」。
-   由 build.mjs 從 open 自動產生，不可能跟表格分岔。 */
-.clinic-summary {
-  margin-bottom: 0.9rem;
-  font-size: 0.9375rem;
-  line-height: 1.8;
-  color: var(--ink);
-}
-
 /* 沿用 .table-scroll 的橫向捲動、邊緣陰影與首欄釘住，只把它的外框拿掉 ⸺
    這張表的每一格自己就是色塊，再加一圈框會變成兩層盒子。 */
 .clinic-hours .table-scroll {
@@ -985,19 +979,40 @@ tbody tr:last-child td {
   border-collapse: separate;
   border-spacing: 0.3rem;
   width: 100%;
-  /* fixed 是必要的，不是偏好：auto layout 會依內容寬度分欄，而休診格的文字
-     是 .visually-hidden（絕對定位、內在寬度 0），於是有診的欄位自動變寬 ⸺
-     欄寬等於偷偷再編碼一次排班。實測過 1.87:1。
-     min-width 拿掉：它是 320px 溢出 28px（整條週日被切掉）的直接原因。 */
-  table-layout: fixed;
 }
 
-/* 時段那一欄固定寬，剩下的由 fixed layout 均分給每一天。
-   5.5rem = 88px，扣掉 9.6px 右內距還有 78.4px；「08:30–12:00」實測需要
-   69px。原本設 4.5rem 只放得下 62.4px，時間那一行會溢出去壓到第一個色塊
-   ⸺ table-layout: fixed 不會替你把欄撐開，欄寬只認這裡寫的值。 */
+/* 欄寬的演算法換過三次，這裡記下為什麼是現在這個，免得有人again 改回去。
+ *
+ * 一開始是 auto layout：當時格子裡寫著「看診」，休診格沒有可見文字，於是
+ * 有診的欄位自動變寬（實測 1.87:1）⸺ 欄寬等於偷偷再編碼一次排班。
+ *
+ * 於是改成 table-layout: fixed + 時段欄固定 5.5rem。這修好了欄寬，卻換來
+ * 兩個更糟的問題：fixed layout 不理會內容的 min-content 寬度，所以（a）時間
+ * 字串只靠「欄剛好夠寬」撐著，實測餘裕只有 5.4px，換個系統字體就爆；
+ * （b）rem 寬度會隨使用者字級放大，200% 時時段欄長到 168px 而容器仍是
+ * 264px，五個星期欄各剩 10.8px，標題彼此重疊 9.5px、色塊變成細條。
+ *
+ * 現在回到 auto layout ⸺ 但前提變了：兩種格子現在都沒有可見文字，所以
+ * 五個星期欄的內容寬度天生相同，當初改用 fixed 的理由已經不存在。
+ *   thead td width: 1%   ⸺ 讓時段欄縮到 min-content（= 時間字串的寬度），
+ *                           不再貪走剩餘空間。auto layout 保證欄至少有
+ *                           min-content 寬，所以時間再也不可能溢出去壓到
+ *                           色塊 ⸺ 那是版面演算法給的保證，不是魔術數字。
+ *   thead th width: 18%  ⸺ 五欄各要 18%，剩餘空間平均分給它們。
+ *   td > span min-width  ⸺ 色塊有下限，撐不下時由 .table-scroll 橫捲降級。
+ *
+ * 實測（320／412／1280 × 100%／150%／200%）：欄寬永遠等寬（差 ≤ 0.1px）、
+ * 標題永不重疊、時間永遠一行且不侵入色塊。只有 320px + 200% 會橫捲 67px
+ * ⸺ 那正是 .table-scroll 的 tabindex="0" 存在的理由。
+ *
+ * 警告：哪天要把可見文字放回格子裡，欄寬就會再度不等，那時得連同這一整段
+ * 重新設計，不能只加回 table-layout: fixed。 */
 .clinic-hours thead td {
-  width: 5.5rem;
+  width: 1%;
+}
+
+.clinic-hours .table-scroll thead th {
+  width: 18%;
 }
 
 .clinic-hours th,
@@ -1011,8 +1026,10 @@ tbody tr:last-child td {
 /* 星期那一列。它是欄標題，但視覺上該像刻度而不是標題列 ⸺
    這張表的主角是底下那排色塊。 */
 .clinic-hours .table-scroll thead th {
-  font-size: 0.8125rem;
-  font-weight: 500;
+  /* 拿掉格子裡的文字之後，這一列從裝飾變成「唯一能把色塊對回星期的鑰匙」
+     ⸺ 曾經一度被我改成 13px/500，方向是錯的。 */
+  font-size: 0.9375rem;
+  font-weight: 600;
   color: var(--ink-faint);
   text-align: center;
   padding-bottom: 0.2rem;
@@ -1030,15 +1047,20 @@ tbody tr:last-child td {
 .clinic-session {
   display: block;
   white-space: nowrap;
+  /* 1.4 不是隨手挑的：兩行合計 15×1.4 + 13×1.4 = 39.2px，低於色塊的 44px，
+     列高才不會被標題撐高 ⸺ 撐高的話縱向間距會變成橫向的 2.5 到 3 倍，
+     網格就不再像網格。 */
+  line-height: 1.4;
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--ink);
 }
 
-/* 醫院的實際起訖時間站主還沒給，config 留空時這一行根本不會輸出。 */
+/* config 的 sessions[].time 留空時這一行不會輸出（站主 2026-08 已填入）。 */
 .clinic-time {
   display: block;
-  font-size: 0.75rem;
+  line-height: 1.4;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: var(--ink-faint);
   letter-spacing: 0.02em;
@@ -1047,8 +1069,12 @@ tbody tr:last-child td {
 .clinic-hours td > span {
   border-radius: 8px;
   /* 高度 44px 起跳 ⸺ 之後若要讓每一格可以點進去掛號，觸控目標的下限
-     本來就是 44px；先把版面撐到那個尺寸，屆時不必重排。 */
-  min-height: 44px;
+     本來就是 44px；先把版面撐到那個尺寸，屆時不必重排。
+     用 rem 而不是 px，讓它跟著使用者的字級走。
+     min-width 是給 auto layout 的地板：寬度不夠時寧可橫捲，也不要把格子
+     壓成看不出是格子的細條。 */
+  min-height: 2.75rem;
+  min-width: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1062,9 +1088,10 @@ tbody tr:last-child td {
   font-weight: 600;
 }
 
-/* 休診格只留一塊淡色，「休診」兩個字收進無障礙樹。
-   資訊沒有只靠顏色傳達 ⸺ 有診的格子自己寫著「看診」，
-   讀螢幕的人兩種都聽得到，色覺障礙的人看得到文字的有無。 */
+/* 兩種格子在螢幕上都沒有可見文字（站主的決定），文字收在無障礙樹裡。
+   這樣不牴觸 WCAG 1.4.1，因為區分靠的是亮度不是色相：兩者對比淺色
+   7.76:1、深色 4.36:1，轉灰階後差 165/255 與 99/255。
+   顏色被使用者代理接管時（列印、強制色彩模式）另有規則讓文字現形。 */
 .clinic-hours .is-closed > span {
   background: var(--clinic-closed-bg);
 }
@@ -1095,19 +1122,11 @@ tbody tr:last-child td {
   box-shadow: none;
 }
 
-/* 320px 與放大字級下把格子收緊，讓七欄擠得進去而不必橫捲。 */
+/* 窄螢幕把格子之間收緊一點。欄寬本身由 auto layout 決定，這裡不再指定
+   ⸺ 指定它正是 200% 字級下標題重疊的成因。 */
 @media (max-width: 26rem) {
   .clinic-hours table {
     border-spacing: 0.2rem;
-  }
-
-  .clinic-hours thead td {
-    width: 5.25rem;
-  }
-
-  .clinic-hours td > span {
-    font-size: 0.75rem;
-    letter-spacing: 0;
   }
 }
 
@@ -1336,8 +1355,13 @@ tbody tr:last-child td {
   bottom: max(1rem, env(safe-area-inset-bottom));
   z-index: 20;
 
-  width: 2.875rem;
-  height: 2.875rem;
+  /* 封頂：這顆按鈕原本是 2.875rem，在 200% 字級下會長到 92px，實測會蓋住
+     門診時段表底下那句「掛號前請以醫院系統公告為準」⸺ 被蓋掉的偏偏是
+     安全提醒。用 min() 不用 clamp() ⸺ clamp(2.875rem, 2.875rem, 60px) 在
+     下限大於上限時會回傳下限，等於完全沒有封頂（我先寫錯過一次）。
+     一般字級下仍是 46px，只有放大時才被壓在 60px。 */
+  width: min(2.875rem, 60px);
+  height: min(2.875rem, 60px);
   display: grid;
   place-items: center;
 
@@ -1655,6 +1679,32 @@ tbody tr:last-child td {
 
   body {
     font-size: 1rem;
+  }
+}
+
+/* 強制色彩模式（Windows 高對比等）會用系統色蓋掉作者指定的背景色 ⸺
+   對這張表來說，那跟印表機不印背景是同一件事：兩種格子會拿到同一個系統色，
+   而它們沒有框線也沒有可見文字，整張表會變成 15 個一模一樣的空塊。
+   處理方式與 @media print 相同：讓文字現形、用框線區分。
+   forced-color-adjust: none 只用在看診格的框上 ⸺ 那一格需要一條使用者
+   代理不要接管的實線；其餘顏色一律交還給系統，那正是這個模式的用意。 */
+@media (forced-colors: active) {
+  .clinic-hours td > span > .visually-hidden {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: nowrap;
+  }
+
+  .clinic-hours .is-open > span {
+    border: 2px solid CanvasText;
+  }
+
+  .clinic-hours .is-closed > span {
+    border: 1px solid GrayText;
   }
 }
 
