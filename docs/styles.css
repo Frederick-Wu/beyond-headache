@@ -1667,15 +1667,30 @@ tbody tr:last-child td {
      白字，休診格則本來就沒有可見文字 ⸺ 整張表會印成空白格線，看起來像
      這位醫師沒有診。加框 + 深色字，單色印表機也成立；不倚賴
      print-color-adjust（各家支援不一，且使用者可關）。 */
+  /* 紙上沒有顏色，螢幕那套「深塊對淺塊」在這裡失效，所以把兩個字放出來。
+     這是同一份 DOM 文字 ⸺ 不是另外再維護一份，不可能跟表格分岔。 */
+  .clinic-hours td > span > .visually-hidden {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    font-size: 0.8125rem;
+  }
+
   .clinic-hours .is-open > span {
     background: transparent;
     color: #000;
     border: 2px solid #000;
+    font-weight: 600;
   }
 
   .clinic-hours .is-closed > span {
     background: transparent;
-    border: 1px solid #999;
+    color: #666;
+    border: 1px solid #bbb;
   }
 
   /* 掛號連結印在紙上點不了，把網址印出來才有用。 */
