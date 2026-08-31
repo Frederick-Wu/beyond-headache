@@ -921,6 +921,193 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 
+
+/* ---------- 只給輔助技術讀的文字 ---------- */
+
+/* 視覺上收掉但仍留在無障礙樹裡。不用 display:none 或 visibility:hidden ⸺
+   那兩個會讓讀螢幕的人也讀不到，就失去意義了。 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 首頁門診時段表 ---------- */
+
+/* 看診格的底色與字色成對出現，所以獨立成一組變數 ⸺ 深色模式的 --accent
+   會反過來變成淺藍（#a8c0ea），那時候白字會糊掉，字色必須跟著翻面。
+   對比：淺色 9.89:1、深色 9.40:1，都遠高於 AA 的 4.5:1。 */
+:root {
+  --clinic-open-bg: var(--accent);
+  --clinic-open-ink: #ffffff;
+  --clinic-closed-bg: #dfe4ee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clinic-open-bg: #7e9bd0;
+    --clinic-open-ink: #10162a;
+    --clinic-closed-bg: #2a3454;
+  }
+}
+
+.clinic-hours {
+  /* 與 .visit-callout 同寬（37rem）。原本沒有上限會撐滿 1000px，
+     五個色塊散在寬版上讀不成一個圖形。 */
+  max-width: 37rem;
+  margin-bottom: 2.5rem;
+}
+
+/* 表格上方的一句話。網格回答「週四早上有沒有」，這句回答「他哪天有診」。
+   由 build.mjs 從 open 自動產生，不可能跟表格分岔。 */
+.clinic-summary {
+  margin-bottom: 0.9rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+/* 沿用 .table-scroll 的橫向捲動、邊緣陰影與首欄釘住，只把它的外框拿掉 ⸺
+   這張表的每一格自己就是色塊，再加一圈框會變成兩層盒子。 */
+.clinic-hours .table-scroll {
+  border: 0;
+  border-radius: 0;
+  background-image: none;
+}
+
+.clinic-hours table {
+  border-collapse: separate;
+  border-spacing: 0.3rem;
+  width: 100%;
+  /* fixed 是必要的，不是偏好：auto layout 會依內容寬度分欄，而休診格的文字
+     是 .visually-hidden（絕對定位、內在寬度 0），於是有診的欄位自動變寬 ⸺
+     欄寬等於偷偷再編碼一次排班。實測過 1.87:1。
+     min-width 拿掉：它是 320px 溢出 28px（整條週日被切掉）的直接原因。 */
+  table-layout: fixed;
+}
+
+/* 時段那一欄固定寬，剩下的由 fixed layout 均分給七天。 */
+.clinic-hours thead td {
+  width: 4.5rem;
+}
+
+.clinic-hours th,
+.clinic-hours td {
+  border-bottom: 0;
+  background: transparent;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* 星期那一列。它是欄標題，但視覺上該像刻度而不是標題列 ⸺
+   這張表的主角是底下那排色塊。 */
+.clinic-hours .table-scroll thead th {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  text-align: center;
+  padding-bottom: 0.2rem;
+  white-space: nowrap;
+}
+
+/* 時段那一欄。釘住的規則來自 .table-scroll，這裡只管長相。 */
+.clinic-hours .table-scroll tbody th {
+  text-align: left;
+  white-space: nowrap;
+  padding-right: 0.6rem;
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.clinic-session {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* 醫院的實際起訖時間站主還沒給，config 留空時這一行根本不會輸出。 */
+.clinic-time {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.clinic-hours td > span {
+  border-radius: 8px;
+  /* 高度 44px 起跳 ⸺ 之後若要讓每一格可以點進去掛號，觸控目標的下限
+     本來就是 44px；先把版面撐到那個尺寸，屆時不必重排。 */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.clinic-hours .is-open > span {
+  background: var(--clinic-open-bg);
+  color: var(--clinic-open-ink);
+  font-weight: 600;
+}
+
+/* 休診格只留一塊淡色，「休診」兩個字收進無障礙樹。
+   資訊沒有只靠顏色傳達 ⸺ 有診的格子自己寫著「看診」，
+   讀螢幕的人兩種都聽得到，色覺障礙的人看得到文字的有無。 */
+.clinic-hours .is-closed > span {
+  background: var(--clinic-closed-bg);
+}
+
+.clinic-note {
+  margin-top: 0.9rem;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+.clinic-cta {
+  /* 註記行高 22.1px，原本只隔 8px，藍字等於黏在灰字底下。 */
+  margin-top: 1.4rem;
+  font-size: 0.9375rem;
+}
+
+/* 半夜單手拿手機的人要點的就是這一顆，讓它跟站上其他 CTA 一樣高。 */
+.clinic-cta a {
+  display: inline-block;
+  padding: 0.7rem 0;
+}
+
+/* 左上角那一格從 .table-scroll td:first-child 繼承了一條 1px 直線，
+   它既不是框線也不對應任何結構。 */
+.clinic-hours .table-scroll thead td {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 320px 與放大字級下把格子收緊，讓七欄擠得進去而不必橫捲。 */
+@media (max-width: 26rem) {
+  .clinic-hours table {
+    border-spacing: 0.2rem;
+  }
+
+  .clinic-hours thead td {
+    width: 3.5rem;
+  }
+
+  .clinic-hours td > span {
+    font-size: 0.75rem;
+    letter-spacing: 0;
+  }
+}
+
 /* ---------- 本篇目錄 ---------- */
 .toc {
   background: var(--paper-raised);
@@ -1473,6 +1660,32 @@ tbody tr:last-child td {
   .site-footer,
   .back-link,
   .views {
+    display: none;
+  }
+
+  /* 門診時段表不能只靠底色。瀏覽器預設不印背景，看診格的白字會印成白紙
+     白字，休診格則本來就沒有可見文字 ⸺ 整張表會印成空白格線，看起來像
+     這位醫師沒有診。加框 + 深色字，單色印表機也成立；不倚賴
+     print-color-adjust（各家支援不一，且使用者可關）。 */
+  .clinic-hours .is-open > span {
+    background: transparent;
+    color: #000;
+    border: 2px solid #000;
+  }
+
+  .clinic-hours .is-closed > span {
+    background: transparent;
+    border: 1px solid #999;
+  }
+
+  /* 掛號連結印在紙上點不了，把網址印出來才有用。 */
+  .clinic-cta a::after {
+    content: "（" attr(href) "）";
+    font-size: 0.75rem;
+    word-break: break-all;
+  }
+
+  .clinic-cta .ext {
     display: none;
   }
 }
