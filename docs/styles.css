@@ -1105,6 +1105,18 @@ tbody tr:last-child td {
   background: var(--clinic-closed-bg);
 }
 
+/* 色塊圖例。用的是格子同一個變數 ⸺ 所以深色模式下它自己就是那塊淺藍，
+   淺色模式下自己就是那塊深藍，不必也不能在文案裡寫死「深色」或「淺色」。 */
+.clinic-swatch {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.35em;
+  vertical-align: -0.06em;
+  border-radius: 3px;
+  background: var(--clinic-open-bg);
+}
+
 .clinic-note {
   margin-top: 0.9rem;
   font-size: 0.8125rem;
@@ -1708,6 +1720,10 @@ tbody tr:last-child td {
     white-space: nowrap;
   }
 
+  .clinic-legend {
+    display: none;
+  }
+
   .clinic-hours .is-open > span {
     border: 2px solid CanvasText;
   }
@@ -1740,6 +1756,10 @@ tbody tr:last-child td {
     clip-path: none;
     white-space: normal;
     font-size: 0.8125rem;
+  }
+
+  .clinic-legend {
+    display: none;
   }
 
   .clinic-hours .is-open > span {
