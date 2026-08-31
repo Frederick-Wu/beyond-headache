@@ -967,6 +967,15 @@ tbody tr:last-child td {
   margin-bottom: 2.5rem;
 }
 
+/* 首頁其他區塊標題的上方都有 40px（前一個區塊自己的 margin-bottom 撐出來的），
+   只有「門診時段」是 0 ⸺ .author-bio 的 margin-bottom 是 0，而它是唯一會
+   接在區塊標題前面的卡片。實測過：門診專長 40、衛教文章 40、門診時段 0。
+   用相鄰選擇器而不是給 .author-bio 加 margin-bottom ⸺ 那張卡片在每篇文章
+   結尾也會出現，那裡它是最後一個元素，不需要多這 40px。 */
+.author-bio + .section-label {
+  margin-top: 2.5rem;
+}
+
 /* 沿用 .table-scroll 的橫向捲動、邊緣陰影與首欄釘住，只把它的外框拿掉 ⸺
    這張表的每一格自己就是色塊，再加一圈框會變成兩層盒子。 */
 .clinic-hours .table-scroll {
