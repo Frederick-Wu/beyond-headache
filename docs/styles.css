@@ -493,16 +493,6 @@ main {
   border-top: 1px solid var(--rule);
 }
 
-/* 任職機構單獨一行、加重。它跟底下的職稱是同一個連結的兩個部分，
-   不是兩條連結 ⸺ 拆成兩條的話點哪一條都到同一頁，只是多一個 Tab 停靠點。
-   字級刻意比職稱大一級：讀者掃這張卡片時要先看到「在哪執業」。 */
-.link-org {
-  display: block;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-}
-
 .author-links a {
   /* inline 元素的命中範圍只有字身高度（約 21.6px），指頭點不準。
      改成 inline-block 讓上下內距撐開：15px×1.6 = 24px 行高，

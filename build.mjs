@@ -2319,13 +2319,7 @@ ${links
       ? `<span class="ext" aria-hidden="true">↗</span>`
       : "";
     const resolved = external ? href : rel + String(href).replace(/^\/+/, "");
-    // 選用的 org：填了就在標籤上面單獨一行並加重。這是把「羅東博愛醫院」
-    // 從職稱裡拆出來做視覺區隔（站主要求），而不是在卡片上再加一行 ⸺
-    // 上面那段註解說得對，同一張卡片裡把機構名稱寫兩次很吵，所以是拆不是加。
-    const org = l.org
-      ? `<span class="link-org">${esc(String(l.org))}</span>`
-      : "";
-    return `${pad}      <li><a href="${esc(resolved)}"${target}>${org}${esc(
+    return `${pad}      <li><a href="${esc(resolved)}"${target}>${esc(
       l.label
     )}${arrow}</a></li>`;
   })
