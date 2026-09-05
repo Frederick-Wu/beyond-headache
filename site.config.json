@@ -6,9 +6,9 @@
   "description": "「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。",
   "lang": "zh-Hant-TW",
   "locale": "zh_TW",
-  "medicalEntitiesComment": "中文病名 → Wikidata QID 的對照表。這張表是整個站「實體接地」的唯一資料來源 ⸺ 文章 front matter 的 about / mentions、以及下面 authorProfile.knowsAbout，填的都是這裡的中文鍵，build.mjs 查表後才輸出成帶 sameAs 的 schema.org 節點。這樣做的理由是：病名只在這裡寫一次，程式碼裡不出現任何病名，日後加病、改 QID 都只動這個檔。值可以是兩種寫法 ⸺ 直接寫 QID 字串代表 MedicalCondition（絕大多數情況），或寫成 { \"qid\": \"...\", \"type\": \"...\" } 指定別的 schema.org 型別（例如日後要加治療處置，type 就填 MedicalProcedure）。查不到的病名 build.mjs 會警告並略過，不會靜默漏掉，所以打錯字看得出來。鍵請用站上實際會寫的中文寫法：同一個病有多種叫法時（緊縮型／緊張型、枕神經痛／枕部神經痛）挑一個當標準寫法，不要兩種都建 ⸺ 兩個鍵會變成兩個實體，正好毀掉這張表存在的理由。每一筆的 QID 都必須先在 Wikidata 上查證過對應的是同一個疾病概念，不要靠猜。",
+  "medicalEntitiesComment": "中文病名 → Wikidata QID 的對照表。這張表是整個站「實體接地」的唯一資料來源 ⸺ 文章 front matter 的 about / mentions、以及下面 authorProfile.knowsAbout，填的都是這裡的中文鍵，build.mjs 查表後才輸出成帶 sameAs 的 schema.org 節點。這樣做的理由是：病名只在這裡寫一次，程式碼裡不出現任何病名，日後加病、改 QID 都只動這個檔。值可以是兩種寫法 ⸺ 直接寫 QID 字串代表 MedicalCondition（絕大多數情況），或寫成 { \"qid\": \"...\", \"type\": \"...\" } 指定別的 schema.org 型別（例如日後要加治療處置，type 就填 MedicalProcedure）。查不到的病名 build.mjs 會警告並略過，不會靜默漏掉，所以打錯字看得出來。鍵請用站上實際會寫的中文寫法：同一個病有多種叫法時（緊縮型／緊張型、枕神經痛／枕部神經痛）挑一個當標準寫法，不要兩種都建 ⸺ 兩個鍵會變成兩個實體，正好毀掉這張表存在的理由。每一筆的 QID 都必須先在 Wikidata 上查證過對應的是同一個疾病概念，不要靠猜。型別也照查到的概念填 ⸺ 「頭痛」的 Q86 在 Wikidata 的定義是「頭部或頸部區域的疼痛或不適」，那是症狀而不是疾病，所以寫成 MedicalSignOrSymptom（它是 MedicalCondition 的子類，不影響合法性，只是更精確）；「偏頭痛」那種本身就是一個病的才留 MedicalCondition。",
   "medicalEntities": {
-    "頭痛": "Q86",
+    "頭痛": { "qid": "Q86", "type": "MedicalSignOrSymptom" },
     "偏頭痛": "Q133823",
     "緊縮型頭痛": "Q1338684",
     "叢發性頭痛": "Q166907",
@@ -17,8 +17,16 @@
     "藥物過度使用頭痛": "Q1756659",
     "失智症": "Q83030",
     "巴金森氏症": "Q11085",
-    "腦中風": "Q12202"
+    "腦中風": "Q12202",
+    "帶狀疱疹後神經痛": "Q1714245",
+    "纖維肌痛症": "Q540571",
+    "頸動脈狹窄": "Q1576205",
+    "癲癇": "Q41571"
   },
+  "siteTopicsComment": "整個站的主題，填 medicalEntities 的中文鍵。build.mjs 查表後掛在 WebSite.about ⸺ 站台層級「這個站在講什麼」的宣告，每一頁都會帶到。與首頁 WebPage.about 指向醫師本人（那句話的意思是「這一頁是關於這個人」）並存，兩件事都成立，不要拿其中一個換掉另一個。只列真的撐得起來的主題：站上要有以它為 about 的文章，這句宣告才有內容支撐 ⸺ 宣告一個站上沒有文章在講的主題，是空頭實體，比不宣告更糟。",
+  "siteTopics": ["頭痛", "偏頭痛"],
+  "medicalSpecialtyComment": "醫學文（MedicalWebPage）的科別。值直接寫 schema.org 的 MedicalSpecialty 列舉網址全文，程式碼裡刻意不拼這個網址 ⸺ 換科別、或 schema.org 日後改網址，都只動這一行。神經內科對應的列舉值是 Neurologic。留空就不輸出這個欄位；填了但不是 http(s) 開頭，build.mjs 會警告並略過，不會靜默送出一個機器讀不懂的字串。",
+  "medicalSpecialty": "https://schema.org/Neurologic",
   "authorProfile": {
     "nameComment": "JSON-LD 的 Person.name 只放姓名本身，敬稱另外走 honorificSuffix。Google 的 Article 文件明講 author.name 不應該包含職稱或敬稱，寫成「吳旻陽 醫師」會讓機器把「醫師」當成名字的一部分。頁面上顯示的文字仍然是上面的 author（「吳旻陽 醫師」）⸺ 這兩個欄位刻意分開：一個給人看，一個給機器讀。留空的話 build.mjs 會退回用 author，也就是維持舊行為。",
     "name": "吳旻陽",
@@ -39,16 +47,20 @@
       "https://blog.drminyangwu.com/",
       "https://blog.drminyangwu.com/2024/06/blog-post.html"
     ],
-    "knowsAboutComment": "這位醫師的專業領域。填的是 medicalEntities 的中文鍵，build.mjs 查表後輸出成帶 Wikidata sameAs 的節點 ⸺ 「他懂偏頭痛」這句話因此可以被機器對到全世界都同意的那一個偏頭痛，而不是一個中文字串。內容必須與 /about/ 的「醫學專長」一致，不要在這裡宣告頁面上沒寫的專長。目前只列得出 medicalEntities 有對照的那幾項；/about/ 上還有肉毒桿菌注射、神經阻斷術、頸動脈狹窄、疱疹神經痛、纖維肌痛症、癲癇等項目，等這些的 QID 查證過、加進 medicalEntities 之後再補到這個陣列。",
+    "knowsAboutComment": "這位醫師的專業領域。填的是 medicalEntities 的中文鍵，build.mjs 查表後輸出成帶 Wikidata sameAs 的節點 ⸺ 「他懂偏頭痛」這句話因此可以被機器對到全世界都同意的那一個偏頭痛，而不是一個中文字串。內容必須與 /about/ 的「醫學專長」一致，不要在這裡宣告頁面上沒寫的專長。順序照 /about/ 那一段由上而下，方便兩邊對照。/about/ 還列有肉毒桿菌注射與神經阻斷術，那兩項是治療處置不是疾病，要收的話得先查 MedicalProcedure 的對照 QID，尚未查證前不放進來。",
     "knowsAbout": [
       "頭痛",
       "偏頭痛",
       "緊縮型頭痛",
       "三叉神經痛",
       "枕神經痛",
+      "帶狀疱疹後神經痛",
+      "纖維肌痛症",
       "腦中風",
+      "頸動脈狹窄",
       "失智症",
-      "巴金森氏症"
+      "巴金森氏症",
+      "癲癇"
     ],
     "alumniOfComment": "母校。只放 /about/ 的「學歷」那一段查得到的機構 ⸺ 成大醫院的住院醫師與總醫師訓練在 /about/ 是列在「臨床經歷」而不是「學歷」，語意不同，所以刻意不放進來。要不要把訓練醫院也算成 alumniOf 是站主的判斷，不是程式的判斷。url 沒填就不輸出。",
     "alumniOf": [
@@ -111,34 +123,29 @@
   "disclaimer": "本站內容為衛教與經驗分享，不構成醫療建議，也無法取代面對面的診察。身體不適請就醫。",
   "brandColor": "#182A55",
   "brandColorComment": "品牌純色，用於 theme-color、favicon 底色、社群卡色塊。網頁上的連結色不用這個值 ⸺ 它太接近內文的近黑，讀者會分不出哪些字可以點；連結色是 styles.css 裡提亮過的 --accent。",
-  "specialtiesComment": "門診專長。刻意以網頁文字輸出，不只存在於 Hero 圖片裡 ⸺ 圖片在手機上會縮到 0.28 倍，圖中的字約剩 8px 讀不了，而且搜尋引擎與螢幕閱讀器都讀不到烤進 JPEG 的文字。這些又正好是病人會搜尋的詞。group 的組名本身也是可搜尋的文字（「頭痛與偏頭痛」「其他神經疾病」），不只是版面上的分隔標題，所以一樣以真文字輸出。items 由 build.mjs 用「、」串成一句輸出到 HTML 裡，不要改用 CSS ::after 產生分隔號 ⸺ ::after 的內容不進 textContent，純文字擷取器、螢幕閱讀器與搜尋引擎讀到的會是「肉毒桿菌單株抗體頭痛口服標靶」全部黏在一起，正好毀掉這個欄位存在的理由。",
+  "specialtiesComment": "首頁的門診專長。這些字是病人真的會拿來搜尋的詞（「偏頭痛」「肉毒桿菌」「腦中風」），所以一定要以網頁文字輸出，不能只烤在圖片裡。四組的分法對應站主實際的門診結構，也對應〈神經內科門診的三種病人〉那篇講的三條線：頭痛、腦血管、神經退化，慢性疼痛接在後面。icon 是圖示的代號，可用的值定義在 build.mjs 的 SPECIALTY_ICONS；填了不存在的代號會在建置時警告並改成沒有圖示，不會靜默出錯。留空或不填就是沒有圖示。group 或 items 缺一，那一組就不輸出。",
   "specialties": [
     {
-      "group": "頭痛與偏頭痛",
-      "items": ["肉毒桿菌", "單株抗體", "頭痛口服標靶", "神經阻斷"]
+      "group": "頭痛",
+      "icon": "headache",
+      "items": ["偏頭痛", "緊縮型頭痛", "口服標靶藥", "單株抗體", "肉毒桿菌", "神經阻斷"]
     },
     {
-      "group": "其他神經疾病",
-      "items": ["腦血管疾病", "動作障礙", "神經退化疾病"]
+      "group": "腦血管疾病",
+      "icon": "vascular",
+      "items": ["腦中風", "頸動脈狹窄"]
+    },
+    {
+      "group": "神經退化與動作障礙",
+      "icon": "degeneration",
+      "items": ["失智症", "巴金森氏症", "顫抖", "步態異常", "眼瞼／半臉抽搐"]
+    },
+    {
+      "group": "慢性疼痛",
+      "icon": "pain",
+      "items": ["三叉神經痛", "枕神經痛", "疱疹後神經痛", "纖維肌痛症"]
     }
   ],
-  "clinicHoursComment": "首頁的門診時段表。sessions 是列（時段），days 是欄（星期），open 用「星期-時段」的索引寫哪一格有診，兩個數字都從 1 起算 ⸺ \"2-1\" 是星期二的第 1 列（上午）、\"5-3\" 是星期五的第 3 列（晚上）。格式必須是「數字-數字」，寫成 \"2 - 2\" 或 \"2-2-1\" 這種會在建置時警告並當成休診，不會靜默漏掉；前導零（\"05-1\"）可以，會自動正規化成 \"5-1\"。sessions[].time 留空字串就只顯示時段名稱、不印時間 ⸺ 醫院的實際起訖時間沒確認過之前不要自己編。days 的值請維持「一」「二」這種單字 ⸺ 程式會在前面補「星期」給螢幕閱讀器用，寫成「週一」就會被唸成「星期週一」。sessions 或 days 為空、或 open 沒有任何一個合法索引，整塊都不輸出（連導覽那一項也會跟著消失）。legend 是色塊圖例：輸出時前面會加一小塊「看診」的顏色，所以不要在文字裡寫「深色」或「淺色」⸺ 深色模式下看診格反而比休診格亮，寫死顏色深淺一定會有一種模式是錯的。note 是表格下方的免責提醒，link 是整區唯一的出口，慣例與 authorBio.links 相同：不是 http(s) 開頭就當站內連結，不開新分頁也不加 ↗。",
-  "clinicHours": {
-    "heading": "門診時段",
-    "sessions": [
-      { "label": "上午", "time": "08:30–12:00" },
-      { "label": "下午", "time": "13:30–16:30" },
-      { "label": "晚上", "time": "18:00–20:00" }
-    ],
-    "days": ["一", "二", "三", "四", "五"],
-    "open": ["2-2", "3-1", "4-1", "5-1", "5-3"],
-    "legend": "為看診時段",
-    "note": "週六、週日無診。門診偶有停代診，掛號前請以醫院系統公告為準。",
-    "link": {
-      "label": "羅東博愛醫院線上掛號",
-      "url": "https://www.pohai.org.tw/register_doctor_detail.php?deptSysCode=1&deptCode=19&docCode=1927"
-    }
-  },
   "social": {
     "comment": "轉貼到 LINE、Facebook、Threads 時的預覽縮圖。刻意與首頁 Hero 分開 ⸺ Hero 是診間照，裡面有病人，而預覽縮圖的傳播範圍遠大於網站本身。文章若自行指定 hero，則用該文章的圖。由 tools/make-og-image.ps1 產生。",
     "src": "og-image.jpg",

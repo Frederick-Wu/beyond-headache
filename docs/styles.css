@@ -315,59 +315,91 @@ main {
    項目之間用真正的頓號分隔（頓號在 HTML 裡，不是 ::after 生的，
    否則 textContent 會把所有詞黏成一串），一眼就是文字，不是控制項。 */
 .specialty-groups {
+  /* 四張卡片。auto-fit + minmax 自己決定欄數，不必寫斷點。
+     10.5rem 這個下限是量出來的：手機 412px 下剛好排成兩欄（每張 179px），
+     整區高度 678 → 460px。用 13.5rem 的話手機只排得下一欄，四張疊起來要
+     多滾將近一個螢幕，而這一區就壓在文章清單上面。
+     桌機 1000px 容器仍是四欄（每張 242px），沒有因此變窄。 */
   margin: 0 0 2.5rem;
   padding: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
   gap: 0.85rem;
 }
 
+/* 從「一條細線分隔的兩組文字」改成卡片，是因為分類從兩組（其中一組叫
+   「其他」）拆成了四組真正的領域 ⸺ 兩組不需要卡片，四組需要。
+   圖示的工作是幫忙認出「這是四個不同的領域」，不是各自搶眼，所以四個
+   共用同一個顏色與線寬。 */
 .specialty-group {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.1rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.1rem 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   min-width: 0;
-}
-
-/* 組與組之間只用一條細線，不是每組各自框起來 ⸺ 線是分隔，框是容器。 */
-.specialty-group + .specialty-group {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.85rem;
 }
 
 .specialty-group dt {
   margin: 0;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.5;
   letter-spacing: 0.03em;
   color: var(--ink);
 }
 
-/* 這條短線刻意沿用 .toc-heading::before（只把 0.95rem × 3px 收成
-   0.75rem × 2px 以配合較小的組名）。它在這個站上的既有意思是
-   「這是一個小節的名字」，不是「這裡可以點」⸺ 別把它換成別的記號，
-   也別在其他可點元素上重複使用，那會把這個約定弄糊。 */
-.specialty-group dt::before {
-  content: "";
-  display: inline-block;
-  width: 0.75rem;
-  height: 2px;
-  border-radius: 1px;
-  background: var(--accent);
-  vertical-align: 0.32em;
-  margin-right: 0.5rem;
+/* 原本這裡有一條 0.75rem 的短橫線（沿用 .toc-heading::before 的
+   「這是一個小節的名字」記號）。改成卡片之後拿掉了：圖示已經在標題
+   上方擔任同樣的角色，兩個記號疊在一起是噪音。那個約定在 .toc-heading
+   還在用，沒有被廢掉。 */
+
+.specialty-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  background: var(--specialty-icon-bg);
+  display: grid;
+  place-items: center;
+  flex: none;
 }
 
-/* 字級與行高跟內文同一套，不是 UI 小字：這是給人讀的一句話。
-   --accent 只留給那條短線，文字色一律 --ink / --ink-soft，
-   免得又被誤認成連結。 */
+.specialty-icon svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .specialty-group dd {
   margin: 0;
   min-width: 0;
-  font-size: 0.9375rem;
-  line-height: 1.8;
+  font-size: 0.875rem;
+  line-height: 1.85;
   color: var(--ink-soft);
+}
+
+/* 列印：卡片的底色與圖示底不會印出來，只剩一圈框。線條圖示本身是
+   currentColor 以外的 stroke，交給瀏覽器決定即可；把圖示底的色塊
+   換成細框，避免印出一個空白方塊。 */
+@media print {
+  .specialty-group {
+    break-inside: avoid;
+  }
+
+  .specialty-icon {
+    background: transparent;
+    border: 1px solid #bbb;
+  }
 }
 
 /* ---------- 關於醫師 ---------- */
@@ -947,6 +979,10 @@ tbody tr:last-child td {
    會反過來變成淺藍（#a8c0ea），那時候白字會糊掉，字色必須跟著翻面。
    對比：淺色 9.89:1、深色 6.40:1，都遠高於 AA 的 4.5:1。 */
 :root {
+  /* 圖示底。淺色沿用 --accent-soft：卡片是純白，靠色相就分得出來（1.13:1）。
+     深色不能沿用 ⸺ --accent-soft (#252f4a) 對卡片底 --paper-raised (#232c45)
+     只有 1.04:1，等於整個圓角方塊消失。實測後改用一個獨立的值。 */
+  --specialty-icon-bg: var(--accent-soft);
   --clinic-open-bg: var(--accent);
   --clinic-open-ink: #ffffff;
   --clinic-closed-bg: #dfe4ee;
@@ -954,6 +990,8 @@ tbody tr:last-child td {
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* 對卡片底 1.30:1（沿用 --accent-soft 只有 1.04），圖示線對它 5.76:1 */
+    --specialty-icon-bg: #313d63;
     --clinic-open-bg: #7e9bd0;
     --clinic-open-ink: #10162a;
     --clinic-closed-bg: #2a3454;

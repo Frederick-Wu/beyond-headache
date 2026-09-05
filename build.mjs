@@ -1011,6 +1011,44 @@ function personKnowsAbout(names) {
 }
 
 /**
+ * siteTopics 的節點 ⸺ 站台層級的「這個站在講什麼」。
+ *
+ * 掛在 WebSite.about（見 websiteNode()），而 WebSite 每一頁都會輸出，
+ * 所以這裡同樣只算一次，查不到的警告才不會印八遍。
+ */
+let SITE_TOPICS;
+function siteTopicNodes() {
+  if (SITE_TOPICS === undefined) {
+    SITE_TOPICS = medicalEntityNodes(CFG.siteTopics, "site.config.json 的 siteTopics");
+  }
+  return SITE_TOPICS;
+}
+
+/**
+ * MedicalWebPage.specialty 的值。
+ *
+ * 來自 site.config.json 的 medicalSpecialty，內容是 schema.org 的
+ * MedicalSpecialty 列舉網址全文 ⸺ 程式碼裡刻意不拼這個網址，改科別
+ * 或 schema.org 日後改網址時都只動設定檔。留空就不輸出這個欄位；
+ * 填了但不是網址就警告並略過，不會靜默送出一個機器讀不懂的字串。
+ */
+let MEDICAL_SPECIALTY;
+function medicalSpecialty() {
+  if (MEDICAL_SPECIALTY !== undefined) return MEDICAL_SPECIALTY;
+
+  const raw = String(CFG.medicalSpecialty ?? "").trim();
+  if (!raw) return (MEDICAL_SPECIALTY = "");
+  if (!/^https?:\/\//i.test(raw)) {
+    console.warn(
+      `  ⚠ site.config.json 的 medicalSpecialty「${raw}」不是網址` +
+        `（應為 schema.org 的 MedicalSpecialty 列舉網址），已略過 specialty`
+    );
+    return (MEDICAL_SPECIALTY = "");
+  }
+  return (MEDICAL_SPECIALTY = raw);
+}
+
+/**
  * 機構節點（母校、學會）。設定裡寫 { name, url?, type? }，
  * type 沒填就用呼叫端給的預設值。name 空的那筆直接跳過。
  */
@@ -1103,8 +1141,18 @@ function personNode() {
   return node;
 }
 
+/**
+ * 站台節點。每一頁都輸出，共用同一個 @id。
+ *
+ * about 是站台層級的主題宣告 ⸺ 「這個站在講頭痛與偏頭痛」。這句話得有
+ * 一個節點說出來，否則整張圖裡只說得出「這個站是這位醫師的」，說不出
+ * 它在講什麼。刻意掛在 WebSite 而不是首頁的 WebPage：主題是整個站的性質，
+ * 不是首頁這一頁的性質；而且掛在這裡，每一頁都帶得到同一句宣告。
+ * 首頁 WebPage.about 指向作者本人的那條關聯維持不動 ⸺ 首頁同時是
+ * 「關於這個站的主題」和「關於這位作者」，兩者都成立，不是二選一。
+ */
 function websiteNode() {
-  return {
+  const node = {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     url: HOME_URL,
@@ -1113,6 +1161,9 @@ function websiteNode() {
     inLanguage: CFG.lang,
     publisher: { "@id": PERSON_ID },
   };
+  const topics = siteTopicNodes();
+  if (topics.length) node.about = topics;
+  return node;
 }
 
 /** hero 圖轉成 ImageObject；沒有圖就回 null，讓呼叫端整個欄位省略 */
@@ -1173,17 +1224,25 @@ function postJsonLd(post) {
   // 但它不認識你〉是門診觀察，不是衛教）就維持一般的 WebPage。把非醫學文
   // 宣告成 MedicalWebPage 不只是浮報，還會讓整站的醫療內容訊號變得不可信。
   const isMedical = aboutNodes.length > 0;
-  const mainEntity = isMedical
-    ? {
-        "@type": "MedicalWebPage",
-        "@id": url,
-        // 寫給病人看的，不是寫給同業看的
-        medicalAudience: { "@type": "MedicalAudience", audienceType: "Patient" },
-        // 「最後一次檢視內容是否仍然正確」的日期。用 front matter 的
-        // updated（沒填就等於 date），與頁面上顯示的「更新 X」同一個來源。
-        lastReviewed: isoDate(post.updated),
-      }
-    : { "@type": "WebPage", "@id": url };
+  let mainEntity;
+  if (isMedical) {
+    mainEntity = { "@type": "MedicalWebPage", "@id": url };
+    // 科別。值是 schema.org 的 MedicalSpecialty 列舉網址，寫在
+    // site.config.json 的 medicalSpecialty ⸺ 程式碼裡不拼這個網址。
+    const specialty = medicalSpecialty();
+    if (specialty) mainEntity.specialty = specialty;
+    // 寫給病人看的，不是寫給同業看的
+    mainEntity.medicalAudience = { "@type": "MedicalAudience", audienceType: "Patient" };
+    // 審閱者就是作者本人 ⸺ 這些文章由掛名的那位醫師自己寫、也自己負責
+    // 內容是否仍然正確，所以指回同一個 Person @id，不另外編一位審閱者。
+    // 日後若真的有第二位醫師審閱，才該在這裡換成另一個實體。
+    mainEntity.reviewedBy = { "@id": PERSON_ID };
+    // 「最後一次檢視內容是否仍然正確」的日期。用 front matter 的
+    // updated（沒填就等於 date），與頁面上顯示的「更新 X」同一個來源。
+    mainEntity.lastReviewed = isoDate(post.updated);
+  } else {
+    mainEntity = { "@type": "WebPage", "@id": url };
+  }
 
   const posting = {
     "@type": "BlogPosting",
@@ -1994,6 +2053,47 @@ ${note}${link}      </div>
 }
 
 /**
+ * 門診專長的圖示。
+ *
+ * 為什麼寫在這裡而不是 config：這是標記，不是設定 ⸺ 跟 webmanifest 的 icons
+ * 同一個判準。站主要改的是分類名稱和項目，不是路徑資料。
+ *
+ * 為什麼是手寫的 inline SVG：這個站零相依、零額外請求，不會為了四個圖示去載
+ * 一整套圖示字型或外部檔案。四個都是 24×24、stroke 1.6、fill none 的線條圖，
+ * 共用同一組筆畫參數，看起來才像一套而不是四個各自為政的插圖。
+ *
+ * 顏色一律吃 CSS 的 currentColor 家族（見 styles.css 的 .specialty-icon），
+ * 不在這裡寫死 ⸺ 深淺兩種模式各自要不同的藍。
+ *
+ * 圖示一律 aria-hidden：每張卡片的名稱就寫在旁邊，讓螢幕閱讀器再唸一次
+ * 「圖片」只是噪音。
+ */
+const SPECIALTY_ICONS = {
+  // 頭痛：頭部側影加三道放射線
+  headache: `<path d="M15.5 20.5v-2.2a4 4 0 0 1 1.3-2.9A6.8 6.8 0 0 0 12.6 3.6 6.8 6.8 0 0 0 6.2 9.7c-.1 1.3.2 2.5.9 3.6"/><path d="M9.5 20.5v-2.6c0-1-.4-2-1.1-2.7"/><path d="M3.2 6.2 1.6 5.1M4.6 2.6 3.9 1M8.6 1.6 8.4 0"/>`,
+  // 腦血管：血滴內含一段心電圖線
+  vascular: `<path d="M12 21.5c3.6 0 6.5-2.8 6.5-6.3 0-4.2-6.5-12.7-6.5-12.7S5.5 11 5.5 15.2c0 3.5 2.9 6.3 6.5 6.3z"/><path d="M9 14.5h2l1.2 2.6L13.6 12l1 2.5h1.4"/>`,
+  // 神經退化與動作障礙：振幅逐漸變小的波
+  degeneration: `<path d="M2 12c1.6-5.5 3.2-5.5 4.8 0s3.2 5.5 4.8 0"/><path d="M11.6 12c1.2-3.4 2.4-3.4 3.6 0s2.4 3.4 3.6 0"/><path d="M18.8 12c.7-1.6 1.5-1.6 2.2 0"/>`,
+  // 慢性疼痛：閃電，神經痛的通用視覺語彙
+  pain: `<path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/>`,
+};
+
+function specialtyIcon(key) {
+  if (!key) return "";
+  const paths = SPECIALTY_ICONS[key];
+  if (!paths) {
+    console.warn(
+      `  ⚠ specialties 的 icon「${key}」不存在（可用：${Object.keys(
+        SPECIALTY_ICONS
+      ).join("、")}），這一組會沒有圖示`
+    );
+    return "";
+  }
+  return `<span class="specialty-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths}</svg></span>`;
+}
+
+/**
  * 門診專長列表。
  *
  * 這些字在 Hero 圖片裡也有一份，但圖片在手機上會縮到 0.28 倍，
@@ -2015,11 +2115,13 @@ ${note}${link}      </div>
  * 那正好毀掉這個區塊存在的理由。
  */
 function specialtyBlock() {
-  // 資料格式是 [{ group, items: [] }]。組名或項目缺一不可，
+  // 資料格式是 [{ group, icon, items: [] }]。組名或項目缺一不可，
   // 兩者都是要給搜尋引擎讀的真文字，只有其中一半沒有意義。
+  // icon 是選用的：沒填就沒有圖示，填錯會在 specialtyIcon() 裡警告。
   const groups = (Array.isArray(CFG.specialties) ? CFG.specialties : [])
     .map((g) => ({
       group: String(g?.group ?? "").trim(),
+      icon: String(g?.icon ?? "").trim(),
       items: (Array.isArray(g?.items) ? g.items : [])
         .map((s) => String(s ?? "").trim())
         .filter(Boolean),
@@ -2034,7 +2136,7 @@ function specialtyBlock() {
 ${groups
   .map(
     (g) => `        <div class="specialty-group">
-          <dt>${esc(g.group)}</dt>
+          <dt>${specialtyIcon(g.icon)}<span>${esc(g.group)}</span></dt>
           <dd>${g.items.map(esc).join("、")}</dd>
         </div>`
   )
