@@ -1645,24 +1645,6 @@ tbody tr:last-child td {
     margin-top: auto;
   }
 
-  /* 門診專長：窄版面下組名在上、項目在下（兩行）；到了 1000px 的版面，
-     組名收成左欄、項目排在右欄的同一條基線上，兩組的組名對齊成一直行。
-     左欄給 10rem ⸺ 目前最長的組名「頭痛與偏頭痛」是六個中文字，
-     16px 字級下約 100px，留了餘裕但不至於把右欄擠窄。 */
-  .page-home .specialty-groups {
-    gap: 0.7rem;
-  }
-
-  .page-home .specialty-group {
-    grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
-    gap: 0 1.5rem;
-    align-items: baseline;
-  }
-
-  .page-home .specialty-group + .specialty-group {
-    padding-top: 0.7rem;
-  }
-
   /* 「關於醫師」在寬版面下左右分欄：左邊是「他是誰」，右邊是「可以去哪」。
      一張 1000px 寬、只有三行字的卡片會空得很明顯，而把整段介紹拉成
      1000px 長的一行也不能讀。分欄同時解決這兩件事 ⸺ 左欄約 570px，
