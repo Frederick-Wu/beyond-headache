@@ -1987,18 +1987,34 @@ ${cells}
   // safeUrl() 擋協定、/^(https?:)?\/\//i 判外部、外部才加 target 與 ↗。
   // ↗ 是 aria-hidden，所以另外補一句給用聽的人 ⸺ 全站最重要的離站連結
   // 就是這一條，不該讓人在不知情下跳分頁。
+  // 電話掛號。線上掛號是唯一出口這件事在第一版是對的，但那個出口把用不了
+  // 線上系統的人排除在外 ⸺ 長輩、失智症家屬、中風後行動不便的病人，正好是
+  // 這個門診的一大群。兩個出口做的是同一件事（掛號），所以並排而不是分開。
+  const phone =
+    c.phone?.label && c.phone?.number && c.phone?.href
+      ? `<a class="clinic-phone" href="${esc(safeUrl(c.phone.href))}">${esc(
+          String(c.phone.label)
+        )} <span class="clinic-number">${esc(String(c.phone.number))}</span></a>`
+      : "";
+
   let link = "";
   if (c.link?.label && c.link?.url) {
     const href = safeUrl(c.link.url);
     const external = /^(https?:)?\/\//i.test(href);
-    link = `        <p class="clinic-cta"><a href="${esc(href)}"${
+    link = `<a href="${esc(href)}"${
       external ? ` target="_blank" rel="noopener noreferrer"` : ""
     }>${esc(c.link.label)}${
       external
         ? `<span class="ext" aria-hidden="true">↗</span><span class="visually-hidden">（在新分頁開啟）</span>`
         : ""
-    }</a></p>\n`;
+    }</a>`;
   }
+
+  const actions =
+    link || phone
+      ? `        <p class="clinic-cta">${link}${phone}</p>
+`
+      : "";
 
   // 圖例整段 aria-hidden：它是給眼睛看的色塊對照，而用聽的人每一格本來就會
   // 唸到「看診」或「休診」，再唸一次只是噪音 ⸺ 而且那句話少了色塊根本不成句。
@@ -2047,7 +2063,7 @@ ${rows}
             </tbody>
           </table>
         </div>
-${note}${link}      </div>
+${note}${actions}      </div>
 
 `;
 }
@@ -2070,7 +2086,11 @@ ${note}${link}      </div>
  */
 const SPECIALTY_ICONS = {
   // 頭痛：頭部側影加三道放射線
-  headache: `<path d="M15.5 20.5v-2.2a4 4 0 0 1 1.3-2.9A6.8 6.8 0 0 0 12.6 3.6 6.8 6.8 0 0 0 6.2 9.7c-.1 1.3.2 2.5.9 3.6"/><path d="M9.5 20.5v-2.6c0-1-.4-2-1.1-2.7"/><path d="M3.2 6.2 1.6 5.1M4.6 2.6 3.9 1M8.6 1.6 8.4 0"/>`,
+  // 頭痛：頭部加三道搏動的放射線。
+  // 幾何中心刻意校到 (12,12) ⸺ 第一版的側臉造型畫到 y=0，量出來中心是
+  // (10.3,10.3)，比另外三個各偏左上 1.7，四個圖示排在一起就會看出來
+  // 頭痛這張沒對齊（站主 2026-09-05 指出）。改圖示時記得用 getBBox 對一次。
+  headache: `<circle cx="12" cy="14" r="6.5"/><path d="M8 6.6 6.4 4.2M12 5.8V3.5M16 6.6 17.6 4.2"/>`,
   // 腦血管：血滴內含一段心電圖線
   vascular: `<path d="M12 21.5c3.6 0 6.5-2.8 6.5-6.3 0-4.2-6.5-12.7-6.5-12.7S5.5 11 5.5 15.2c0 3.5 2.9 6.3 6.5 6.3z"/><path d="M9 14.5h2l1.2 2.6L13.6 12l1 2.5h1.4"/>`,
   // 神經退化與動作障礙：振幅逐漸變小的波
@@ -2299,7 +2319,13 @@ ${links
       ? `<span class="ext" aria-hidden="true">↗</span>`
       : "";
     const resolved = external ? href : rel + String(href).replace(/^\/+/, "");
-    return `${pad}      <li><a href="${esc(resolved)}"${target}>${esc(
+    // 選用的 org：填了就在標籤上面單獨一行並加重。這是把「羅東博愛醫院」
+    // 從職稱裡拆出來做視覺區隔（站主要求），而不是在卡片上再加一行 ⸺
+    // 上面那段註解說得對，同一張卡片裡把機構名稱寫兩次很吵，所以是拆不是加。
+    const org = l.org
+      ? `<span class="link-org">${esc(String(l.org))}</span>`
+      : "";
+    return `${pad}      <li><a href="${esc(resolved)}"${target}>${org}${esc(
       l.label
     )}${arrow}</a></li>`;
   })

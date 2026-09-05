@@ -338,7 +338,8 @@ main {
   padding: 1.1rem 1.1rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  /* 標題與項目之間 ⸺ 站主要求放寬 */
+  gap: 0.7rem;
   min-width: 0;
 }
 
@@ -350,7 +351,7 @@ main {
   gap: 0.65rem;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.7;
   letter-spacing: 0.03em;
   color: var(--ink);
 }
@@ -384,7 +385,8 @@ main {
   margin: 0;
   min-width: 0;
   font-size: 0.875rem;
-  line-height: 1.85;
+  /* 2 是站主指定放寬的結果；卡片裡的項目常常折三四行，1.85 讀起來偏擠。 */
+  line-height: 2;
   color: var(--ink-soft);
 }
 
@@ -489,6 +491,16 @@ main {
   margin: 1.1rem 0 0;
   padding: 0.45rem 0 0;
   border-top: 1px solid var(--rule);
+}
+
+/* 任職機構單獨一行、加重。它跟底下的職稱是同一個連結的兩個部分，
+   不是兩條連結 ⸺ 拆成兩條的話點哪一條都到同一頁，只是多一個 Tab 停靠點。
+   字級刻意比職稱大一級：讀者掃這張卡片時要先看到「在哪執業」。 */
+.link-org {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
 .author-links a {
@@ -1166,6 +1178,18 @@ tbody tr:last-child td {
   /* 註記行高 22.1px，原本只隔 8px，藍字等於黏在灰字底下。 */
   margin-top: 1.4rem;
   font-size: 0.9375rem;
+  /* 兩個掛號出口並排，窄螢幕自動換行各佔一行。column-gap 給得比 row-gap
+     大，是因為並排時要看得出是兩個目標，換行後上下已經有觸控內距撐開。 */
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.6rem;
+  row-gap: 0;
+}
+
+/* 電話號碼用等寬數字：它會被人照著撥，數字對齊比較好讀。 */
+.clinic-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
 }
 
 /* 半夜單手拿手機的人要點的就是這一顆，讓它跟站上其他 CTA 一樣高。 */
