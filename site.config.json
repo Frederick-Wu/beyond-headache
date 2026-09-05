@@ -6,9 +6,27 @@
   "description": "「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。",
   "lang": "zh-Hant-TW",
   "locale": "zh_TW",
+  "medicalEntitiesComment": "中文病名 → Wikidata QID 的對照表。這張表是整個站「實體接地」的唯一資料來源 ⸺ 文章 front matter 的 about / mentions、以及下面 authorProfile.knowsAbout，填的都是這裡的中文鍵，build.mjs 查表後才輸出成帶 sameAs 的 schema.org 節點。這樣做的理由是：病名只在這裡寫一次，程式碼裡不出現任何病名，日後加病、改 QID 都只動這個檔。值可以是兩種寫法 ⸺ 直接寫 QID 字串代表 MedicalCondition（絕大多數情況），或寫成 { \"qid\": \"...\", \"type\": \"...\" } 指定別的 schema.org 型別（例如日後要加治療處置，type 就填 MedicalProcedure）。查不到的病名 build.mjs 會警告並略過，不會靜默漏掉，所以打錯字看得出來。鍵請用站上實際會寫的中文寫法：同一個病有多種叫法時（緊縮型／緊張型、枕神經痛／枕部神經痛）挑一個當標準寫法，不要兩種都建 ⸺ 兩個鍵會變成兩個實體，正好毀掉這張表存在的理由。每一筆的 QID 都必須先在 Wikidata 上查證過對應的是同一個疾病概念，不要靠猜。",
+  "medicalEntities": {
+    "頭痛": "Q86",
+    "偏頭痛": "Q133823",
+    "緊縮型頭痛": "Q1338684",
+    "叢發性頭痛": "Q166907",
+    "三叉神經痛": "Q1132120",
+    "枕神經痛": "Q3347239",
+    "藥物過度使用頭痛": "Q1756659",
+    "失智症": "Q83030",
+    "巴金森氏症": "Q11085",
+    "腦中風": "Q12202"
+  },
   "authorProfile": {
+    "nameComment": "JSON-LD 的 Person.name 只放姓名本身，敬稱另外走 honorificSuffix。Google 的 Article 文件明講 author.name 不應該包含職稱或敬稱，寫成「吳旻陽 醫師」會讓機器把「醫師」當成名字的一部分。頁面上顯示的文字仍然是上面的 author（「吳旻陽 醫師」）⸺ 這兩個欄位刻意分開：一個給人看，一個給機器讀。留空的話 build.mjs 會退回用 author，也就是維持舊行為。",
+    "name": "吳旻陽",
+    "honorificSuffix": "醫師",
     "jobTitle": "神經內科主治醫師",
     "description": "神經內科醫師，門診主要處理頭痛、腦中風、失智與其他神經系統症狀。",
+    "imageComment": "Person.image。用站內已經有的頭像檔，路徑與 hero.src、social.src 同慣例（不帶開頭斜線的站根相對路徑）。尺寸不必寫 ⸺ build.mjs 會直接讀 JPEG／PNG 檔頭取得真實像素，寫在這裡反而會有寫錯而沒人發現的風險。",
+    "image": "assets/avatar-wu-min-yang.jpg",
     "worksForComment": "任職機構。讓搜尋引擎與語言模型能把「吳旻陽」這個名字綁定到一間真實存在的醫院，而不只是一個網站作者。",
     "worksFor": {
       "name": "羅東博愛醫院",
@@ -20,6 +38,41 @@
       "https://www.facebook.com/WuMY039543131",
       "https://blog.drminyangwu.com/",
       "https://blog.drminyangwu.com/2024/06/blog-post.html"
+    ],
+    "knowsAboutComment": "這位醫師的專業領域。填的是 medicalEntities 的中文鍵，build.mjs 查表後輸出成帶 Wikidata sameAs 的節點 ⸺ 「他懂偏頭痛」這句話因此可以被機器對到全世界都同意的那一個偏頭痛，而不是一個中文字串。內容必須與 /about/ 的「醫學專長」一致，不要在這裡宣告頁面上沒寫的專長。目前只列得出 medicalEntities 有對照的那幾項；/about/ 上還有肉毒桿菌注射、神經阻斷術、頸動脈狹窄、疱疹神經痛、纖維肌痛症、癲癇等項目，等這些的 QID 查證過、加進 medicalEntities 之後再補到這個陣列。",
+    "knowsAbout": [
+      "頭痛",
+      "偏頭痛",
+      "緊縮型頭痛",
+      "三叉神經痛",
+      "枕神經痛",
+      "腦中風",
+      "失智症",
+      "巴金森氏症"
+    ],
+    "alumniOfComment": "母校。只放 /about/ 的「學歷」那一段查得到的機構 ⸺ 成大醫院的住院醫師與總醫師訓練在 /about/ 是列在「臨床經歷」而不是「學歷」，語意不同，所以刻意不放進來。要不要把訓練醫院也算成 alumniOf 是站主的判斷，不是程式的判斷。url 沒填就不輸出。",
+    "alumniOf": [
+      { "name": "高雄醫學大學", "type": "CollegeOrUniversity" }
+    ],
+    "memberOfComment": "學會會籍，對應 /about/ 的「學術會員」七筆，順序照該頁。type 不填預設 Organization。url 只在 /about/ 頁面上真的出現過該學會網址時才填 ⸺ 目前只有台灣頭痛學會符合（那頁的「頭痛診療推薦醫師」與電子報連結都指向該學會網站），其餘六個學會的網址頁面上查不到，就留空不編。",
+    "memberOf": [
+      { "name": "台灣神經學學會" },
+      { "name": "台灣頭痛學會", "url": "https://taiwanheadache.org.tw/" },
+      { "name": "台灣動作障礙學會" },
+      { "name": "台灣神經免疫醫學會" },
+      { "name": "台灣腦中風學會" },
+      { "name": "台灣臨床 TMS 腦刺激學會" },
+      { "name": "台灣肌肉骨骼神經超音波醫學會" }
+    ],
+    "hasCredentialComment": "專業證照，輸出成 EducationalOccupationalCredential。收錄範圍刻意畫在「名稱本身就是證書」這條線上 ⸺ /about/ 的「專業證照」有十一筆，其中研討會、工作坊、讀書會的完訓紀錄是進修證明而不是執業資格，全部混在一起會稀釋掉真正有資格意義的那幾張。recognizedBy（發證機關）一律不填：/about/ 沒有寫發證單位，猜不得。date 用 /about/ 上標的年月，格式 YYYY-MM 或 YYYY。",
+    "hasCredential": [
+      { "name": "神經科專科醫師證書", "date": "2023-10" },
+      { "name": "偏頭痛肉毒桿菌注射訓練合格證書", "date": "2024-06" },
+      { "name": "中華民國醫師證書", "date": "2018" }
+    ],
+    "awardComment": "獲獎紀錄，對應 /about/ 的「獲獎紀錄」那一段。schema.org 的 award 是純文字欄位，所以連結放不進去 ⸺ 頁面上那個連結仍然在，這裡只是把同一件事講給機器聽。",
+    "award": [
+      "2024 年新思惟國際「網路時代之個人品牌工作坊」最佳網站設計大獎"
     ]
   },
   "authorBioComment": "「關於醫師」區塊：讀者看得見、點得到的連結。上面的 sameAs 是寫給機器的身分宣告，這裡是寫給人的 ⸺ 兩者並存才完整，而且真實超連結的權重高於只寫在 sameAs 裡的宣告。links 的順序就是顯示順序，站內的 /about/ 放第一筆 ⸺ 讀者想多知道一點的時候，第一個該點的是站內那頁完整的簡歷，不是外站。url 只要不是 http(s) 開頭就會被當成站內連結：不開新分頁、也不加 ↗ 記號（那個記號在這個站的意思是「會離開本站」）。注意「門診時間與掛號資訊」刻意不放進 sameAs：那是實用資訊，不是身分頁面，語意不同。介紹句沿用 authorProfile.description，不在這裡重複維護。",
@@ -27,7 +80,7 @@
     "heading": "關於醫師",
     "links": [
       {
-        "label": "完整簡歷",
+        "label": "完整醫師介紹",
         "url": "/about/"
       },
       {

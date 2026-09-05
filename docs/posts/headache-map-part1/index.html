@@ -56,8 +56,13 @@
         "@id": "https://drminyangwu.com/#website"
       },
       "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://drminyangwu.com/posts/headache-map-part1/"
+        "@type": "MedicalWebPage",
+        "@id": "https://drminyangwu.com/posts/headache-map-part1/",
+        "medicalAudience": {
+          "@type": "MedicalAudience",
+          "audienceType": "Patient"
+        },
+        "lastReviewed": "2026-08-07"
       },
       "url": "https://drminyangwu.com/posts/headache-map-part1/",
       "image": {
@@ -69,6 +74,53 @@
       },
       "keywords": [
         "頭痛"
+      ],
+      "about": [
+        {
+          "@type": "MedicalCondition",
+          "name": "頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q86"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "偏頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q133823"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "緊縮型頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q1338684"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "叢發性頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q166907"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "MedicalCondition",
+          "name": "三叉神經痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q1132120"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "枕神經痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q3347239"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "腦中風",
+          "sameAs": "https://www.wikidata.org/wiki/Q12202"
+        }
+      ],
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "Headache Locations: A Comprehensive Guide",
+          "url": "https://www.webmd.com/migraines-headaches/understanding-headache-location-comprehensive-guide"
+        },
+        "2022 台灣頭痛學會 民眾衛教手冊《告別偏頭痛該知道的 100 件事》"
       ]
     },
     {
@@ -103,8 +155,9 @@
     {
       "@type": "Person",
       "@id": "https://drminyangwu.com/#author",
-      "name": "吳旻陽 醫師",
-      "url": "https://drminyangwu.com/",
+      "name": "吳旻陽",
+      "url": "https://drminyangwu.com/about/",
+      "honorificSuffix": "醫師",
       "jobTitle": "神經內科主治醫師",
       "description": "神經內科醫師，門診主要處理頭痛、腦中風、失智與其他神經系統症狀。",
       "worksFor": {
@@ -112,6 +165,111 @@
         "name": "羅東博愛醫院",
         "url": "https://www.pohai.org.tw/"
       },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://drminyangwu.com/assets/avatar-wu-min-yang.jpg",
+        "width": 256,
+        "height": 256
+      },
+      "knowsAbout": [
+        {
+          "@type": "MedicalCondition",
+          "name": "頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q86"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "偏頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q133823"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "緊縮型頭痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q1338684"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "三叉神經痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q1132120"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "枕神經痛",
+          "sameAs": "https://www.wikidata.org/wiki/Q3347239"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "腦中風",
+          "sameAs": "https://www.wikidata.org/wiki/Q12202"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "失智症",
+          "sameAs": "https://www.wikidata.org/wiki/Q83030"
+        },
+        {
+          "@type": "MedicalCondition",
+          "name": "巴金森氏症",
+          "sameAs": "https://www.wikidata.org/wiki/Q11085"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "高雄醫學大學"
+        }
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "台灣神經學學會"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣頭痛學會",
+          "url": "https://taiwanheadache.org.tw/"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣動作障礙學會"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣神經免疫醫學會"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣腦中風學會"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣臨床 TMS 腦刺激學會"
+        },
+        {
+          "@type": "Organization",
+          "name": "台灣肌肉骨骼神經超音波醫學會"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "神經科專科醫師證書",
+          "dateCreated": "2023-10"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "偏頭痛肉毒桿菌注射訓練合格證書",
+          "dateCreated": "2024-06"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "中華民國醫師證書",
+          "dateCreated": "2018"
+        }
+      ],
+      "award": [
+        "2024 年新思惟國際「網路時代之個人品牌工作坊」最佳網站設計大獎"
+      ],
       "sameAs": [
         "https://www.pohai.org.tw/doctor_detail.php?PKey=422",
         "https://www.facebook.com/WuMY039543131",
@@ -185,7 +343,7 @@
 <p>「頭痛已經快 3 個月，吃藥都沒效，是不是長腦瘤了？」</p>
 <p>頭痛的位置百百種，在問診時，都是不能放過的重要線索。事實上，頭痛背後常常藏著重要訊號，本系列文章將詳細介紹頭痛位置、可能病因和常見的頭痛類型，讓你了解自己的身體資訊。</p>
 <h2 id="頭痛-6-大位置看病因">頭痛 6 大位置看病因</h2>
-<p><img src="../../assets/headache-map-part1-02.jpg" alt="頭痛 6 大位置看病因" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-02.jpg" width="1200" height="630" alt="頭痛 6 大位置看病因" loading="lazy" decoding="async"></p>
 <p>頭痛可能由不同原因所致，因此需問更多問題：</p>
 <p>「痛在哪裡？痛多久了？」</p>
 <p>「痛的位置會不會變來變去？」</p>
@@ -193,31 +351,31 @@
 <p>在我的頭痛門診裡，花時間聊細節是常態，絕非開抽血或照個片子就調查出來。推敲背後真正原因，才能安排正確檢查，進一步對症下藥。</p>
 <p>看診時會被問什麼問題，請點下面文章：</p>
 <p><a href="https://blog.drminyangwu.com/2024/12/blog-post.html" target="_blank" rel="noopener noreferrer">頭痛看診前必讀，醫生會問我什麼問題？</a></p>
-<p><img src="../../assets/headache-map-part1-03.jpg" alt="後腦杓痛" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-03.jpg" width="1024" height="768" alt="後腦杓痛" loading="lazy" decoding="async"></p>
 <h3 id="1-後腦勺痛">1. 後腦勺痛</h3>
 <p>可能為緊張型頭痛、頸源性頭痛、枕神經痛、高血壓頭痛、腦瘤、腦膜炎等等。</p>
-<p><img src="../../assets/headache-map-part1-04.jpg" alt="太陽穴" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-04.jpg" width="1024" height="768" alt="太陽穴" loading="lazy" decoding="async"></p>
 <h3 id="2-太陽穴痛">2. 太陽穴痛</h3>
 <p>常見為緊張型頭痛、偏頭痛，也可能是叢集性頭痛、青光眼、牙齒、下巴關節問題。</p>
-<p><img src="../../assets/headache-map-part1-05.jpg" alt="單側痛" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-05.jpg" width="1024" height="768" alt="單側痛" loading="lazy" decoding="async"></p>
 <h3 id="3-單側頭痛">3. 單側頭痛</h3>
 <p>典型的偏頭痛、叢集性頭痛特徵、也可能是頸源性頭痛。</p>
-<p><img src="../../assets/headache-map-part1-06.jpg" alt="前額痛" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-06.jpg" width="1024" height="768" alt="前額痛" loading="lazy" decoding="async"></p>
 <h3 id="4-前額痛">4. 前額痛</h3>
 <p>緊張型頭痛、鼻竇性頭痛、高血壓頭痛、或是腦瘤引起。</p>
-<p><img src="../../assets/headache-map-part1-07.jpg" alt="眼睛或眉心痛" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-07.jpg" width="1024" height="768" alt="眼睛或眉心痛" loading="lazy" decoding="async"></p>
 <h3 id="5-眼睛眼眶周圍或眉心痛">5. 眼睛、眼眶周圍或眉心痛</h3>
 <p>叢集性頭痛位置、鼻竇性頭痛、青光眼，也可能與頸源性頭痛相關。</p>
-<p><img src="../../assets/headache-map-part1-08.jpg" alt="整顆頭痛" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-08.jpg" width="1024" height="768" alt="整顆頭痛" loading="lazy" decoding="async"></p>
 <h3 id="6-整顆頭痛">6. 整顆頭痛</h3>
 <p>緊張型頭痛、腦部感染、腦腫瘤都有可能性。</p>
 <h2 id="2-種頭痛分類原發次發">2 種頭痛分類：原發、次發</h2>
-<p><img src="../../assets/headache-map-part1-09.jpg" alt="2 大頭痛分類" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-09.jpg" width="1200" height="630" alt="2 大頭痛分類" loading="lazy" decoding="async"></p>
 <p>醫學上，頭痛大致分為 2 種：原發性和次發性頭痛，其中又以「原發性」更常見，好發於 20 ~ 50 歲的青壯年。以其中的偏頭痛來說，台灣大約有 10% 的人口 ( = 200 萬人 ) 有偏頭痛問題，也就是說，每 10 個人就有 1 個人是頭痛一族。</p>
 <ul><li><strong>原發性頭痛</strong>：超過 80 - 90% 頭痛都屬原發性頭痛，頭痛本身就是病因，如這 3 類：偏頭痛、緊縮性頭痛、叢發性頭痛。一般抽血、照腦部影像，結果幾乎都是「一切正常」，但可能是神經迴路和內分泌調控等其他問題。</li><li><strong>次發性頭痛</strong>：由特定疾病導致頭痛，比例約 10 - 20 % ，如鼻竇炎、腦膜炎、腦出血、中風、腦腫瘤、頸椎問題……等等。雖然比例低，但背後的病因多樣，從疾病、外傷、環境、<strong>飲食</strong>、藥物，都可能是原因。</li></ul>
 <p>有關<strong>飲食</strong>部分，可參考我寫的這篇：<a href="https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html" target="_blank" rel="noopener noreferrer">改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單</a></p>
 <h2 id="常見頭痛類型3-個原發性頭痛">常見頭痛類型：3 個原發性頭痛</h2>
-<p><img src="../../assets/headache-map-part1-10.jpg" alt="頭痛類型" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-10.jpg" width="1200" height="630" alt="頭痛類型" loading="lazy" decoding="async"></p>
 <p>最常見的頭痛類型是原發性，比例佔 90%，有 3 個類型：偏頭痛、緊縮性、叢發性，以下詳細介紹每個類型。</p>
 <h3 id="1-偏頭痛-migraine">1. 偏頭痛 Migraine</h3>
 <p>常見的反覆性神經血管疾病，特徵為搏動性抽痛、常伴隨噁心想吐、畏光怕吵。</p>
@@ -232,7 +390,7 @@
 <ul><li>疼痛位置：幾乎只發生在單側，通常集中在一眼後方或周圍，並往同側臉部、頭部和頸部擴散。</li><li>疼痛感受：像刀割、鑽孔般的尖銳刺痛，非常痛苦，發作時會躁動不安，被稱為「自殺性頭痛」。</li><li>常見症狀：同側會出現眼睛紅、流淚、眼皮下垂、眼瞼水腫、鼻塞、流鼻水，甚至臉部腫脹或冒汗。</li><li>持續時間：每次 15 分鐘～ 3 個小時，常常發作在每天同一時段、每年同一季節，可能長達數週到數月，最常發生在季節變換，以 3 月和 12 月最多。</li></ul>
 <p>▲最疼痛的是叢發性頭痛，比起偏頭痛、緊縮性來說，門診少見叢發性頭痛的病患，國外的叢發性頭痛盛行率約 3/1000。</p>
 <h2 id="三大原發性頭痛-速查表">三大原發性頭痛 速查表</h2>
-<p><img src="../../assets/headache-map-part1-11.jpg" alt="三大原發性頭痛比較表格" loading="lazy" decoding="async"></p>
+<p><img src="../../assets/headache-map-part1-11.jpg" width="1200" height="995" alt="三大原發性頭痛比較表格" loading="lazy" decoding="async"></p>
 <p>本篇主要介紹頭痛位置、可能病因和3大常見的原發性頭痛：偏頭痛、緊縮性頭痛、叢發性頭痛。</p>
 <p>另一類是次發性頭痛，通常隱藏著其他疾病。如鼻竇性頭痛、頸源性頭痛、三叉神經痛等等，我放在下一篇：<a href="https://blog.drminyangwu.com/2025/09/secondary-headache-causes-warning-signs.html" target="_blank" rel="noopener noreferrer">當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)</a></p>
 <p>如有以上任何症狀，歡迎掛號至門診討論喔！</p>
@@ -254,7 +412,7 @@
               <p class="author-name">吳旻陽 醫師</p>
               <p class="author-role">神經內科主治醫師</p>
               <ul class="author-links">
-                <li><a href="../../about/">完整簡歷</a></li>
+                <li><a href="../../about/">完整醫師介紹</a></li>
                 <li><a href="https://www.pohai.org.tw/doctor_detail.php?PKey=422" target="_blank" rel="noopener noreferrer">羅東博愛醫院 神經內科主治醫師<span class="ext" aria-hidden="true">↗</span></a></li>
                 <li><a href="../../#clinic">門診時間與掛號資訊</a></li>
                 <li><a href="https://www.facebook.com/WuMY039543131" target="_blank" rel="noopener noreferrer">Facebook：神經內科 吳旻陽醫師<span class="ext" aria-hidden="true">↗</span></a></li>

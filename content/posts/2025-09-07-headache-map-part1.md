@@ -7,6 +7,11 @@ summary: >
   這 6 個位置各自可能的病因，並說明原發性與次發性兩種分類，以及最常見的三種原發性頭痛 ⸺
   偏頭痛、緊縮性頭痛、叢發性頭痛的差別。
 tags: [頭痛]
+about: [頭痛, 偏頭痛, 緊縮型頭痛, 叢發性頭痛]
+mentions: [三叉神經痛, 枕神經痛, 腦中風]
+citation:
+  - Headache Locations: A Comprehensive Guide | https://www.webmd.com/migraines-headaches/understanding-headache-location-comprehensive-guide
+  - 2022 台灣頭痛學會 民眾衛教手冊《告別偏頭痛該知道的 100 件事》
 hero: assets/headache-map-part1-01.jpg
 heroWidth: 1200
 heroHeight: 630

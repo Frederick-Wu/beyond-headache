@@ -5,6 +5,7 @@ summary: >
   越來越多病人在進診間之前，已經先問過 AI 了。
   先做功課是好事，但查到的東西有時候讓人更緊張 ⸺ 這是我在門診看到的，和幾句建議。
 tags: [門診觀察, 就醫準備]
+mentions: [偏頭痛, 三叉神經痛, 失智症]
 hero: assets/hero-de-motu-cordis.jpg
 heroWidth: 1280
 heroHeight: 852
