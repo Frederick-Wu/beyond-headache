@@ -725,6 +725,19 @@ function markdown(src) {
     else i++;
   }
 
+  /* 以冒號結尾、而且下一塊是標題或清單的段落，是「引言」而不是獨立的一段 ⸺
+     像「根據國際頭痛疾病分類（ICHD-3），定義為：」後面接著三個診斷條件。
+     引言和它引出的內容之間留一般段距，讀起來會像兩件不相干的事，所以標記出來
+     交給 CSS 收緊。這個判斷要看文字內容，CSS 選擇器做不到，只能在這裡處理。 */
+  for (let k = 0; k < out.length - 1; k++) {
+    const cur = out[k];
+    if (!/^<p>/.test(cur)) continue;
+    const text = cur.replace(/<[^>]*>/g, "").trim();
+    if (!/[：:]$/.test(text)) continue;
+    if (!/^<(h[2-6]|ul|ol)\b/.test(out[k + 1])) continue;
+    out[k] = cur.replace(/^<p>/, '<p class="lead-in">');
+  }
+
   return out.join("\n");
 }
 
@@ -1633,6 +1646,8 @@ const RESERVED_SLUGS = new Set([
   "styles",
   "counter",
   "enhance",
+  // 標籤彙整頁的根目錄（/tags/ 與 /tags/<slug>/）
+  "tags",
 ]);
 
 /**
@@ -2591,22 +2606,23 @@ ${pad}</section>`;
 }
 
 function renderIndex(posts) {
-  const cards = posts
-    .map(
-      (p) => `        <li class="card">
-          <a class="card-link" href="posts/${esc(p.slug)}/">
-            <h2 class="card-title">${esc(p.title)}</h2>
-${p.summary ? `            <p class="card-summary">${esc(p.summary)}</p>\n` : ""}          </a>
-          ${metaRow(p, p.slug)}
-        </li>`
-    )
-    .join("\n");
+  // 卡片與標籤彙整頁共用 postCard() ⸺ 兩邊各寫一份，標籤列遲早只有一邊有。
+  const cards = posts.map((p) => postCard(p, "")).join("\n");
 
   // 三個區塊從 homeBlocks() 拿，跟頁尾的網站地圖吃同一份結果 ⸺ 判斷「這個
   // 區塊有沒有輸出」的地方只有一處，導覽與地圖就不可能指向不存在的錨點。
   const { specialties, clinicHours, authorBio } = homeBlocks();
   const visitCallout = visitCalloutBlock({});
   const nav = homeNav({ hasPosts: posts.length > 0 });
+
+  // 通往 /tags/ 的入口。放在清單之後而不是之前 ⸺ 首頁的主體是文章，
+  // 「還想找別的」是讀完清單才會有的念頭。沒有任何標籤達到門檻時整段不輸出，
+  // 那時候 /tags/ 也不存在（見 build()），連過去會是 404。
+  const tagsEntry = TAG_INDEX.size
+    ? `
+      <p class="tags-entry"><a href="tags/">依主題瀏覽全部文章 →</a></p>
+`
+    : "";
 
   const main = `${heroBlock(CFG.hero, "", true)}
 
@@ -2626,7 +2642,7 @@ ${visitCallout}${specialties}
       <ul class="card-list">
 ${cards}
       </ul>
-
+${tagsEntry}
 ${authorBio}
 
 ${clinicHours}`;
@@ -2720,6 +2736,7 @@ ${post.html}
         </div>
 
         <footer class="post-footer">
+${tagRow(post.tags, rel, "          ")}
 ${authorBioBlock({ pad: "          ", rel })}
         </footer>
       </article>`;
@@ -2874,6 +2891,377 @@ function latestUpdated(posts, fallback) {
   return posts.reduce((max, p) => (p.updated > max ? p.updated : max), posts[0].updated);
 }
 
+/* =======================================================================
+ * 標籤彙整（/tags/ 與 /tags/<slug>/）
+ *
+ * 標籤本來只是文章上的幾個字，沒有出口 ⸺ 讀完一篇頭痛的文章，讀者沒有
+ * 任何方式問「還有別的頭痛文章嗎」。這一段把同一個標籤的文章收成一頁，
+ * 並讓文章與首頁上的標籤指過去。
+ *
+ * 三個決定都放在 site.config.json 的 tags 區塊，不寫死在這裡：
+ *   minPosts     幾篇才值得一頁（薄內容防護）
+ *   exclude      不生頁的標籤（站務用的標籤不該有公開彙整頁）
+ *   slugs        中文標籤 → 英文網址
+ * 理由與 medicalEntities 那張表相同：這些是內容決策，改的時候不該動程式。
+ * ===================================================================== */
+
+function tagConfig() {
+  const c = (CFG && CFG.tags) || {};
+  const min = Number(c.minPosts);
+  return {
+    minPosts: Number.isFinite(min) && min >= 1 ? Math.floor(min) : 2,
+    exclude: new Set(
+      (Array.isArray(c.exclude) ? c.exclude : []).map((t) => String(t).trim())
+    ),
+    slugs: c.slugs && typeof c.slugs === "object" ? c.slugs : {},
+    descriptions:
+      c.descriptions && typeof c.descriptions === "object" ? c.descriptions : {},
+  };
+}
+
+/**
+ * 標籤 → 網址片段。
+ *
+ * slugify() 會保留中日韓字元，所以不查表也產得出網址，只是那個網址一被
+ * 分享就變成一長串百分比編碼，而且會是站上唯一的非英文網址。所以沒查到
+ * 對照時照樣產出（不擋建置），但警告一次，講明去哪裡補。
+ */
+function tagSlug(tag, cfg) {
+  const mapped = String(cfg.slugs[tag] ?? "").trim();
+  const fallback = slugify(tag);
+
+  if (mapped) {
+    const s = slugify(mapped);
+    if (s) return s;
+    console.warn(
+      `  ⚠ site.config.json 的 tags.slugs：「${tag}」的網址「${mapped}」` +
+        `slug 化之後是空的，改用標籤名本身`
+    );
+  } else {
+    console.warn(
+      `  ⚠ 標籤「${tag}」沒有在 site.config.json 的 tags.slugs 裡對應英文網址，` +
+        `暫時用 /tags/${fallback}/ ⸺ 站上其他網址都是英文，補一筆對照比較一致`
+    );
+  }
+  return fallback;
+}
+
+/** 標籤頁的網址片段 → 可放進 href 的路徑。非 ASCII 的 slug 在這裡編碼。 */
+const tagPath = (rel, slug) => `${rel}tags/${encodeURIComponent(slug)}/`;
+
+/**
+ * 把已列出的文章收成標籤彙整頁的清單。
+ *
+ * unlisted 的文章不算 ⸺ 那個旗標的意思是「不出現在任何清單裡」，彙整頁
+ * 也是清單。附帶的效果是：只被 unlisted 文章用到的標籤自然就不會有頁面，
+ * 不必為它多寫一條排除規則。
+ */
+function collectTagPages(listed) {
+  const cfg = tagConfig();
+  const groups = new Map();
+
+  for (const p of listed) {
+    for (const raw of p.tags) {
+      const tag = String(raw).trim();
+      if (!tag || cfg.exclude.has(tag)) continue;
+      if (!groups.has(tag)) groups.set(tag, []);
+      const list = groups.get(tag);
+      // 同一篇文章重複寫同一個標籤只算一次，否則文章數會虛胖
+      if (!list.includes(p)) list.push(p);
+    }
+  }
+
+  const thin = [];
+  const candidates = [];
+  for (const [tag, posts] of groups) {
+    if (posts.length < cfg.minPosts) {
+      thin.push({ tag, count: posts.length });
+      continue;
+    }
+    candidates.push({ tag, posts, slug: tagSlug(tag, cfg) });
+  }
+
+  // 文章多的排前面；同數量比 slug。兩個鍵都只看內容與設定，不看檔案系統，
+  // 所以每次建置的順序相同（與 loadPosts() 的排序理由是同一個）。
+  candidates.sort(
+    (a, b) =>
+      b.posts.length - a.posts.length ||
+      (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0)
+  );
+
+  const bySlug = new Map();
+  const pages = [];
+  for (const t of candidates) {
+    const clash = bySlug.get(t.slug);
+    if (clash) {
+      console.warn(
+        `  ⚠ 標籤「${t.tag}」與「${clash.tag}」的網址都是 /tags/${t.slug}/，` +
+          `已略過「${t.tag}」⸺ 請在 site.config.json 的 tags.slugs 分開`
+      );
+      continue;
+    }
+    t.url = abs(tagPath("", t.slug));
+    t.description =
+      String(cfg.descriptions[t.tag] ?? "").trim() ||
+      `「${t.tag}」主題的文章共 ${t.posts.length} 篇，由${CFG.author}整理。`;
+    bySlug.set(t.slug, t);
+    pages.push(t);
+  }
+
+  return { pages, thin, minPosts: cfg.minPosts, excluded: [...cfg.exclude] };
+}
+
+/**
+ * 標籤名 → 可以連過去的彙整頁。build() 在渲染任何頁面之前填好 ⸺
+ * 首頁卡片與文章頁都要靠它判斷「這個標籤點得動嗎」。
+ *
+ * 沒生頁的標籤查不到，就會退回純文字。這是刻意的：門檻擋掉的標籤仍然是
+ * 這篇文章的事實，只是不值得一個公開網址，把它整個藏起來反而是說謊。
+ */
+const TAG_INDEX = new Map();
+
+/**
+ * 文章上的標籤列。有彙整頁的是連結，其餘是純文字。
+ *
+ * 用 <nav> 包起來，因為它真的是導覽（一組通往站內其他地方的連結）；
+ * 但不下標題 ⸺ aria-label 已經說明它是什麼，多一個 h2 會在文章頁上
+ * 插進一個與內容無關的層級。
+ */
+function tagRow(tags, rel, pad = "      ") {
+  const list = (tags || []).map((t) => String(t).trim()).filter(Boolean);
+  if (!list.length) return "";
+
+  const items = list.map((t) => {
+    const page = TAG_INDEX.get(t);
+    return page
+      ? `${pad}    <li><a class="tag" href="${esc(tagPath(rel, page.slug))}">${esc(t)}</a></li>`
+      : `${pad}    <li><span class="tag tag-plain">${esc(t)}</span></li>`;
+  });
+
+  return `${pad}<nav class="tag-row" aria-label="文章主題">
+${pad}  <ul class="tag-list">
+${items.join("\n")}
+${pad}  </ul>
+${pad}</nav>`;
+}
+
+/**
+ * 首頁與彙整頁共用的文章卡片。rel 決定連結要往上跳幾層。
+ *
+ * skipTag 是「這張卡片正站在哪個標籤的彙整頁上」⸺ 在 /tags/headache/ 底下，
+ * 每張卡片再掛一個連回本頁的「頭痛」，對讀者是五個一模一樣、哪裡也去不了的
+ * 連結（鍵盤使用者還多五個停靠點）。那一頁的標題已經說了這些文章都是頭痛，
+ * 卡片上該留的是「除了頭痛，它還屬於哪裡」。
+ */
+function postCard(p, rel, pad = "        ", skipTag = "") {
+  const tags = tagRow(
+    p.tags.filter((t) => String(t).trim() !== skipTag),
+    rel,
+    `${pad}  `
+  );
+  return `${pad}<li class="card">
+${pad}  <a class="card-link" href="${esc(rel)}posts/${esc(p.slug)}/">
+${pad}    <h2 class="card-title">${esc(p.title)}</h2>
+${p.summary ? `${pad}    <p class="card-summary">${esc(p.summary)}</p>\n` : ""}${pad}  </a>
+${pad}  ${metaRow(p, p.slug)}
+${tags ? tags + "\n" : ""}${pad}</li>`;
+}
+
+/**
+ * 彙整頁的 JSON-LD。
+ *
+ * about 只在標籤名剛好是 medicalEntities 的鍵時才出現 ⸺ 「就醫準備」不是
+ * 一個醫學實體，硬掛一個會是錯的宣告。查表前先確認鍵存在，否則
+ * medicalEntityNode() 會對每一個非疾病標籤警告一次。
+ *
+ * mainEntity 用 ItemList 列出這一頁收了哪些文章：這正是彙整頁的內容，
+ * 講清楚它才不是一頁空殼。ListItem 只放網址與標題，不重新展開整篇
+ * BlogPosting ⸺ 那些節點在文章自己那一頁，這裡展開等於同一篇文章在站上
+ * 有兩份不同的描述。
+ */
+function tagPageJsonLd(t) {
+  const url = t.url;
+
+  const node = {
+    "@type": "CollectionPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: `「${t.tag}」的文章`,
+    description: t.description,
+    inLanguage: CFG.lang,
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      name: `「${t.tag}」的文章`,
+      numberOfItems: t.posts.length,
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      itemListElement: t.posts.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: abs(`posts/${p.slug}/`),
+        name: p.title,
+      })),
+    },
+  };
+
+  if ((CFG.medicalEntities || {})[t.tag]) {
+    const entity = medicalEntityNode(t.tag, `標籤「${t.tag}」的彙整頁`);
+    if (entity) node.about = entity;
+  }
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: CFG.title, item: HOME_URL },
+      { "@type": "ListItem", position: 2, name: TAGS_INDEX_TITLE, item: TAGS_INDEX_URL },
+      { "@type": "ListItem", position: 3, name: t.tag, item: url },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [node, breadcrumb, websiteNode(), personNode()],
+  };
+}
+
+const TAGS_INDEX_TITLE = "文章主題";
+const TAGS_INDEX_URL = abs("tags/");
+
+function tagIndexJsonLd(pages) {
+  const node = {
+    "@type": "CollectionPage",
+    "@id": `${TAGS_INDEX_URL}#webpage`,
+    url: TAGS_INDEX_URL,
+    name: TAGS_INDEX_TITLE,
+    description: tagIndexDescription(pages),
+    inLanguage: CFG.lang,
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      name: TAGS_INDEX_TITLE,
+      numberOfItems: pages.length,
+      itemListElement: pages.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: t.url,
+        name: t.tag,
+      })),
+    },
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    "@id": `${TAGS_INDEX_URL}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: CFG.title, item: HOME_URL },
+      { "@type": "ListItem", position: 2, name: TAGS_INDEX_TITLE, item: TAGS_INDEX_URL },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [node, breadcrumb, websiteNode(), personNode()],
+  };
+}
+
+const tagIndexDescription = (pages) =>
+  `${CFG.title}的文章主題索引，目前有 ${pages.length} 個主題 ⸺ ` +
+  pages.map((t) => `${t.tag}（${t.posts.length} 篇）`).join("、") +
+  "。";
+
+/**
+ * 單一標籤的彙整頁。
+ *
+ * 版面就是首頁那份卡片清單（postCard），不另創一套 ⸺ 讀者在首頁學會怎麼
+ * 看一張卡片，到這裡不必再學一次。
+ *
+ * 頁面底部再列一次其他主題：彙整頁是樞紐，讀者從一篇文章走到這裡之後，
+ * 該有下一個去處，否則這一頁就是死路。
+ */
+function renderTagPage(t, allPages) {
+  const rel = "../../";
+  const cards = t.posts.map((p) => postCard(p, rel, "        ", t.tag)).join("\n");
+
+  const others = allPages.filter((x) => x.slug !== t.slug);
+  const otherBlock = others.length
+    ? `
+      <h2 class="section-label"><span>其他主題</span></h2>
+${tagRow(others.map((x) => x.tag), rel)}`
+    : "";
+
+  const main = `      <a class="back-link" href="${rel}tags/">← 所有主題</a>
+
+      <div class="intro">
+        <h1>${esc(t.tag)}</h1>
+        <p>${esc(t.description)}</p>
+      </div>
+
+      <h2 class="section-label" id="posts"><span>相關文章</span><span>共 ${t.posts.length} 篇</span></h2>
+
+      <ul class="card-list">
+${cards}
+      </ul>
+${otherBlock}`;
+
+  return layout({
+    title: `「${t.tag}」的文章`,
+    description: t.description,
+    rel,
+    // 彙整頁刻意不參與瀏覽計數：空字串 → counter.js 的 bump() 直接跳過，
+    // Supabase 不會多出一批 tag:xxx 的列。卡片上各篇文章的數字照樣顯示
+    // （那是 data-views-for，與本頁的 slug 無關）。
+    pageSlug: "",
+    bodyClass: "page-tag",
+    main,
+    hero: null,
+    canonical: t.url,
+    jsonLd: tagPageJsonLd(t),
+  });
+}
+
+/** 所有主題的索引頁。 */
+function renderTagIndex(pages) {
+  const rel = "../";
+
+  const cards = pages
+    .map(
+      (t) => `        <li class="card">
+          <a class="card-link" href="${esc(tagPath(rel, t.slug))}">
+            <h2 class="card-title">${esc(t.tag)}</h2>
+            <p class="card-summary">${esc(t.description)}</p>
+          </a>
+          <p class="meta"><span class="tag-count">${t.posts.length} 篇文章</span></p>
+        </li>`
+    )
+    .join("\n");
+
+  const main = `      <a class="back-link" href="${rel}">← 回到文章列表</a>
+
+      <div class="intro">
+        <h1>${esc(TAGS_INDEX_TITLE)}</h1>
+        <p>依主題整理站上的衛教文章。</p>
+      </div>
+
+      <h2 class="section-label" id="topics"><span>所有主題</span><span>共 ${pages.length} 個</span></h2>
+
+      <ul class="card-list">
+${cards}
+      </ul>`;
+
+  return layout({
+    title: TAGS_INDEX_TITLE,
+    description: tagIndexDescription(pages),
+    rel,
+    pageSlug: "",
+    bodyClass: "page-tag",
+    main,
+    hero: null,
+    canonical: TAGS_INDEX_URL,
+    jsonLd: tagIndexJsonLd(pages),
+  });
+}
+
 /**
  * sitemap.xml。
  *
@@ -2883,7 +3271,31 @@ function latestUpdated(posts, fallback) {
  * 首頁的 lastmod 取全站最大的 updated（latestUpdated）⸺ 首頁的內容就是文章
  * 列表，任何一篇改過首頁就算改過，不是只看排在最前面那一篇。
  */
-function renderSitemap(posts, pages = []) {
+function renderSitemap(posts, pages = [], tagPages = []) {
+  // 彙整頁的 lastmod 取該標籤底下最新的 updated ⸺ 那一頁的內容就是那些文章，
+  // 其中任何一篇改過，這一頁就算改過。與首頁用 latestUpdated 的理由相同。
+  //
+  // priority 0.5，低於文章的 0.8：彙整頁是通往文章的路，不是目的地。
+  // 沒達到門檻或被排除的標籤根本不在 tagPages 裡，所以不會出現在這裡 ⸺
+  // sitemap 宣告一個不存在的網址，比不宣告更糟。
+  const tagEntries = [];
+  if (tagPages.length) {
+    tagEntries.push({
+      loc: TAGS_INDEX_URL,
+      lastmod: latestUpdated(posts, null),
+      changefreq: "weekly",
+      priority: "0.5",
+    });
+    for (const t of tagPages) {
+      tagEntries.push({
+        loc: t.url,
+        lastmod: latestUpdated(t.posts, null),
+        changefreq: "weekly",
+        priority: "0.5",
+      });
+    }
+  }
+
   const entries = [
     {
       loc: HOME_URL,
@@ -2905,6 +3317,7 @@ function renderSitemap(posts, pages = []) {
       changefreq: "yearly",
       priority: "0.6",
     })),
+    ...tagEntries,
   ];
 
   const urls = entries
@@ -3165,6 +3578,12 @@ function build() {
     }
   }
 
+  // 標籤彙整頁。必須在渲染任何頁面之前算好 ⸺ 首頁卡片與文章頁都要靠
+  // TAG_INDEX 判斷某個標籤點不點得動。
+  const tags = collectTagPages(listed);
+  TAG_INDEX.clear();
+  for (const t of tags.pages) TAG_INDEX.set(t.tag, t);
+
   rmSync(OUT_DIR, { recursive: true, force: true });
   mkdirSync(OUT_DIR, { recursive: true });
 
@@ -3177,7 +3596,16 @@ function build() {
     write(join(pg.slug, "index.html"), renderPage(pg));
   }
 
-  write("sitemap.xml", renderSitemap(listed, listedPages));
+  // 一個標籤都沒達到門檻時，連 /tags/ 索引頁都不產生 ⸺ 一頁空索引
+  // 既幫不了讀者，也是搜尋引擎眼中的薄內容。
+  if (tags.pages.length) {
+    write(join("tags", "index.html"), renderTagIndex(tags.pages));
+    for (const t of tags.pages) {
+      write(join("tags", t.slug, "index.html"), renderTagPage(t, tags.pages));
+    }
+  }
+
+  write("sitemap.xml", renderSitemap(listed, listedPages, tags.pages));
   write("robots.txt", renderRobots());
   write("feed.xml", renderFeed(listed));
   write("site.webmanifest", renderManifest());
@@ -3215,6 +3643,23 @@ function build() {
           (pg.unlisted ? `  ← 未列出、不被搜尋` : ``)
       );
     }
+  }
+  if (tags.pages.length) {
+    console.log(`  主題    ${tags.pages.length} 個彙整頁（門檻 ${tags.minPosts} 篇）`);
+    for (const t of tags.pages) {
+      console.log(`          /tags/${t.slug}/  ${t.tag}  ${t.posts.length} 篇`);
+    }
+  }
+  // 沒達到門檻的標籤照樣印出來 ⸺ 它們在文章上仍然看得到，只是不能點。
+  // 沉默地少一頁，下次有人問「為什麼這個標籤沒有頁」就得回頭讀程式碼。
+  if (tags.thin.length) {
+    console.log(
+      `          未達門檻，顯示但不連結：` +
+        tags.thin.map((t) => `${t.tag}（${t.count} 篇）`).join("、")
+    );
+  }
+  if (tags.excluded.length) {
+    console.log(`          設定排除：${tags.excluded.join("、")}`);
   }
   console.log(`  素材    ${assets} 個`);
   console.log(`  SEO     sitemap.xml、robots.txt、feed.xml`);

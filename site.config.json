@@ -27,6 +27,18 @@
   },
   "siteTopicsComment": "整個站的主題，填 medicalEntities 的中文鍵。build.mjs 查表後掛在 WebSite.about ⸺ 站台層級「這個站在講什麼」的宣告，每一頁都會帶到。與首頁 WebPage.about 指向醫師本人（那句話的意思是「這一頁是關於這個人」）並存，兩件事都成立，不要拿其中一個換掉另一個。只列真的撐得起來的主題：站上要有以它為 about 的文章，這句宣告才有內容支撐 ⸺ 宣告一個站上沒有文章在講的主題，是空頭實體，比不宣告更糟。",
   "siteTopics": ["頭痛", "偏頭痛"],
+  "tagsComment": "標籤彙整頁（/tags/ 與 /tags/<slug>/）。標籤本身寫在每篇文章的 front matter，這裡只決定「哪些標籤值得擁有一頁」。minPosts 是門檻：文章數少於這個值的標籤仍然顯示在文章上，但不連結、不生頁、不進 sitemap ⸺ 只有一篇文章的彙整頁對讀者是多按一次滑鼠，對搜尋引擎是一頁薄內容，兩邊都沒有好處。要放寬或收緊就改這一個數字，不必動程式碼。exclude 是排除清單，不管幾篇都不生頁：站務性質的標籤不該有公開的彙整頁。注意 unlisted 的文章本來就不算進任何標籤（那個旗標的意思就是「不出現在任何清單裡」），所以只被 unlisted 文章用到的標籤自然就不會有頁面，不必額外排除。slugs 是中文標籤 → 英文網址的對照：站上其他網址（/posts/before-your-visit/）全都是英文，中文網址一被分享就變成一長串百分比編碼，所以彙整頁也用英文。沒對照的標籤會退回用標籤名本身當網址並在建置時警告 ⸺ 能動，但看得到提醒。網址一旦公開就不要再改，真要改請同時在 static/_redirects 補一條 301。descriptions 是各標籤彙整頁的 meta description 與頁面說明句，留空會自動生成一句「共 N 篇」的敘述；寫得比自動生成的好時再填，這是文案的工作，不是程式的判斷。",
+  "tags": {
+    "minPosts": 2,
+    "exclude": ["站務"],
+    "slugs": {
+      "頭痛": "headache",
+      "就醫準備": "visit-prep",
+      "門診觀察": "clinic-notes",
+      "關於本站": "about-this-site"
+    },
+    "descriptions": {}
+  },
   "medicalSpecialtyComment": "醫學文（MedicalWebPage）的科別。值直接寫 schema.org 的 MedicalSpecialty 列舉網址全文，程式碼裡刻意不拼這個網址 ⸺ 換科別、或 schema.org 日後改網址，都只動這一行。神經內科對應的列舉值是 Neurologic。留空就不輸出這個欄位；填了但不是 http(s) 開頭，build.mjs 會警告並略過，不會靜默送出一個機器讀不懂的字串。",
   "medicalSpecialty": "https://schema.org/Neurologic",
   "authorProfile": {

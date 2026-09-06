@@ -583,6 +583,83 @@ main {
   margin-bottom: 0.75rem;
 }
 
+/* ---------- 標籤（文章主題）---------- */
+/* 藥丸造型在這個站的意思是「這個東西可以點」⸺ 首頁的門診專長當初正是
+   因為長得像按鈕卻點不動而改掉的（見 .specialty-groups）。所以只有真的
+   有彙整頁的標籤才是藥丸；沒達到門檻、點不到任何地方的標籤退回純文字，
+   連框線都不給。同一個站上不該有兩種長得一樣、一個能點一個不能點的東西。 */
+.tag-row {
+  margin-top: 0.85rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.tag {
+  /* 44px 的觸控下限靠 min-height 撐，不靠 padding 湊 ⸺ 字級之後若調整，
+     padding 算出來的高度會跟著跑掉，min-height 不會。 */
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+a.tag {
+  color: var(--accent);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+a.tag:hover,
+a.tag:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 卡片本身的底色是 --paper-raised，藥丸再用同一個色會看不出邊界，
+   所以卡片裡的藥丸反過來用底色 ⸺ 深淺對調，兩種模式都成立。 */
+.card a.tag {
+  background: var(--paper);
+}
+
+/* 點不到的標籤：沒有框、沒有底、沒有藥丸感，就是一行灰字。 */
+.tag-plain {
+  color: var(--ink-faint);
+  padding-inline: 0;
+}
+
+/* 首頁清單底下通往 /tags/ 的入口，只有一個連結，做得跟 .back-link 同一
+   個量級 ⸺ 它是動線上的岔路，不是召喚。 */
+.tags-entry {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.tags-entry a {
+  display: inline-block;
+  padding-block: 0.6rem;
+  text-decoration: none;
+}
+
+.tags-entry a:hover,
+.tags-entry a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* ---------- 中繼資料列（作者／日期／計數）---------- */
 .meta {
   display: flex;
@@ -650,9 +727,9 @@ main {
 .post-body h3 {
   font-size: 1.125rem;
   line-height: 1.6;
-  /* 與粗體小標同一個數值 ⸺ 「新一組開始」的留白訊號，不該因為作者寫 ### 還是
-     **粗體** 而不同。 */
-  margin-top: 2.75rem;
+  /* 比二級標題的 2.5rem 還大，因為二級標題有一條分隔線幫忙區隔，三級標題沒有 ⸺
+     全靠上方的留白告訴讀者「上一小節結束了」。 */
+  margin-top: 3.25rem;
   color: var(--accent);
 }
 
@@ -791,17 +868,6 @@ main {
   margin-top: 0.75rem;
 }
 
-/* 整段只有一個粗體句子時，那是小標而不是段落 ⸺ 例如「1. 偏頭痛 Migraine」。
-   它跟緊接在後的說明是一組：上面拉開、下面收緊。這樣不必為了分層而多開一級標題，
-   也就不會讓文章長出一堆三級標題。 */
-.post-body > p:has(> strong:only-child) {
-  margin-top: 2.75rem;
-}
-
-.post-body > p:has(> strong:only-child) + * {
-  margin-top: 0.75rem;
-}
-
 /* 圖片和它底下的說明文字是一組。段距一律 2rem 的話，讀者分不出哪段文字在講哪張圖
    ⸺ 尤其像頭痛地圖那種「一張圖配一段說明」連續排下來的文章，會糊成一片。
    作法是圖片前面拉開、後面收緊：分組不必畫線或加框，靠留白就看得出來。
@@ -819,20 +885,28 @@ main {
 
 /* 說明文字跟上面的標籤是同一組，一起收緊 ⸺ 圖、標籤、說明三者讀起來要像一塊，
    而不是三段各自獨立的內容。排除掉圖片段落，免得連續兩張圖也被收緊；
-   也排除掉小標 ⸺ 小標是新一組的開頭，該保留它上方的間距，不能被收進上一組。 */
-.post-body > p:has(> img:only-child) + * + p:not(:has(> img)):not(:has(> strong:only-child)) {
+   （原本還排除「整段只有粗體」的小標，但 CSS 的 :only-child 只看元素不看文字，
+   內文中間有一個粗體的段落也會被誤判 ⸺ 編號小節改用 ### 之後那條規則已無必要，移除。） */
+.post-body > p:has(> img:only-child) + * + p:not(:has(> img)) {
   margin-top: 0.75rem;
 }
 
 /* 小標剛好接在圖片下面時，以圖片那一組的間距為準 ⸺ 圖已經是分組的開頭，
    小標不該再往下推。這條寫在後面、選擇器也更明確，確保它勝出。 */
-.post-body > p:has(> img:only-child) + :is(p:has(> strong:only-child), h3) {
+.post-body > p:has(> img:only-child) + h3 {
   margin-top: 0.75rem;
 }
 
-/* 段落後面緊接清單時，那個段落幾乎都是清單的引言 ⸺ 像「▲小提醒：」「可能病因：」。
-   引言和它引出的內容之間留一般段距，讀起來會像兩件不相干的事。 */
-.post-body > p + :is(ul, ol) {
+/* 引言段落 ⸺ 以冒號結尾、後面緊接標題或清單的那種，像「▲小提醒：」
+   「根據國際頭痛疾病分類（ICHD-3），定義為：」。由 build.mjs 依文字內容標上
+   class（CSS 選擇器判斷不了文字），這裡只負責把它和它引出的內容收成一組。 */
+.post-body p.lead-in + * {
+  margin-top: 0.75rem;
+}
+
+/* 標題底下緊接圖片時，圖片是這一節的開場，不該再拉開 ⸺ 圖片本身的 3.5rem 上距
+   選擇器比標題規則更明確會贏，所以要在這裡明確蓋回來。 */
+.post-body :is(h2, h3) + p:has(> img:only-child) {
   margin-top: 0.75rem;
 }
 
@@ -1711,27 +1785,36 @@ tbody tr:last-child td {
    斷點取 60rem（960px）：再窄一點，兩欄卡片會擠成兩條細長條，
    標題每行剩不到十個字，反而比單欄難讀。 */
 @media (min-width: 60rem) {
-  .page-home .wrap {
+  /* 標籤彙整頁（.page-tag）與首頁是同一種東西 ⸺ 一份卡片清單，
+     所以共用同一組寬版規則，不另立一套會慢慢長歪的。 */
+  .page-home .wrap,
+  .page-tag .wrap {
     --wrap-max: var(--measure-home);
   }
 
   /* 文章卡片兩欄。站主的決定：三欄在只有幾篇文章時會空掉，
      兩欄的卡片也比較寬，摘要不會被截成一小截。 */
-  .page-home .card-list {
+  .page-home .card-list,
+  .page-tag .card-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
 
   /* 同一列的兩張卡片高度由 grid 拉齊，但內容長短不一，
      日期那一行若各停在各自的位置會顯得歪。壓到卡片底部對齊。 */
-  .page-home .card {
+  .page-home .card,
+  .page-tag .card {
     display: flex;
     flex-direction: column;
   }
 
-  .page-home .card .meta {
+  .page-home .card .meta,
+  .page-tag .card .meta {
     margin-top: auto;
   }
+
+  /* margin-top: auto 在 .meta 上，所以被推到卡片底部的是「日期 + 標籤列」
+     這一整組（標籤列緊接在日期之後），兩張卡片的底部仍然對齊。 */
 
   /* 「關於醫師」在寬版面下左右分欄：左邊是「他是誰」，右邊是「可以去哪」。
      一張 1000px 寬、只有三行字的卡片會空得很明顯，而把整段介紹拉成
