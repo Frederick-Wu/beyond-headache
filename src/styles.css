@@ -1627,12 +1627,19 @@ tbody tr:last-child td {
     margin-top: 0;
   }
 
-  .credit,
-  .disclaimer {
+  /* DOM 順序是「地圖 → 圖片版權 → 免責 → 版權行」⸺ 手機堆疊時地圖要排在
+     版權那幾段上面（站主指定，比照範例站）。桌機這裡用明確的 grid 座標把它
+     擺回右欄，所以兩種版面各自對，不必動標記。 */
+  .credit {
     grid-column: 1;
+    grid-row: 1;
   }
 
-  /* 跨兩列，跟左欄的兩段對齊起頭 */
+  .disclaimer {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
   .site-map {
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -1642,6 +1649,7 @@ tbody tr:last-child td {
 
   .colophon {
     grid-column: 1 / -1;
+    grid-row: 3;
   }
 }
 

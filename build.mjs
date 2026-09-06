@@ -1989,11 +1989,11 @@ ${main}
 
   <footer class="site-footer">
     <div class="wrap">
+${footerNav(rel)}
 ${creditBlock(hero)}
       <section class="disclaimer">
         <p>${esc(CFG.disclaimer)}</p>
       </section>
-${footerNav(rel)}
       <p class="colophon">© ${new Date().getFullYear()} ${esc(CFG.author)}・${esc(CFG.title)}</p>
     </div>
   </footer>
