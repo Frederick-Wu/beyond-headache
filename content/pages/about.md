@@ -72,7 +72,7 @@ socialImageAlt: 左半是深藍色塊，上面是穿白袍、打深藍色領帶�
 
 ## 論文發表
 
-Hyperintensity in Bilateral Posterior Limbs of Internal Capsule Due to Hypernatremia
+Hyperintensity in Bilateral Posterior Limbs of Internal Capsule Due to Hypernatremia  
 Min-Yang Wu, Yuan-Ting Sun, Acta Neurol Taiwan 2024;33(3):127-133 [PMID: 37968847](https://pubmed.ncbi.nlm.nih.gov/37968847/)
 
 台灣頭痛學會 頭痛電子報 [第 234 期](https://taiwanheadache.org.tw/newsletter/%e7%ac%ac234%e6%9c%9f/) ⸺ 非典型顏面部疼痛案例分享

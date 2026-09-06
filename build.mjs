@@ -411,8 +411,19 @@ function inline(src) {
   s = autolink(s);
 
   s = s.replace(/ C(\d+) /g, (_, i) => `<code>${codes[+i]}</code>`);
+  // 哨兵最後才還原，確保它沒被 esc() 或任何行內語法動到
+  s = s.split(HARD_BREAK).join("<br>");
   return s;
 }
+
+
+/**
+ * 行尾兩個空白代表強制斷行。joinParagraph() 先插入這個哨兵，
+ * inline() 的最後一步才換成真正的 <br> ⸺ 直接插 <br> 會被 esc()
+ * 跳脫成 &lt;br&gt;，讀者會在頁面上看到那五個字。哨兵用 U+0000 包住，
+ * 因為 esc() 只處理 & < > "，行內語法的替換也碰不到它。
+ */
+const HARD_BREAK = "\u0000BR\u0000";
 
 const LIST_RE = /^(\s*)(?:[-*+]|\d+[.)])\s+/;
 
@@ -437,7 +448,7 @@ function joinParagraph(lines) {
     out += cur;
     if (i === lines.length - 1) continue;
     if (hardBreak) {
-      out += "<br>";
+      out += HARD_BREAK;
       continue;
     }
     const next = lines[i + 1].replace(/^\s+/, "");
