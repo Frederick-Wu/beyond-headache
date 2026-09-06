@@ -2005,10 +2005,12 @@ ${main}
   <footer class="site-footer">
     <div class="wrap">
 ${footerNav(rel)}
+      <div class="footer-main">
 ${creditBlock(hero)}
-      <section class="disclaimer">
-        <p>${esc(CFG.disclaimer)}</p>
-      </section>
+        <section class="disclaimer">
+          <p>${esc(CFG.disclaimer)}</p>
+        </section>
+      </div>
       <p class="colophon">© ${new Date().getFullYear()} ${esc(CFG.author)}・${esc(CFG.title)}</p>
     </div>
   </footer>
