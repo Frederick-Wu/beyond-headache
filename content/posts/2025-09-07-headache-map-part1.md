@@ -39,7 +39,7 @@ heroAlt: 頭痛地圖指南（上）封面，標題為頭痛位置與可能病�
 
 看診時會被問什麼問題，請點下面文章：
 
-[頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)
+[頭痛看診前，先記下這五件事](../../posts/before-your-visit/)
 
 ![後腦杓痛](../../assets/headache-map-part1-03.jpg)
 
@@ -141,7 +141,7 @@ heroAlt: 頭痛地圖指南（上）封面，標題為頭痛位置與可能病�
 ## 延伸閱讀
 
 - [當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](../../posts/headache-map-part2/)
-- [頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)
+- [頭痛看診前，先記下這五件事](../../posts/before-your-visit/)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)

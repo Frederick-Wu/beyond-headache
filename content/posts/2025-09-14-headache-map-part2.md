@@ -102,7 +102,7 @@ heroAlt: 頭痛地圖指南（下）封面，主題為次發性頭痛的原因�
 ## 結語：頭痛警訊要留意，及早尋求專業醫療協助！
 
 1. 頭痛診斷是綜合性評估，了解疼痛位置、症狀和頻率可協助醫生做進一步的檢查。
-2. 就診前，建議可做到 [頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)，有助於醫生診斷。
+2. 就診前，建議可做到 [頭痛看診前，先記下這五件事](../../posts/before-your-visit/)，有助於醫生診斷。
 3. 頭痛症狀持續加劇，或伴隨危險警訊症狀，一定要尋求專業醫療協助！頭痛警訊請看這篇[10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)
 
 如有以上任何症狀，歡迎掛號至門診討論喔！
@@ -111,7 +111,7 @@ heroAlt: 頭痛地圖指南（下）封面，主題為次發性頭痛的原因�
 
 - [太陽穴兩邊隱隱作痛？6大頭痛位置、可能病因、常見3大原發性頭痛一次看：頭痛地圖指南(上)](../../posts/headache-map-part1/)
 - [吃冰會頭痛，也是一種病 – 什麼是「冰淇淋頭痛」？](https://blog.drminyangwu.com/2025/11/headachecold-stimulus-headache-brain-freeze-ice-cream.html)
-- [頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)
+- [頭痛看診前，先記下這五件事](../../posts/before-your-visit/)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
