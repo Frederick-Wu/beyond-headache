@@ -1714,29 +1714,39 @@ tbody tr:last-child td {
     margin-top: 0;
   }
 
-  /* DOM 順序是「地圖 → 圖片版權 → 免責 → 版權行」⸺ 手機堆疊時地圖要排在
-     版權那幾段上面（站主指定，比照範例站）。桌機這裡用明確的 grid 座標把它
-     擺回右欄，所以兩種版面各自對，不必動標記。 */
-  .credit {
+  /* DOM 順序是「地圖 → 左欄 → 版權行」⸺ 手機堆疊時地圖要排在版權那幾段
+     上面（站主指定，比照範例站）；桌機這裡把它擺回右欄。
+
+     左欄包成 .footer-main 而不是把 credit 與 disclaimer 各自釘死列號：
+     文章頁沒有 hero 就沒有「圖片版權」那一段（實測 /about/ 與多篇文章都是
+     地圖 → 免責 → 版權行）。釘死列號的話第 1 列會空著、免責被推到第 2 列，
+     左上角就空一塊 ⸺ 站主 2026-09-06 指出的就是這個。包成一個 grid 項目，
+     裡面有幾段就從頂端排幾段。 */
+  .footer-main {
     grid-column: 1;
     grid-row: 1;
+    /* 這一列的高度由右邊的網站地圖決定（253px），左欄在文章頁只有一句免責
+       （46px），首頁多一段圖片版權（93px）。
+       貼齊頂端的話下面會空一大塊，垂直置中之後那塊空白平均分到上下兩邊，
+       視覺上就不再像「左邊漏掉東西」⸺ 站主指定。
+       .wrap 的 align-items: start 是給整體用的，這裡單獨覆寫。 */
+    align-self: center;
   }
 
-  .disclaimer {
-    grid-column: 1;
-    grid-row: 2;
+  .footer-main > * + * {
+    margin-top: 1.25rem;
   }
 
   .site-map {
     grid-column: 2;
-    grid-row: 1 / span 2;
+    grid-row: 1;
     justify-self: end;
     text-align: right;
   }
 
   .colophon {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 2;
   }
 }
 
