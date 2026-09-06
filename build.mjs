@@ -1503,6 +1503,7 @@ function loadPosts() {
         path: full,
         slug,
         title: String(data.title),
+        // 頁尾網站地圖用的短標籤。/about/ 的 title 是「關於醫師」，跟首頁那個
         summary: String(data.summary || ""),
         author: String(data.author || CFG.author),
         tags: Array.isArray(data.tags) ? data.tags : [],
@@ -1708,6 +1709,9 @@ function loadPages() {
         path: full,
         slug,
         title: String(data.title),
+        // 頁尾網站地圖用的短標籤。/about/ 的 title 是「關於醫師」，跟首頁那個
+        // 區塊同名，兩個並排在地圖裡分不出差別 ⸺ 填 navLabel 就用它。
+        navLabel: String(data.navLabel || "").trim(),
         description,
         schemaType,
         unlisted: data.unlisted === true,
@@ -1989,6 +1993,7 @@ ${creditBlock(hero)}
       <section class="disclaimer">
         <p>${esc(CFG.disclaimer)}</p>
       </section>
+${footerNav(rel)}
       <p class="colophon">© ${new Date().getFullYear()} ${esc(CFG.author)}・${esc(CFG.title)}</p>
     </div>
   </footer>
@@ -2315,6 +2320,80 @@ ${groups
 }
 
 /**
+ * 首頁的四個區塊，只算一次。
+ *
+ * 這幾個函式是純的，但 clinicHoursBlock() 會對壞資料 console.warn ⸺ 算兩次
+ * 就會警告兩次。而頁尾的網站地圖跟首頁的錨點導覽需要看同一份結果（哪個區塊
+ * 真的有輸出），所以在這裡存一份給兩邊共用。
+ */
+let _homeBlocks = null;
+
+function homeBlocks() {
+  if (!_homeBlocks) {
+    _homeBlocks = {
+      specialties: specialtyBlock(),
+      clinicHours: clinicHoursBlock(),
+      authorBio: authorBioBlock({ intro: true }),
+    };
+  }
+  return _homeBlocks;
+}
+
+/**
+ * 首頁的區塊清單。錨點導覽與頁尾的網站地圖共用同一份定義 ⸺ 兩邊各寫一份
+ * 遲早會不同步，然後其中一邊會多出一個指向不存在錨點的項目。
+ *
+ * 判斷依據刻意是「區塊有沒有實際輸出」，不是「config 有沒有填」。這兩件事
+ * 曾經分岔過（門診時段的設定被覆蓋掉，區塊消失但別處還在連它）。
+ */
+const HOME_SECTIONS = [
+  ["specialties", "門診專長", (b) => !!b.specialties],
+  ["posts", "衛教文章", () => true],
+  ["author", "關於醫師", (b) => !!b.authorBio],
+  ["clinic", "門診時段", (b) => !!b.clinicHours],
+];
+
+/** main() 載入頁面後填進來，給頁尾的網站地圖列出站上的其他頁面。 */
+let LISTED_PAGES = [];
+
+/**
+ * 頁尾的網站地圖。
+ *
+ * 每一頁都有，所以連結一律以「/」開頭寫成站內絕對路徑，再由 rel 換算成相對
+ * 路徑 ⸺ 文章頁在 /posts/<slug>/ 底下，寫死 "#clinic" 會跳到文章自己的頁面
+ * 上（那裡沒有那個錨點），必須是 "../../#clinic"。這跟 authorBio.links 的
+ * 慣例是同一套。
+ *
+ * 只列首頁真的有輸出的區塊，加上 unlisted 以外的頁面。文章不列 ⸺ 那是
+ * 「衛教文章」那一項的工作，頁尾放六篇標題會變成第二個文章清單。
+ */
+function footerNav(rel = "") {
+  const b = homeBlocks();
+  const items = HOME_SECTIONS.filter(([, , ok]) => ok(b)).map(([id, label]) => [
+    `${rel}#${id}`,
+    label,
+  ]);
+
+  for (const pg of LISTED_PAGES) {
+    items.push([`${rel}${pg.slug}/`, pg.navLabel || pg.title]);
+  }
+
+  if (items.length < 2) return "";
+
+  return `      <nav class="site-map" aria-labelledby="site-map-heading">
+        <h2 id="site-map-heading">網站地圖</h2>
+        <ul>
+${items
+  .map(
+    ([href, label]) =>
+      `          <li><a href="${esc(href)}">${esc(label)}</a></li>`
+  )
+  .join("\n")}
+        </ul>
+      </nav>`;
+}
+
+/**
  * 首頁的錨點導覽條。
  *
  * 目的很單純：讓第一次來的人一眼看到這個站有什麼。刻意不做成頁籤 ⸺
@@ -2328,12 +2407,11 @@ ${groups
  * 項目依實際存在的區塊產生，不會指向空的錨點；
  * 只剩一項時整條不輸出，那時候它已經不是導覽了。
  */
-function homeNav({ hasSpecialties, hasClinicHours, hasPosts, hasAuthor }) {
-  const items = [];
-  if (hasSpecialties) items.push(["specialties", "門診專長"]);
-  if (hasPosts) items.push(["posts", "衛教文章"]);
-  if (hasAuthor) items.push(["author", "關於醫師"]);
-  if (hasClinicHours) items.push(["clinic", "門診時段"]);
+function homeNav({ hasPosts }) {
+  const b = homeBlocks();
+  const items = HOME_SECTIONS.filter(([id, , ok]) =>
+    id === "posts" ? hasPosts : ok(b)
+  ).map(([id, label]) => [id, label]);
 
   if (items.length < 2) return "";
 
@@ -2524,19 +2602,11 @@ ${p.summary ? `            <p class="card-summary">${esc(p.summary)}</p>\n` : ""
     )
     .join("\n");
 
-  const specialties = specialtyBlock();
-  const clinicHours = clinicHoursBlock();
+  // 三個區塊從 homeBlocks() 拿，跟頁尾的網站地圖吃同一份結果 ⸺ 判斷「這個
+  // 區塊有沒有輸出」的地方只有一處，導覽與地圖就不可能指向不存在的錨點。
+  const { specialties, clinicHours, authorBio } = homeBlocks();
   const visitCallout = visitCalloutBlock({});
-  const authorBio = authorBioBlock({ intro: true });
-  const nav = homeNav({
-    // 刻意看 specialtyBlock() 的實際輸出，而不是自己再判斷一次 CFG.specialties ⸺
-    // 資料格式改過一次（字串陣列 → { group, items }），兩邊各判斷一次遲早會不同步，
-    // 導覽就會多出一個指向不存在錨點的項目。區塊沒輸出，導覽就沒有那一項。
-    hasSpecialties: !!specialties,
-    hasClinicHours: !!clinicHours,
-    hasPosts: posts.length > 0,
-    hasAuthor: !!authorBio,
-  });
+  const nav = homeNav({ hasPosts: posts.length > 0 });
 
   const main = `${heroBlock(CFG.hero, "", true)}
 
@@ -3063,6 +3133,9 @@ function build() {
 
   const posts = loadPosts();
   const pages = loadPages();
+  // 頁尾的網站地圖要列出站上的其他頁面（目前只有 /about/）。unlisted 的不列 ⸺
+  // 那個旗標的意思就是「不要出現在任何清單裡」。
+  LISTED_PAGES = pages.filter((p) => !p.unlisted);
 
   // unlisted：頁面照樣產生，但不出現在任何「清單」裡 ⸺ 首頁、sitemap、RSS。
   // 頁面本身帶 noindex（見 headMeta），Google 不會收錄。這不是權限控制：

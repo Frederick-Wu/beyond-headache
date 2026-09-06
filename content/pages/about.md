@@ -1,5 +1,8 @@
 ---
 title: 關於醫師
+# 頁尾網站地圖用的短標籤 ⸺ 這一頁的 title 跟首頁「關於醫師」那個區塊同名，
+# 兩個並排在地圖裡分不出差別。
+navLabel: 完整醫師介紹
 updated: 2026-08-24
 # 讓這一頁的 JSON-LD 輸出 ProfilePage 並把 mainEntity 指回站台的 Person，
 # 也就是明確宣告「這一頁就是這個人的身分頁」。build.mjs 讀這個欄位決定型別，

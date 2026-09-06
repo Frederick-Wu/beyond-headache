@@ -1587,6 +1587,64 @@ tbody tr:last-child td {
   margin-top: 1.25rem;
 }
 
+/* 頁尾的網站地圖。窄螢幕就是頁尾裡的一段清單，到了 48rem 以上收成右欄，
+   左欄留給版權與免責 ⸺ 那兩段是要讀的字，地圖是拿來點的，分開比較清楚。
+   斷點用 48rem 而不是首頁那個 60rem：頁尾在文章頁的容器只有 --measure
+   （40rem），兩欄在那裡也放得下，不必等到首頁那麼寬才切。 */
+.site-map ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-map a {
+  display: inline-block;
+  /* 13px × 1.75 = 22.75，加上下各 0.7rem（22.4）＝ 45.15px，過 44px 觸控下限。
+     頁尾的連結一樣有人用手指點，不因為在最下面就縮水。 */
+  padding-block: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-map a:hover,
+.site-map a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 48rem) {
+  .site-footer > .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 3.5rem;
+    row-gap: 1.25rem;
+    align-items: start;
+  }
+
+  /* 上面那條 * + * 的段距在 grid 裡會跟 row-gap 疊加，換成 gap 控制。 */
+  .site-footer > .wrap > * + * {
+    margin-top: 0;
+  }
+
+  .credit,
+  .disclaimer {
+    grid-column: 1;
+  }
+
+  /* 跨兩列，跟左欄的兩段對齊起頭 */
+  .site-map {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .colophon {
+    grid-column: 1 / -1;
+  }
+}
+
 .credit {
   overflow-wrap: anywhere;
 }
