@@ -109,7 +109,7 @@ heroAlt: 頭痛地圖指南（下）封面，主題為次發性頭痛的原因�
 
 ## 延伸閱讀
 
-- [太陽穴兩邊隱隱作痛？6大頭痛位置、可能病因、常見3大原發性頭痛一次看：頭痛地圖指南(上)](https://blog.drminyangwu.com/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html)
+- [太陽穴兩邊隱隱作痛？6大頭痛位置、可能病因、常見3大原發性頭痛一次看：頭痛地圖指南(上)](../../posts/headache-map-part1/)
 - [吃冰會頭痛，也是一種病 – 什麼是「冰淇淋頭痛」？](https://blog.drminyangwu.com/2025/11/headachecold-stimulus-headache-brain-freeze-ice-cream.html)
 - [頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)

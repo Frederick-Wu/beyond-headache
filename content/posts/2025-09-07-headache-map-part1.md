@@ -134,13 +134,13 @@ heroAlt: 頭痛地圖指南（上）封面，標題為頭痛位置與可能病�
 本篇主要介紹頭痛位置、可能病因和3大常見的
 原發性頭痛：偏頭痛、緊縮型頭痛、叢發性頭痛。
 
-另一類是次發性頭痛，通常隱藏著其他疾病。如鼻竇性頭痛、頸源性頭痛、三叉神經痛等等，我放在下一篇：[當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](https://blog.drminyangwu.com/2025/09/secondary-headache-causes-warning-signs.html)
+另一類是次發性頭痛，通常隱藏著其他疾病。如鼻竇性頭痛、頸源性頭痛、三叉神經痛等等，我放在下一篇：[當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](../../posts/headache-map-part2/)
 
 如有以上任何症狀，歡迎掛號至門診討論喔！
 
 ## 延伸閱讀
 
-- [當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](https://blog.drminyangwu.com/2025/09/secondary-headache-causes-warning-signs.html)
+- [當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](../../posts/headache-map-part2/)
 - [頭痛看診前必讀，醫生會問我什麼問題？](https://blog.drminyangwu.com/2024/12/blog-post.html)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
