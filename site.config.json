@@ -68,21 +68,46 @@
     "alumniOf": [
       { "name": "高雄醫學大學", "type": "CollegeOrUniversity" }
     ],
-    "memberOfComment": "學會會籍，對應 /about/ 的「學術會員」七筆，順序照該頁。type 不填預設 Organization。url 只在 /about/ 頁面上真的出現過該學會網址時才填 ⸺ 目前只有台灣頭痛學會符合（那頁的「頭痛診療推薦醫師」與電子報連結都指向該學會網站），其餘六個學會的網址頁面上查不到，就留空不編。",
+    "memberOfComment": "學會會籍，對應 /about/ 的「學術會員」七筆，順序照該頁。type 不填預設 Organization。url 是學會的官方網站，來源是站主提供、並經逐一連線驗證（七個都回 200，網頁標題與學會名稱吻合）⸺ 不是從 /about/ 的內文抓的，那頁本來就沒寫學會網址。收錄標準是「這個組織的識別頁」，也就是機器可以拿它當這個組織身分的那一頁：台灣頭痛學會另外還有一個學術活動報名網站（ths.e-learning.tw），那是報名系統不是識別頁，刻意不收。查不到官方網站的學會就把 url 留空 ⸺ 拿臉書社團或單場活動頁充數，會讓機器把學會對到一個錯的實體，比留空更糟。",
     "memberOf": [
-      { "name": "台灣神經學學會" },
+      { "name": "台灣神經學學會", "url": "https://www.neuro.org.tw/" },
       { "name": "台灣頭痛學會", "url": "https://taiwanheadache.org.tw/" },
-      { "name": "台灣動作障礙學會" },
-      { "name": "台灣神經免疫醫學會" },
-      { "name": "台灣腦中風學會" },
-      { "name": "台灣臨床 TMS 腦刺激學會" },
-      { "name": "台灣肌肉骨骼神經超音波醫學會" }
+      { "name": "台灣動作障礙學會", "url": "https://www.tmds.org.tw/" },
+      { "name": "台灣神經免疫醫學會", "url": "https://www.tnms.com.tw/" },
+      { "name": "台灣腦中風學會", "url": "https://www.stroke.org.tw/" },
+      { "name": "台灣臨床 TMS 腦刺激學會", "url": "https://www.tctmss.com.tw/" },
+      { "name": "台灣肌肉骨骼神經超音波醫學會", "url": "https://www.tnmskus.org.tw/" }
     ],
-    "hasCredentialComment": "專業證照，輸出成 EducationalOccupationalCredential。收錄範圍刻意畫在「名稱本身就是證書」這條線上 ⸺ /about/ 的「專業證照」有十一筆，其中研討會、工作坊、讀書會的完訓紀錄是進修證明而不是執業資格，全部混在一起會稀釋掉真正有資格意義的那幾張。recognizedBy（發證機關）一律不填：/about/ 沒有寫發證單位，猜不得。date 用 /about/ 上標的年月，格式 YYYY-MM 或 YYYY。",
+    "hasCredentialComment": "專業證照，輸出成 EducationalOccupationalCredential。收錄範圍刻意畫在「名稱本身就是證書」這條線上 ⸺ /about/ 的「專業證照」有十一筆，其中研討會、工作坊、讀書會的完訓紀錄是進修證明而不是執業資格，全部混在一起會稀釋掉真正有資格意義的那幾張。date 用 /about/ 上標的年月，格式 YYYY-MM 或 YYYY。recognizedBy（發證機關）是選填：填了才輸出，沒填就整個欄位不出現 ⸺ /about/ 頁面上沒有寫發證單位，所以只有站主親口確認過的那幾筆填得出來。目前只有「神經科專科醫師證書」經站主確認由衛生福利部核發；另外兩張站主沒說，即使答案看起來很明顯也不要自己推論填上去，那是一個沒人查證過的宣告。值可以直接寫機構名稱字串（型別預設 Organization），或寫成 { name, type?, url? } 指定更精確的型別 ⸺ 衛生福利部是政府機關，所以填 GovernmentOrganization（它是 Organization 的子類，不影響合法性，只是更精確，與 medicalEntities 那邊挑 MedicalSignOrSymptom 的理由相同）。",
     "hasCredential": [
-      { "name": "神經科專科醫師證書", "date": "2023-10" },
-      { "name": "偏頭痛肉毒桿菌注射訓練合格證書", "date": "2024-06" },
-      { "name": "中華民國醫師證書", "date": "2018" }
+      {
+        "name": "神經科專科醫師證書",
+        "date": "2023-10",
+        "recognizedBy": { "name": "衛生福利部", "type": "GovernmentOrganization" }
+      },
+      {
+        "name": "偏頭痛肉毒桿菌注射訓練合格證書",
+        "date": "2024-06",
+        "recognizedBy": { "name": "台灣頭痛學會", "url": "https://taiwanheadache.org.tw/" }
+      },
+      {
+        "name": "中華民國醫師證書",
+        "date": "2018",
+        "recognizedBy": { "name": "衛生福利部", "type": "GovernmentOrganization" }
+      }
+    ],
+    "publicationsComment": "學術著作，輸出成 ScholarlyArticle，對應 /about/ 的「論文發表」那一段。這一段的份量和站上其他宣告不一樣 ⸺ 它是目前唯一能被第三方獨立查證的學術錨點：機器順著 PMID 就查得到 PubMed 上那筆記錄，確認「吳旻陽」這個名字真的掛在一篇可查的論文上。正因為價值來自可查證，收錄標準要嚴：只放查得到 PMID（或日後的 DOI 等公開識別碼）的正式期刊論文，研討會摘要、電子報邀稿、演講都不算，混進來會把這個錨點稀釋成一份自我宣告的清單。author 一律指回站台那一個 Person 的 @id，不另外展開一份人 ⸺ 同一頁出現兩個同名節點會把實體拆散，那正好毀掉這段資料的用意；共同作者也因此不建節點，要不要把他們建成獨立實體是另一個決定，在拿到各自可查證的識別碼之前不編。這些節點只輸出在 /about/ 那一頁：那裡是履歷，其他頁面帶著只會讓 graph 無謂變大。欄位：name 與 journal 必填，缺任一個 build.mjs 會警告並略過整筆；journal 寫期刊全名（/about/ 內文用的是 Acta Neurol Taiwan 這種慣用縮寫，人看得懂，但機器對實體要用全名）；datePublished 用 YYYY-MM-DD 或 YYYY；volume、issue、pageStart、pageEnd、pagination 有就填、沒有就不輸出；pmid 填了會同時輸出成 identifier（PropertyValue，propertyID 為 PMID）與 sameAs 的 PubMed 網址，而且是這筆資料 @id 的來源 ⸺ 所以 pmid 不要事後改動，那等於換掉一個實體的身分。",
+    "publications": [
+      {
+        "name": "Hyperintensity in Bilateral Posterior Limbs of Internal Capsule Due to Hypernatremia",
+        "journal": "Acta Neurologica Taiwanica",
+        "datePublished": "2024-09-30",
+        "volume": "33",
+        "issue": "3",
+        "pageStart": "127",
+        "pageEnd": "133",
+        "pmid": "37968847"
+      }
     ],
     "awardComment": "獲獎紀錄，對應 /about/ 的「獲獎紀錄」那一段。schema.org 的 award 是純文字欄位，所以連結放不進去 ⸺ 頁面上那個連結仍然在，這裡只是把同一件事講給機器聽。",
     "award": [

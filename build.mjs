@@ -1049,23 +1049,35 @@ function medicalSpecialty() {
 }
 
 /**
- * 機構節點（母校、學會）。設定裡寫 { name, url?, type? }，
- * type 沒填就用呼叫端給的預設值。name 空的那筆直接跳過。
+ * 單一機構節點（母校、學會、證書的發證機關）。
+ *
+ * 設定裡可以只寫機構名稱字串，或寫成 { name, url?, type? } 指定更精確的
+ * 型別與網址；type 沒填就用呼叫端給的預設值。名字是空的就回 null，
+ * 讓呼叫端整筆略過 ⸺ 一個沒有名字的機構節點，機器對不到任何實體。
  */
-function orgNodes(list, defaultType) {
-  if (!Array.isArray(list)) return [];
-  return list
-    .map((o) => {
-      const name = String((o && o.name) || "").trim();
-      if (!name) return null;
-      const node = { "@type": String((o && o.type) || defaultType), name };
-      if (o && o.url) node.url = o.url;
-      return node;
-    })
-    .filter(Boolean);
+function orgNode(value, defaultType) {
+  const o = typeof value === "string" ? { name: value } : value;
+  const name = String((o && o.name) || "").trim();
+  if (!name) return null;
+  const node = { "@type": String((o && o.type) || defaultType), name };
+  if (o && o.url) node.url = o.url;
+  return node;
 }
 
-/** 專業證照。date 是選填，/about/ 上沒標年月的就別編一個。 */
+/** 機構節點的清單版本（母校、學會）。 */
+function orgNodes(list, defaultType) {
+  if (!Array.isArray(list)) return [];
+  return list.map((o) => orgNode(o, defaultType)).filter(Boolean);
+}
+
+/**
+ * 專業證照。date 是選填，/about/ 上沒標年月的就別編一個。
+ *
+ * recognizedBy（發證機關）同樣是選填，而且刻意做成「沒填就整個欄位不輸出」⸺
+ * /about/ 頁面上沒有寫發證單位，所以這個值只能來自站主親口確認。三張證書裡
+ * 目前只有一張問得到答案，另外兩張就讓它空著：把猜出來的機關寫進結構化資料，
+ * 是一個沒人查證過的宣告，而這一整段資料的價值正好建立在「每一句都查得到」。
+ */
 function credentialNodes(list) {
   if (!Array.isArray(list)) return [];
   return list
@@ -1074,13 +1086,107 @@ function credentialNodes(list) {
       if (!name) return null;
       const node = { "@type": "EducationalOccupationalCredential", name };
       if (c && c.date) node.dateCreated = String(c.date);
+      const recognizedBy = c && orgNode(c.recognizedBy, "Organization");
+      if (recognizedBy) node.recognizedBy = recognizedBy;
       return node;
     })
     .filter(Boolean);
 }
 
-/** 作者的 Person 實體。sameAs 沒填就整個欄位不輸出，不留空陣列。 */
-function personNode() {
+/**
+ * 期刊節點。schema.org 描述「某期刊第幾卷第幾期」的標準寫法是三層巢狀：
+ * PublicationIssue ⊂ PublicationVolume ⊂ Periodical。卷或期沒填就少一層，
+ * 不會留下一個空殼節點。這些是匿名節點（沒有 @id），不會被別處參照。
+ */
+function periodicalNode(journal, pub) {
+  let node = { "@type": "Periodical", name: journal };
+  const volume = String((pub && pub.volume) || "").trim();
+  const issue = String((pub && pub.issue) || "").trim();
+  if (volume) {
+    node = { "@type": "PublicationVolume", volumeNumber: volume, isPartOf: node };
+  }
+  if (issue) {
+    node = { "@type": "PublicationIssue", issueNumber: issue, isPartOf: node };
+  }
+  return node;
+}
+
+/**
+ * 學術著作（ScholarlyArticle）。
+ *
+ * 這是站上唯一能被第三方獨立查證的學術錨點：PMID 讓機器可以離開這個站，
+ * 到 PubMed 去確認這個名字真的掛在一篇可查的論文上。所以 @id 用 PMID 來組
+ * ⸺ 換 slug、改頁面網址都不會動到它，那個識別碼本身就是這個實體的身分。
+ * 沒有 PMID 的才退回用序號，並在註解裡說明它不如前者穩定。
+ *
+ * author 只放 @id 參照，不重新展開一份 Person：同一頁出現兩個同名卻互不
+ * 相干的節點會把實體拆散，那正好毀掉這段資料存在的理由。被參照的 Person
+ * 就在同一個 @graph 裡（見 pageJsonLd()），不會是懸空參照。
+ *
+ * 只算一次：目前只有 /about/ 會呼叫，但警告訊息的紀律與其他 *Nodes() 一致。
+ */
+let PUBLICATION_NODES;
+function publicationNodes() {
+  if (PUBLICATION_NODES !== undefined) return PUBLICATION_NODES;
+
+  const list = (CFG.authorProfile || {}).publications;
+  if (!Array.isArray(list)) return (PUBLICATION_NODES = []);
+
+  return (PUBLICATION_NODES = list
+    .map((pub, i) => {
+      const name = String((pub && pub.name) || "").trim();
+      const journal = String((pub && pub.journal) || "").trim();
+      if (!name || !journal) {
+        console.warn(
+          `  ⚠ site.config.json 的 authorProfile.publications 第 ${i + 1} 筆` +
+            `缺 name 或 journal，已略過整筆`
+        );
+        return null;
+      }
+
+      const pmid = String((pub && pub.pmid) || "").trim();
+      const node = {
+        "@type": "ScholarlyArticle",
+        "@id": pmid ? `${HOME_URL}#pmid-${pmid}` : `${HOME_URL}#publication-${i + 1}`,
+        name,
+        author: { "@id": PERSON_ID },
+        isPartOf: periodicalNode(journal, pub),
+      };
+
+      const datePublished = String((pub && pub.datePublished) || "").trim();
+      if (datePublished) node.datePublished = datePublished;
+
+      const pageStart = String((pub && pub.pageStart) || "").trim();
+      const pageEnd = String((pub && pub.pageEnd) || "").trim();
+      const pagination = String((pub && pub.pagination) || "").trim();
+      if (pageStart) node.pageStart = pageStart;
+      if (pageEnd) node.pageEnd = pageEnd;
+      if (pagination) node.pagination = pagination;
+
+      if (pmid) {
+        // 識別碼與可點的網址是兩件事，兩個都給：propertyID 讓機器知道這串
+        // 數字是什麼，sameAs 讓它走得過去。
+        node.identifier = {
+          "@type": "PropertyValue",
+          propertyID: "PMID",
+          value: pmid,
+        };
+        node.sameAs = [`https://pubmed.ncbi.nlm.nih.gov/${pmid}/`];
+      }
+      return node;
+    })
+    .filter(Boolean));
+}
+
+/**
+ * 作者的 Person 實體。sameAs 沒填就整個欄位不輸出，不留空陣列。
+ *
+ * opts.publications 是「這一頁同時會輸出的 ScholarlyArticle 節點」。有給才
+ * 長出 subjectOf ⸺ 這個參數存在的唯一理由是不要產生懸空 @id：論文節點只
+ * 出現在 /about/，若 Person 每一頁都指過去，其他七頁就會指向一個不存在的
+ * 節點。要多帶一個欄位，就得把節點也一起帶上，兩者綁在同一個呼叫裡。
+ */
+function personNode(opts = {}) {
   const profile = CFG.authorProfile || {};
   const node = {
     "@type": "Person",
@@ -1129,6 +1235,16 @@ function personNode() {
     ? profile.award.map((a) => String(a).trim()).filter(Boolean)
     : [];
   if (award.length) node.award = award;
+
+  // 反向連回學術著作，讓兩個節點雙向走得通 ⸺ 只有 ScholarlyArticle.author
+  // 一條邊的話，從人出發是走不到論文的。schema.org 的 Person 沒有「著作」
+  // 這個屬性（沒有 authorOf），subjectOf 是 Thing 層級唯一指得到 CreativeWork
+  // 的欄位，取捨是它的字面語意偏向「關於這個人的作品」，比實際情況鬆一點。
+  // 這裡選它，是因為另一個選擇是完全不連 ⸺ 那才真的少一半資訊。
+  const publications = Array.isArray(opts.publications) ? opts.publications : [];
+  if (publications.length) {
+    node.subjectOf = publications.map((p) => ({ "@id": p["@id"] }));
+  }
 
   const sameAs = Array.isArray(profile.sameAs)
     ? profile.sameAs.filter(Boolean)
@@ -1302,6 +1418,9 @@ function postJsonLd(post) {
 function pageJsonLd(page) {
   const url = abs(`${page.slug}/`);
   const image = imageNode(page.hero);
+  // 學術著作只掛在身分頁。那一頁是履歷，論文本來就寫在上面（「論文發表」
+  // 那一段）；其他頁面帶著它，等於每一篇衛教文都夾一份履歷，graph 無謂變大。
+  const publications = page.schemaType === "ProfilePage" ? publicationNodes() : [];
 
   const node = {
     "@type": page.schemaType,
@@ -1327,7 +1446,13 @@ function pageJsonLd(page) {
 
   return {
     "@context": "https://schema.org",
-    "@graph": [node, breadcrumb, websiteNode(), personNode()],
+    "@graph": [
+      node,
+      breadcrumb,
+      websiteNode(),
+      personNode({ publications }),
+      ...publications,
+    ],
   };
 }
 
