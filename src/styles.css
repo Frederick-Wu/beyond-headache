@@ -592,6 +592,13 @@ main {
   margin-top: 0.85rem;
 }
 
+/* 標籤是這篇文章的收尾，「關於醫師」是另一個獨立區塊 ⸺ 兩者貼在一起會讓人以為
+   標籤是那張作者卡片的一部分。用相鄰選擇器加距離，而不是給 .tag-row 加 margin-bottom：
+   標籤後面不一定總是接作者卡片。 */
+.tag-row + .author-bio {
+  margin-top: 2.5rem;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -727,9 +734,9 @@ a.tag:focus-visible {
 .post-body h3 {
   font-size: 1.125rem;
   line-height: 1.6;
-  /* 比二級標題的 2.5rem 還大，因為二級標題有一條分隔線幫忙區隔，三級標題沒有 ⸺
-     全靠上方的留白告訴讀者「上一小節結束了」。 */
-  margin-top: 3.25rem;
+  /* 比二級標題的 2.5rem 略大，因為二級標題有一條分隔線幫忙區隔，三級標題沒有 ⸺
+     全靠上方的留白告訴讀者「上一小節結束了」。3.25rem 試過太空，3rem 是落點。 */
+  margin-top: 3rem;
   color: var(--accent);
 }
 
@@ -864,8 +871,14 @@ a.tag:focus-visible {
 /* 標題和它底下的第一段是一組 ⸺ 二級、三級都適用。標題浮在半空中、跟前後距離
    一樣遠的話，讀者得多花一次判斷才知道它在替哪一段命名。
    章節之間的區隔靠標題上方的留白與分隔線，不靠標題下方的空白。 */
-.post-body :is(h2, h3) + * {
-  margin-top: 0.75rem;
+.post-body h2 + * {
+  /* 二級標題字級大、又帶一條分隔線，底下留 0.75rem 會顯得壓迫。
+     比三級標題多一點，但仍明顯小於段落之間的 2rem ⸺ 分組關係還是看得出來。 */
+  margin-top: 1.5rem;
+}
+
+.post-body h3 + * {
+  margin-top: 1rem;
 }
 
 /* 圖片和它底下的說明文字是一組。段距一律 2rem 的話，讀者分不出哪段文字在講哪張圖

@@ -33,7 +33,7 @@
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../styles.css?v=a70d1ee3">
+  <link rel="stylesheet" href="../../styles.css?v=eb28d14e">
   <link rel="alternate" type="application/rss+xml" title="頭痛之外" href="https://drminyangwu.com/feed.xml">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -346,10 +346,10 @@
 <p><strong>粗體</strong>用兩個星號，<em>斜體</em>用一個，<del>刪除線</del>用兩個波浪號。行內程式碼或藥名之類想凸顯的字用反引號包起來，像 <code>topiramate</code> 這樣。</p>
 <p>段落中間直接換行不會產生斷行，中文會自動接起來，所以可以放心在編輯器裡折行。想要真正的斷行，在行尾打兩個空白。</p>
 <h2 id="清單">清單</h2>
-<p>無序清單：</p>
+<p class="lead-in">無序清單：</p>
 <ul><li>第一項</li><li><p>第二項</p>
 <ul><li>巢狀的子項目</li><li>再一個</li></ul></li><li>第三項</li></ul>
-<p>有序清單：</p>
+<p class="lead-in">有序清單：</p>
 <ol><li>先問病史</li><li>再做神經學檢查</li><li>最後才決定要不要影像</li></ol>
 <h2 id="引用">引用</h2>
 <blockquote><p>病人不會照著教科書生病。</p>
@@ -427,6 +427,11 @@
         </div>
 
         <footer class="post-footer">
+          <nav class="tag-row" aria-label="文章主題">
+            <ul class="tag-list">
+              <li><span class="tag tag-plain">關於本站</span></li>
+            </ul>
+          </nav>
           <section class="author-bio" aria-labelledby="author">
             <h2 class="section-label section-label--avatar" id="author">
               <img class="author-avatar" src="../../assets/avatar-wu-min-yang.jpg"
@@ -453,6 +458,16 @@
 
   <footer class="site-footer">
     <div class="wrap">
+      <nav class="site-map" aria-labelledby="site-map-heading">
+        <h2 id="site-map-heading">網站地圖</h2>
+        <ul>
+          <li><a href="../../#specialties">門診專長</a></li>
+          <li><a href="../../#posts">衛教文章</a></li>
+          <li><a href="../../#author">關於醫師</a></li>
+          <li><a href="../../#clinic">門診時段</a></li>
+          <li><a href="../../about/">完整醫師介紹</a></li>
+        </ul>
+      </nav>
       <section class="credit">
         <h2>圖片版權</h2>
         <p>門診治療現場，吳旻陽 醫師攝。照片經病人同意後公開使用。版權所有，未經同意請勿轉載。</p>
