@@ -1725,6 +1725,12 @@ tbody tr:last-child td {
   .footer-main {
     grid-column: 1;
     grid-row: 1;
+    /* 這一列的高度由右邊的網站地圖決定（253px），左欄在文章頁只有一句免責
+       （46px），首頁多一段圖片版權（93px）。
+       貼齊頂端的話下面會空一大塊，垂直置中之後那塊空白平均分到上下兩邊，
+       視覺上就不再像「左邊漏掉東西」⸺ 站主指定。
+       .wrap 的 align-items: start 是給整體用的，這裡單獨覆寫。 */
+    align-self: center;
   }
 
   .footer-main > * + * {
