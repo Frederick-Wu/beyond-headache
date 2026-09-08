@@ -25,3 +25,9 @@ desktop.ini
 
 # 新文章產線的工作單與查核表，同樣是過程檔案
 .workroom/
+
+# Google 服務帳戶金鑰 —— 正式位置在 repo 外面（~/.secrets/gsc/），
+# 這幾條只是防呆，避免不小心把金鑰放進專案裡就 commit 出去。
+*service-account*.json
+*-gsc-*.json
+.secrets/
