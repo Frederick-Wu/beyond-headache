@@ -2386,19 +2386,29 @@ let LISTED_PAGES = [];
  */
 function footerNav(rel = "") {
   const b = homeBlocks();
-  const items = HOME_SECTIONS.filter(([, , ok]) => ok(b)).map(([id, label]) => [
-    `${rel}#${id}`,
-    label,
-  ]);
+  const items = [];
+
+  for (const [id, label, ok] of HOME_SECTIONS) {
+    if (!ok(b)) continue;
+    items.push([`${rel}#${id}`, label]);
+    // 通往 /tags/ 的入口。首頁有一條，但文章頁沒有 ⸺ 讀完一篇想找同主題的
+    // 其他文章，是文章頁才會冒出來的念頭，而頁尾是唯一每頁都在的地方。
+    //
+    // 緊跟在「衛教文章」後面：這兩項是同一批文章的兩種進法（依時間排、依
+    // 主題排），中間隔著別的項目會讓人以為它們是不相干的東西。
+    // 條件與首頁那條相同：沒有任何標籤達門檻時 /tags/ 不存在，連過去會是 404。
+    if (id === "posts" && TAG_INDEX.size)
+      items.push([`${rel}tags/`, TAGS_INDEX_TITLE]);
+  }
+
+  // 保險：萬一哪天 posts 區塊被拿掉或改名，上面那個 if 就再也不會成立，
+  // /tags/ 會從整個頁尾靜靜消失。寧可讓它掉到清單最後，也不要不見。
+  if (TAG_INDEX.size && !items.some(([href]) => href.endsWith("tags/")))
+    items.push([`${rel}tags/`, TAGS_INDEX_TITLE]);
 
   for (const pg of LISTED_PAGES) {
     items.push([`${rel}${pg.slug}/`, pg.navLabel || pg.title]);
   }
-
-  // 通往 /tags/ 的入口。首頁有一條，但文章頁沒有 ⸺ 讀完一篇想找同主題的
-  // 其他文章，是文章頁才會冒出來的念頭，而頁尾是唯一每頁都在的地方。
-  // 條件與首頁那條相同：沒有任何標籤達門檻時 /tags/ 不存在，連過去會是 404。
-  if (TAG_INDEX.size) items.push([`${rel}tags/`, TAGS_INDEX_TITLE]);
 
   if (items.length < 2) return "";
 
