@@ -2395,6 +2395,11 @@ function footerNav(rel = "") {
     items.push([`${rel}${pg.slug}/`, pg.navLabel || pg.title]);
   }
 
+  // 通往 /tags/ 的入口。首頁有一條，但文章頁沒有 ⸺ 讀完一篇想找同主題的
+  // 其他文章，是文章頁才會冒出來的念頭，而頁尾是唯一每頁都在的地方。
+  // 條件與首頁那條相同：沒有任何標籤達門檻時 /tags/ 不存在，連過去會是 404。
+  if (TAG_INDEX.size) items.push([`${rel}tags/`, TAGS_INDEX_TITLE]);
+
   if (items.length < 2) return "";
 
   return `      <nav class="site-map" aria-labelledby="site-map-heading">

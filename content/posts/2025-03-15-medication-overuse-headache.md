@@ -1,12 +1,18 @@
 ---
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
 date: 2025-03-15
-updated: 2026-04-01
+updated: 2026-09-08
 summary: >
   止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險
   族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，
   什麼情況需要考慮住院。
 tags: [頭痛]
+about: [藥物過度使用頭痛, 偏頭痛]
+mentions: [頭痛]
+citation:
+  - 國際頭痛疾病分類 ICHD-3 中文版 | https://ichd-3.org/wp-content/uploads/2019/11/ICHD-3_Taiwan-version_Mandarin_Traditional-Chinese.pdf
+  - Limmroth V, et al. Features of medication overuse headache following overuse of different acute headache drugs. Neurology 2002 | https://pubmed.ncbi.nlm.nih.gov/12370454/
+  - Diener HC, et al. Pathophysiology, prevention, and treatment of medication overuse headache. Nat Rev Neurol 2016 | https://pubmed.ncbi.nlm.nih.gov/27615418/
 hero: assets/medication-overuse-headache-01.jpg
 heroWidth: 1200
 heroHeight: 628
@@ -30,7 +36,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 以頭痛來說，止痛藥剛開始有效，到後來逐漸無效，甚至導致更嚴重的頭痛。於是只好吃更多、吃更重、吃更強的藥，永遠沒有盡頭，陷入了惡性循環。最後有沒有吃止痛藥都會痛起來。
 
-如果有這樣的情形，小心是否患上了「**藥物過度使用頭痛****（****Medication Overuse Headache）**」、也有人稱為「反彈性頭痛（Rebound headache）」。
+如果有這樣的情形，小心是否患上了「**藥物過度使用頭痛（Medication Overuse Headache）**」、也有人稱為「反彈性頭痛（Rebound headache）」。
 
 藥物過度使用頭痛在一般人口的盛行率約為 1～2%，換句話說，光是在台灣，約有兩百多萬人罹患此病，其中慢性頭痛患者中更是高達 50%！平均年齡為 40～45 歲。大致上也和[偏頭痛盛行的年齡](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point0)相符。
 
@@ -59,7 +65,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 ## 哪些是藥物過度使用頭痛的風險族群？
 
-![藥物過度使用頭痛的風險族群分析 - visual selection](../../assets/medication-overuse-headache-04.jpg)
+![藥物過度使用頭痛的風險因素心智圖，分為個人症狀、生活型態、藥物史、族群特徵四大類](../../assets/medication-overuse-headache-04.jpg)
 
 根據於 2016 年德國發表的[文獻](https://pubmed.ncbi.nlm.nih.gov/27615418/)指出，藥物過度使用頭痛之**危險因子**，以各層面來說明的話，包括如下：
 
@@ -90,7 +96,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 - 鎮靜安眠藥
 - 鴉片類藥物（Opioids）
 
-![藥物過度使用頭痛的風險族群分析 - visual selection(1)](../../assets/medication-overuse-headache-05.jpg)
+![藥物過度使用頭痛各項危險因子的風險增加倍數折線圖：憂鬱焦慮 4.7 倍、代謝症候群 5.3 倍、鎮定劑安眠藥 5.2 倍、缺乏運動 2.7 倍](../../assets/medication-overuse-headache-05.jpg)
 
 從上面的圖表可以知道，**最容易**演變為藥物過度使用頭痛的危險因子為：
 
@@ -201,6 +207,5 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 - [台灣頭痛學會電子報 第238期](https://taiwanheadache.org.tw/newsletter/%e7%ac%ac238%e6%9c%9f/)：再訪藥物過度使用頭痛：2024 update — 台北榮民總醫院 神經內科/實證醫學科 梁仁峯醫師
 - [台灣頭痛學會電子報 第177期](https://taiwanheadache.org.tw/wp-content/uploads/2021/03/epaper177.pdf)：簡介「藥物過度使用頭痛」— 台北亞東紀念醫院 神經內科 賴資賢醫師
-- [家庭醫學與基層醫療：藥物過度使用性頭痛](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.tafm.org.tw/ehc-tafm/s/viewDocument%3FdocumentId%3Df125937a90ed4d538cae330fef25afe0&ved=2ahUKEwioyKDozYaMAxWroK8BHemhIwQQFnoECBcQAQ&usg=AOvVaw22GhjX_h_dRpv61eVUcCVF)
-- [網路文章：愈吃愈痛-止痛藥地獄](https://www.yhtuneuro.com/l/%e8%a4%87%e8%a3%bd%e4%be%86%e6%ba%90%ef%bc%9a-%e5%90%83%e4%ba%86%e5%b0%b1%e5%81%8f%e9%a0%ad%e7%97%9b%ef%bc%9f/?fbclid=IwY2xjawI9KuNleHRuA2FlbQIxMQABHcMF3HLqy4uDJwNatZgD8zwvOx3mlPvWZXEzPL0W-JyQ-n1g74XkX44dog_aem_BoCUmaoS8M-JY7Zmzmhe3A)
+- [家庭醫學與基層醫療：藥物過度使用性頭痛](https://www.tafm.org.tw/ehc-tafm/s/viewDocument?documentId=f125937a90ed4d538cae330fef25afe0)
 - 2024 年台灣頭痛學會年會講座：How to deal with migraine with MOH？ 如何應對偏頭痛併發藥物過度使用頭痛之患者 — 台北榮民總醫院 神經內科/實證醫學科 梁仁峯醫師
