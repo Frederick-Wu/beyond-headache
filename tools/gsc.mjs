@@ -6,8 +6,8 @@
 //   node tools/gsc.mjs perf [天數]         搜尋成效：熱門查詢與熱門頁面（預設 28 天）
 //   node tools/gsc.mjs whoami             確認金鑰讀得到、權限有通
 //
-// 金鑰預設讀 C:\Users\FREDERICK\.secrets\gsc\service-account.json，
-// 可用環境變數 GSC_KEY 覆寫。金鑰「絕對不能」放進這個 repo。
+// 金鑰預設讀 ~/.secrets/gsc/service-account.json，可用環境變數 GSC_KEY 覆寫。
+// 金鑰「絕對不能」放進這個 repo。
 
 import { readFileSync } from 'node:fs'
 import { createSign } from 'node:crypto'
