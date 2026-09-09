@@ -1,7 +1,7 @@
 ---
 title: 太陽穴兩邊隱隱作痛？6 大頭痛位置、可能病因、常見 3 個原發性頭痛一次看：頭痛地圖指南(上)
 date: 2025-09-07
-updated: 2026-08-07
+updated: 2026-09-09
 summary: >
   頭痛的位置是問診時不能放過的線索。這篇整理後腦勺、太陽穴、單側、前額、眼眶、整顆頭
   這 6 個位置各自可能的病因，並說明原發性與次發性兩種分類，以及最常見的三種原發性頭痛 ⸺
@@ -150,7 +150,7 @@ heroAlt: 頭痛地圖指南（上）封面，標題為頭痛位置與可能病�
 
 - [當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)](../../posts/headache-map-part2/)
 - [頭痛看診前，先記下這五件事](../../posts/before-your-visit/)
-- [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](https://blog.drminyangwu.com/2024/11/10.html)
+- [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
 

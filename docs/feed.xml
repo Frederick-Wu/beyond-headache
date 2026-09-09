@@ -6,18 +6,8 @@
     <description>「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Tue, 08 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>神經內科門診的三種病人</title>
-      <link>https://drminyangwu.com/posts/three-kinds-of-patients/</link>
-      <guid isPermaLink="true">https://drminyangwu.com/posts/three-kinds-of-patients/</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
-      <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>我的門診大致分成三條線：頭痛與其他慢性疼痛、腦血管疾病、神經退化（例如巴金森氏症、失智症）。另外還有一群不太好歸類的症狀 ⸺ 頭暈、手腳發麻、顫抖、走路不穩、記性變差。這篇說明每一條線大概是什麼樣的人，讓你先知道自己的狀況落在哪裡。</description>
-      <category>門診觀察</category>
-      <category>就醫準備</category>
-    </item>
     <item>
       <title>頭痛看診前，先記下這五件事</title>
       <link>https://drminyangwu.com/posts/before-your-visit/</link>
@@ -27,6 +17,16 @@
       <description>最有用的準備是記錄，不是查資料。進診間前如果講得出這次是什麼時候開始的、一個月痛幾天、止痛藥一週吃幾天，門診時間就能省下來討論下一步。文末也附上哪些狀況不要等門診、該當天就醫。</description>
       <category>就醫準備</category>
       <category>頭痛</category>
+    </item>
+    <item>
+      <title>神經內科門診的三種病人</title>
+      <link>https://drminyangwu.com/posts/three-kinds-of-patients/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/three-kinds-of-patients/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>我的門診大致分成三條線：頭痛與其他慢性疼痛、腦血管疾病、神經退化（例如巴金森氏症、失智症）。另外還有一群不太好歸類的症狀 ⸺ 頭暈、手腳發麻、顫抖、走路不穩、記性變差。這篇說明每一條線大概是什麼樣的人，讓你先知道自己的狀況落在哪裡。</description>
+      <category>門診觀察</category>
+      <category>就醫準備</category>
     </item>
     <item>
       <title>頭痛不是只能吃止痛藥</title>
@@ -82,6 +82,16 @@
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0800</pubDate>
       <dc:creator>吳旻陽 醫師</dc:creator>
       <description>止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，什麼情況需要考慮住院。</description>
+      <category>頭痛</category>
+    </item>
+    <item>
+      <title>10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你</title>
+      <link>https://drminyangwu.com/posts/headache-red-flags/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/headache-red-flags/</guid>
+      <pubDate>Sat, 30 Nov 2024 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>頭痛什麼時候該看醫生？這篇整理 10 個需要就醫評估的危險警訊 ⸺ 雷擊型頭痛、伴隨神經症狀或發燒、50 歲後才出現的頭痛、姿勢改變或用力會影響疼痛、懷孕與產後、慢性病史，以及止痛藥越吃越重卻沒有改善。</description>
+      <category>就醫準備</category>
       <category>頭痛</category>
     </item>
   </channel>

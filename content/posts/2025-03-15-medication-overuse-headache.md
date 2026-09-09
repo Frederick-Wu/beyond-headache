@@ -1,7 +1,7 @@
 ---
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
 date: 2025-03-15
-updated: 2026-09-08
+updated: 2026-09-09
 summary: >
   止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險
   族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，
@@ -188,7 +188,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 為了避免藥物過度使用頭痛，我們應該建立正確的用藥觀念、別反過來讓止痛藥害了自己！
 1. **遵循醫囑用藥**：不自行增加藥量或頻率。[台灣頭痛學會](https://taiwanheadache.org.tw/medication-ins/%E6%AD%A2%E7%97%9B%E8%97%A5%E8%A6%81%E6%80%8E%E9%BA%BC%E5%90%83%E6%89%8D%E5%A5%BD%EF%BC%9F/)也建議，**急性止痛藥物每週不建議超過 2 天，每月不建議超過 8 天 。**
 2. **掌握頭痛情形**：了解自己頭痛發作位置、誘發因素、相關症狀等等。並諮詢神經科醫師，進行評估和檢查，找出是否有背後原因。 歡迎參考「[頭痛看診前，先記下這五件事](../../posts/before-your-visit/)」、「[頭痛地圖指南(上)](../../posts/headache-map-part1/)」。
-3. **自我察覺**：留意止痛藥過度使用的警訊。歡迎參考「[頭痛要留意的 10 個警訊](https://blog.drminyangwu.com/2024/11/10.html)」。
+3. **自我察覺**：留意止痛藥過度使用的警訊。歡迎參考「[頭痛要留意的 10 個警訊](/posts/headache-red-flags/)」。
 4. **預防勝於治療**： 維持運動習慣、控制體態、撰寫[頭痛日記](https://blog.drminyangwu.com/2024/12/blog-post.html#point5)... 等生活習慣調整。
 
 諸多細節，也感謝您閱讀到這裡，歡迎到診間找醫師討論喔！
@@ -200,7 +200,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 - [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
 - [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)
 - [台灣新型 Gepant 口服藥物大車拼](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
-- [我只是這幾天睡不好頭比較痛，有需要去看醫生嗎？ 頭痛要留意的 10 個警訊](https://blog.drminyangwu.com/2024/11/10.html)
+- [我只是這幾天睡不好頭比較痛，有需要去看醫生嗎？ 頭痛要留意的 10 個警訊](/posts/headache-red-flags/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 
 ## 參考資料
