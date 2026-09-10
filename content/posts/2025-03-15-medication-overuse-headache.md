@@ -1,7 +1,7 @@
 ---
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
 date: 2025-03-15
-updated: 2026-09-09
+updated: 2026-09-10
 summary: >
   止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險
   族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，
@@ -165,7 +165,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 - 規律作息、充足睡眠
 - 適度運動、放鬆身心
-- [頭痛日記](https://blog.drminyangwu.com/2024/12/blog-post.html#point5)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point0)！
+- [頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point0)！
 
 相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](https://blog.drminyangwu.com/2024/10/2024-gepant.html) 受體拮抗劑當中，[Rimegepant（紐舒泰）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)。
 
@@ -189,7 +189,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 1. **遵循醫囑用藥**：不自行增加藥量或頻率。[台灣頭痛學會](https://taiwanheadache.org.tw/medication-ins/%E6%AD%A2%E7%97%9B%E8%97%A5%E8%A6%81%E6%80%8E%E9%BA%BC%E5%90%83%E6%89%8D%E5%A5%BD%EF%BC%9F/)也建議，**急性止痛藥物每週不建議超過 2 天，每月不建議超過 8 天 。**
 2. **掌握頭痛情形**：了解自己頭痛發作位置、誘發因素、相關症狀等等。並諮詢神經科醫師，進行評估和檢查，找出是否有背後原因。 歡迎參考「[頭痛看診前，先記下這五件事](../../posts/before-your-visit/)」、「[頭痛地圖指南(上)](../../posts/headache-map-part1/)」。
 3. **自我察覺**：留意止痛藥過度使用的警訊。歡迎參考「[頭痛要留意的 10 個警訊](/posts/headache-red-flags/)」。
-4. **預防勝於治療**： 維持運動習慣、控制體態、撰寫[頭痛日記](https://blog.drminyangwu.com/2024/12/blog-post.html#point5)... 等生活習慣調整。
+4. **預防勝於治療**： 維持運動習慣、控制體態、撰寫[頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)... 等生活習慣調整。
 
 諸多細節，也感謝您閱讀到這裡，歡迎到診間找醫師討論喔！
 

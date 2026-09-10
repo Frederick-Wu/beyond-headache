@@ -725,17 +725,34 @@ function markdown(src) {
     else i++;
   }
 
-  /* 以冒號結尾、而且下一塊是標題或清單的段落，是「引言」而不是獨立的一段 ⸺
-     像「根據國際頭痛疾病分類（ICHD-3），定義為：」後面接著三個診斷條件。
-     引言和它引出的內容之間留一般段距，讀起來會像兩件不相干的事，所以標記出來
-     交給 CSS 收緊。這個判斷要看文字內容，CSS 選擇器做不到，只能在這裡處理。 */
+  /* 段落的兩種文字特徵標記。兩者可以同時成立（「▲小提醒：」後面接一份清單就是），
+     所以是累加 class 而不是二選一 ⸺ 早期版本讓引言先跑、旁註用 /^<p>/ 比對，
+     結果同時符合的段落會漏掉旁註那一半，同一篇裡有的 ▲ 有樣式、有的沒有。 */
+  const addClass = (html, name) =>
+    /^<p class="/.test(html)
+      ? html.replace(/^<p class="/, `<p class="${name} `)
+      : html.replace(/^<p>/, `<p class="${name}">`);
+
+  /* 一、旁註 ⸺ 以 ▲ 開頭的段落。站主從舊部落格帶過來的寫法，作用是在正文旁邊
+     補一句「別誤會」：「有 6 成是單側痛，並非只偏單邊痛」「平躺三五分鐘就改善，
+     不算是低腦壓頭痛」。它比內文輕，不是比內文重，所以不套引言區塊那種強調框
+     ⸺ 那個外觀留給分診警告那類要讀者停下來的內容，用多了就不值錢了。
+     ▲ 從文字裡取出來，改由 CSS 的 ::before 掛在左邊做懸掛標記。 */
+  for (let k = 0; k < out.length; k++) {
+    if (!/^<p>▲/.test(out[k])) continue;
+    out[k] = addClass(out[k].replace(/^<p>▲\s*/, "<p>"), "aside");
+  }
+
+  /* 二、引言 ⸺ 以冒號結尾、而且下一塊是標題或清單的段落，是「引言」而不是
+     獨立的一段，像「根據國際頭痛疾病分類（ICHD-3），定義為：」後面接著三個
+     診斷條件。不標記的話兩者之間會留一般段距，讀起來像兩件不相干的事。
+     這兩個判斷都要看文字內容，CSS 選擇器做不到，只能在這裡處理。 */
   for (let k = 0; k < out.length - 1; k++) {
-    const cur = out[k];
-    if (!/^<p>/.test(cur)) continue;
-    const text = cur.replace(/<[^>]*>/g, "").trim();
+    if (!/^<p[ >]/.test(out[k])) continue;
+    const text = out[k].replace(/<[^>]*>/g, "").trim();
     if (!/[：:]$/.test(text)) continue;
     if (!/^<(h[2-6]|ul|ol)\b/.test(out[k + 1])) continue;
-    out[k] = cur.replace(/^<p>/, '<p class="lead-in">');
+    out[k] = addClass(out[k], "lead-in");
   }
 
   return out.join("\n");

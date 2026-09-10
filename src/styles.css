@@ -917,6 +917,52 @@ a.tag:focus-visible {
   margin-top: 0.75rem;
 }
 
+/* 旁註 ⸺ 以 ▲ 開頭的段落，由 build.mjs 依文字內容標上 class（見那裡的說明）。
+   它補充的是上一段，所以往上收到 1rem，不用段落之間的 2rem；字小一號、色淡一階，
+   讀者掃過去就知道「這句晚點再看也可以」。
+
+   刻意不做成框。框是引言的語彙，那個外觀在這個站的意思是「停下來看這段」，
+   目前用在分診警告那類內容上。旁註要的是相反的事 ⸺ 兩者共用外觀的話，
+   叫人去急診的那一段就跟「1-2 成的患者會出現預兆」一樣重，警告就不值錢了。 */
+.post-body p.aside {
+  margin-top: 1rem;
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+/* ▲ 從句首抽出來掛在左邊，內文的每一行才對得齊 ⸺ 留在文字裡的話，第二行會
+   縮回三角形底下，整段看起來像沒對好。
+   line-height 的 2.71 = 1.9 ÷ 0.7：把這個 0.7em 的字撐成和母段落第一行等高的
+   行框，它才會落在第一行的中線上。改了上面的 font-size 或 line-height，
+   這個數字要跟著重算，否則三角形會浮高或沉下去。 */
+.post-body p.aside::before {
+  content: "▲";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.7em;
+  line-height: 2.71;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+/* 連續兩則旁註講的是同一件事的兩個面向，用段落的距離會把它們拆成兩組。 */
+.post-body p.aside + p.aside {
+  margin-top: 0.75rem;
+}
+
+/* 旁註引出的清單是那則旁註的一部分 ⸺〈頭痛地圖(下)〉的「▲小提醒：」底下就是
+   兩點說明。不跟著降一階的話會變成「小字引出大字」，讀者會以為清單是新的一段
+   正文，旁註那一行反而像被遺落的標題。 */
+.post-body p.aside + :is(ul, ol) {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
 /* 標題底下緊接圖片時，圖片是這一節的開場，不該再拉開 ⸺ 圖片本身的 3.5rem 上距
    選擇器比標題規則更明確會贏，所以要在這裡明確蓋回來。 */
 .post-body :is(h2, h3) + p:has(> img:only-child) {
