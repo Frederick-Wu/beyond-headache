@@ -6,7 +6,7 @@
     <description>「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Thu, 10 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>頭痛看診前，先記下這五件事</title>
@@ -19,6 +19,15 @@
       <category>頭痛</category>
     </item>
     <item>
+      <title>頭痛不是只能吃止痛藥</title>
+      <link>https://drminyangwu.com/posts/beyond-painkillers/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/beyond-painkillers/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、肉毒桿菌注射、神經阻斷術。沒有哪一種比較好，但如果你以為只剩下忍耐，那不一定是真的。</description>
+      <category>頭痛</category>
+    </item>
+    <item>
       <title>神經內科門診的三種病人</title>
       <link>https://drminyangwu.com/posts/three-kinds-of-patients/</link>
       <guid isPermaLink="true">https://drminyangwu.com/posts/three-kinds-of-patients/</guid>
@@ -27,15 +36,6 @@
       <description>我的門診大致分成三條線：頭痛與其他慢性疼痛、腦血管疾病、神經退化（例如巴金森氏症、失智症）。另外還有一群不太好歸類的症狀 ⸺ 頭暈、手腳發麻、顫抖、走路不穩、記性變差。這篇說明每一條線大概是什麼樣的人，讓你先知道自己的狀況落在哪裡。</description>
       <category>門診觀察</category>
       <category>就醫準備</category>
-    </item>
-    <item>
-      <title>頭痛不是只能吃止痛藥</title>
-      <link>https://drminyangwu.com/posts/beyond-painkillers/</link>
-      <guid isPermaLink="true">https://drminyangwu.com/posts/beyond-painkillers/</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
-      <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、肉毒桿菌注射、神經阻斷術。沒有哪一種比較好，但如果你以為只剩下忍耐，那不一定是真的。</description>
-      <category>頭痛</category>
     </item>
     <item>
       <title>AI 講得沒錯，但它不認識你</title>
@@ -56,6 +56,15 @@
       <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。這篇講站名的由來、我為什麼把重心放在頭痛，以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
       <category>關於本站</category>
       <category>門診觀察</category>
+    </item>
+    <item>
+      <title>偏頭痛「預防藥治療」攻略：傳統口服藥 (一)</title>
+      <link>https://drminyangwu.com/posts/migraine-prevention-oral/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/migraine-prevention-oral/</guid>
+      <pubDate>Wed, 31 Dec 2025 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>偏頭痛不該只是「痛了才醫」。這篇說明什麼情況該考慮吃預防藥，並逐一介紹四類傳統口服預防藥物 ⸺ 乙型阻斷劑、鈣離子通道阻斷劑、抗癲癇藥、抗憂鬱劑 ⸺ 各自的機制、副作用、禁忌症，以及我在門診會怎麼選；文末整理常見迷思與依共病選藥的建議。</description>
+      <category>頭痛</category>
     </item>
     <item>
       <title>當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)</title>

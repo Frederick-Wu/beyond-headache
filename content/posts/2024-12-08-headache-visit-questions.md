@@ -51,7 +51,7 @@ heroAlt: 頭痛看診前必讀封面，醫師與病人在診間看著平板討�
 
 更多偏頭痛藥物治療介紹，詳細文章：
 
-- [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html)
+- [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
 

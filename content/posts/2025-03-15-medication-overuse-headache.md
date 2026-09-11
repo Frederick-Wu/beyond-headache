@@ -157,7 +157,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 目前有明確人體試驗支持對藥物過度使用頭痛有效的預防藥物包括：
 
-- [傳統口服預防藥物](https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html)：妥泰（Topiramate）、或者其他心血管藥物、抗癲癇用藥、抗憂鬱劑
+- [傳統口服預防藥物](/posts/migraine-prevention-oral/)：妥泰（Topiramate）、或者其他心血管藥物、抗癲癇用藥、抗憂鬱劑
 - [新型長效針劑](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)：[肉毒桿菌注射](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html#point4)，以及針劑劑型的 [CGRP 單株抗體](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html#point3)
 - [新型口服標靶](https://blog.drminyangwu.com/2024/10/2024-gepant.html)：Gepant 藥物 [Atogepant（艾妥達）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)。
 
@@ -196,7 +196,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 ## 延伸閱讀
 
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（一）：傳統口服藥篇](https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html)
+- [藥物知多少？偏頭痛「預防性治療」全攻略（一）：傳統口服藥篇](/posts/migraine-prevention-oral/)
 - [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
 - [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)
 - [台灣新型 Gepant 口服藥物大車拼](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
