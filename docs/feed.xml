@@ -6,8 +6,17 @@
     <description>「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Fri, 11 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>頭痛不是只能吃止痛藥</title>
+      <link>https://drminyangwu.com/posts/beyond-painkillers/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/beyond-painkillers/</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、肉毒桿菌注射、神經阻斷術。沒有哪一種比較好，但如果你以為只剩下忍耐，那不一定是真的。</description>
+      <category>頭痛</category>
+    </item>
     <item>
       <title>頭痛看診前，先記下這五件事</title>
       <link>https://drminyangwu.com/posts/before-your-visit/</link>
@@ -16,15 +25,6 @@
       <dc:creator>吳旻陽 醫師</dc:creator>
       <description>最有用的準備是記錄，不是查資料。進診間前如果講得出這次是什麼時候開始的、一個月痛幾天、止痛藥一週吃幾天，門診時間就能省下來討論下一步。文末也附上哪些狀況不要等門診、該當天就醫。</description>
       <category>就醫準備</category>
-      <category>頭痛</category>
-    </item>
-    <item>
-      <title>頭痛不是只能吃止痛藥</title>
-      <link>https://drminyangwu.com/posts/beyond-painkillers/</link>
-      <guid isPermaLink="true">https://drminyangwu.com/posts/beyond-painkillers/</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
-      <dc:creator>吳旻陽 醫師</dc:creator>
-      <description>門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、肉毒桿菌注射、神經阻斷術。沒有哪一種比較好，但如果你以為只剩下忍耐，那不一定是真的。</description>
       <category>頭痛</category>
     </item>
     <item>
@@ -56,6 +56,15 @@
       <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。這篇講站名的由來、我為什麼把重心放在頭痛，以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
       <category>關於本站</category>
       <category>門診觀察</category>
+    </item>
+    <item>
+      <title>偏頭痛「預防藥治療」攻略：長效針劑 (二)</title>
+      <link>https://drminyangwu.com/posts/migraine-prevention-injections/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/migraine-prevention-injections/</guid>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>傳統口服藥效果不好或副作用受不了時，還有兩類長效針劑 ⸺ CGRP 單株抗體與肉毒桿菌素。這篇說明它們怎麼作用、適合誰、多久打一次、效果多快、有什麼副作用與禁忌症，以及健保給付的條件與療程長度。</description>
+      <category>頭痛</category>
     </item>
     <item>
       <title>偏頭痛「預防藥治療」攻略：傳統口服藥 (一)</title>

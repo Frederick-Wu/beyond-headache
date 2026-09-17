@@ -705,8 +705,13 @@ function markdown(src) {
               const inner = item.includes("\n")
                 ? markdown(item)
                 : `<p>${inline(item)}</p>`;
-              // 單一段落的項目不必包 <p>，版面比較緊湊
-              const only = inner.match(/^<p>([\s\S]*)<\/p>$/);
+              /* 單一段落的項目不必包 <p>，版面比較緊湊。
+                 ⚠️ 必須確認「整段只有一個 <p>」才能拆殼 ⸺ 原本只比對開頭 <p>、
+                 結尾 </p>，遇到兩段（例如項目裡帶一則 ▲ 旁註）會貪婪地跨過中間，
+                 拆出 `文字</p> <p class="aside">…` 這種少一個結束標籤的壞 HTML。 */
+              const single =
+                /^<p[ >][\s\S]*<\/p>$/.test(inner) && inner.indexOf("<p", 1) === -1;
+              const only = single && inner.match(/^<p>([\s\S]*)<\/p>$/);
               return `<li>${only ? only[1] : inner}</li>`;
             })
             .join("") +
@@ -717,8 +722,18 @@ function markdown(src) {
     }
 
     // 段落
+    /* ▲ 開頭的行自成一段，即使上一行沒有空行隔開 ⸺ 這樣清單項目裡也能寫旁註：
+
+         - 起效時間：數天～數週。
+           ▲研究指出，部分病人一週左右就有感…
+
+       清單項目的延續行是用 \n 接起來再丟回 markdown() 的，中間不能有空行
+       （空行會結束整個項目），所以非靠這條不可。
+       ⚠️ 不要改成把 ▲ 加進 isBlockStart：那會讓 ▲ 行連段落收集都進不去，
+       主迴圈又沒有對應的分支，整行會被直接丟掉 ⸺ 全站旁註會無聲消失。 */
     const buf = [];
     while (i < lines.length && lines[i].trim() && !isBlockStart(lines[i])) {
+      if (buf.length && /^▲/.test(lines[i])) break;
       buf.push(lines[i++]);
     }
     if (buf.length) out.push(`<p>${inline(joinParagraph(buf))}</p>`);

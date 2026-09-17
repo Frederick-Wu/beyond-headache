@@ -1,7 +1,7 @@
 ---
 title: 頭痛看診前必讀，醫生會問我什麼問題？
 date: 2024-12-08
-updated: 2026-09-10
+updated: 2026-09-17
 summary: >
   進診間前先問自己這幾個問題，醫師能更快掌握你的狀況。這篇整理頭痛的 5 大觀察重點 ⸺
   位置、感受程度、持續時間與發作頻率、伴隨症狀、誘發與緩解因素 ⸺ 以及病史、用藥紀錄、
@@ -52,7 +52,7 @@ heroAlt: 頭痛看診前必讀封面，醫師與病人在診間看著平板討�
 更多偏頭痛藥物治療介紹，詳細文章：
 
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
-- [偏頭痛「預防藥治療」攻略：長效針劑 (二)](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
+- [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
 
 ### 4. 伴隨症狀
@@ -108,7 +108,7 @@ heroAlt: 頭痛看診前必讀封面，醫師與病人在診間看著平板討�
 
 ▲未來也更利於健保申請通過長效針劑：以肉毒桿菌試算，單次價格約 1.5 ~ 2 萬，每 3 個月施打一次，一年費用約 6 ~ 8 萬；單株抗體又更貴，一年約為 12 萬。
 
-長效針劑詳細介紹，請點：[偏頭痛「預防藥治療」攻略：長效針劑 (二)](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
+長效針劑詳細介紹，請點：[偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
 
 門診掛號可索取紙本，電子檔[頭痛日記電子檔](https://taiwanheadache.org.tw/headache-diary-and-assessment-scale/)
 

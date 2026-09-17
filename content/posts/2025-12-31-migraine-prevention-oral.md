@@ -1,7 +1,7 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：傳統口服藥 (一)
 date: 2025-12-31
-updated: 2026-09-11
+updated: 2026-09-17
 summary: >
   偏頭痛不該只是「痛了才醫」。這篇說明什麼情況該考慮吃預防藥，並逐一介紹四類傳統口服
   預防藥物 ⸺ 乙型阻斷劑、鈣離子通道阻斷劑、抗癲癇藥、抗憂鬱劑 ⸺ 各自的機制、副作用、
@@ -68,8 +68,8 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 3. **抗癲癇藥(Anti-convulsant)**
 4. **抗憂鬱劑(Anti-depressant)**
 5. [口服標靶藥](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point3)（[艾妥達](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
-6. [單株抗體針劑](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html#point3)
-7. [肉毒桿菌素針劑](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html#point4)
+6. [單株抗體針劑](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
+7. [肉毒桿菌素針劑](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)
 
 這篇我主要介紹前面 4 種藥物。
 
@@ -245,14 +245,14 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 
 現今偏頭痛治療選項非常多樣，每位病友一定都找的到最順手的武器，打擊偏頭痛！
 
-在下一篇文章中，我們將跨入更現代化的醫療領域，介紹那些「一個月打一針」就能精準截斷疼痛信號的[新型長效針劑](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)。
+在下一篇文章中，我們將跨入更現代化的醫療領域，介紹那些「一個月打一針」就能精準截斷疼痛信號的[新型長效針劑](/posts/migraine-prevention-injections/)。
 
 其他細節，歡迎到診間找醫師討論喔！
 
 ## 延伸閱讀
 
 - [2 分鐘，快速認識偏頭痛治療](https://blog.drminyangwu.com/2026/04/video-migraine-quick-guide-prevention-2-minutes.html)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html)
+- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](/posts/migraine-prevention-injections/)
 - [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 綜合比較與選擇建議](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [為何治療高血壓的藥物，也同時有預防偏頭痛的效果？](https://blog.drminyangwu.com/2025/01/seminar%20Update%20on%20integrating%20new%20migraine%20treatment%20clinical%20pearls.html#point1)

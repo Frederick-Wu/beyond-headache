@@ -1,7 +1,7 @@
 ---
 title: 頭痛不是只能吃止痛藥
 date: 2026-08-24
-updated: 2026-09-10
+updated: 2026-09-17
 summary: >
   門診裡常遇到吃止痛藥吃了好幾年的人，以為選項只有兩個：忍耐，或再吞一顆。
   這幾年可以做的事其實比以前多 ⸺ 預防性口服藥、新型口服標靶藥、單株抗體、
@@ -42,7 +42,7 @@ mentions: [藥物過度使用頭痛]
 
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html) ⸺ 跟這篇講同一件事，講得更完整。用煮水比喻：止痛藥是倒冰水，預防藥是關爐火。如果你只讀一篇，讀這篇。
 - [偏頭痛「預防藥治療」攻略：傳統口服藥（一）](/posts/migraine-prevention-oral/) ⸺ 四類老藥的學名和商品名都列出來了。也寫了什麼情況該開始吃預防藥，以及「起步要慢、規律吃 6 到 12 個月」這個最常被忽略的原則。
-- [偏頭痛「預防藥治療」攻略：長效針劑（二）](https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html) ⸺ 單株抗體與肉毒桿菌各自的機轉、劑量、施打間隔，與健保給付條件。
+- [偏頭痛「預防藥治療」攻略：長效針劑（二）](/posts/migraine-prevention-injections/) ⸺ 單株抗體與肉毒桿菌各自的機轉、劑量、施打間隔，與健保給付條件。
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇（三）](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html) ⸺ 健保給付要先記三個月頭痛日記、試過三種傳統藥；自費一個月大概多少錢；兩種針怎麼選。要談錢和條件、還有門診常見問題，看這篇。
 - [偏頭痛 2 種標靶藥比較｜Atogepant & Rimegepant](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html) ⸺ 艾妥達與紐舒泰的服藥頻率和療效差別。這兩種目前在台灣都是全自費，健保還沒有給付。
 - [市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛](../../posts/medication-overuse-headache/) ⸺ 急性止痛藥一週不超過 2 天，這個數字的由來；哪些是高危險族群，如何自我檢視，以及嚴重的時候為什麼要住院調藥。
