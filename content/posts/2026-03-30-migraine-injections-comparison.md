@@ -1,6 +1,7 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)
 date: 2026-03-30
+updated: 2026-09-19
 summary: >
   長效針劑要等健保，還是先自費？自費大概要花多少、打多久才看得出效果、
   單株抗體和肉毒桿菌該怎麼選？這篇整理兩種單株抗體的差別、我在門診選藥時會考慮的
@@ -141,7 +142,7 @@ socialImageAlt: 偏頭痛之預防針劑比較表，並列單株抗體與肉毒�
 ### 8. 若我接受了完整的療程之後，偏頭痛就不會再困擾我了嗎？
 
 - 由於偏頭痛是一種慢性疾病，就像高血壓糖尿病那樣，不是發燒感冒，很難做到一勞永逸或是完全治癒，我們的最終目標是讓它穩定不影響生活。
-- 療程結束後，確實有可能部分病人會再頭痛回升，因此為了避免此類狀況，日常生活保養（包含[飲食指南](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)）、門診追蹤都很重要！
+- 療程結束後，確實有可能部分病人會再頭痛回升，因此為了避免此類狀況，日常生活保養（包含[飲食指南](/posts/migraine-diet/)）、門診追蹤都很重要！
 
 ### 9. 如果已經打過完整的療程，之後偏頭痛復發怎麼辦？
 
@@ -172,7 +173,7 @@ socialImageAlt: 偏頭痛之預防針劑比較表，並列單株抗體與肉毒�
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
 - [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介 (上) — 機轉](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
-- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
+- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ## 參考資料
 

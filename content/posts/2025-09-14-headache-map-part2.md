@@ -1,7 +1,7 @@
 ---
 title: 當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)
 date: 2025-09-14
-updated: 2026-09-09
+updated: 2026-09-19
 summary: >
   有一類頭痛不是病本身，而是其他疾病的警訊 ⸺ 鼻竇炎、頸椎問題、枕神經痛、三叉神經痛、
   青光眼、高血壓，甚至腦瘤。這篇整理 7 種次發性頭痛各自的疼痛位置、常見症狀與可能病因，
@@ -116,7 +116,7 @@ heroAlt: 頭痛地圖指南（下）封面，主題為次發性頭痛的原因�
 - [頭痛看診前，先記下這五件事](../../posts/before-your-visit/)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
-- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
+- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ## 參考資料
 

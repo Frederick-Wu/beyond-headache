@@ -260,7 +260,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 - [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 - [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
-- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
+- [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ## 參考資料
 

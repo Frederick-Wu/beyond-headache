@@ -67,7 +67,7 @@ heroAlt: 頭痛看診前必讀封面，醫師與病人在診間看著平板討�
 - **誘發因素**：是否吃了特定食物(巧克力、起司、咖啡)、正在做什麼活動(運動、上班、睡覺、經期)
 - **緩解方法**：舒緩方式(平躺、休息、按摩、喝水)
 
-飲食與偏頭痛的關連，有興趣請參考：[改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html)
+飲食與偏頭痛的關連，有興趣請參考：[改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ![一個人在辦公桌前用筆逐行核對一疊列印出來的紀錄](../../assets/headache-visit-questions-03.jpg)
 
