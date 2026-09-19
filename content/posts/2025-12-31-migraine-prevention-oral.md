@@ -1,7 +1,7 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：傳統口服藥 (一)
 date: 2025-12-31
-updated: 2026-09-17
+updated: 2026-09-19
 summary: >
   偏頭痛不該只是「痛了才醫」。這篇說明什麼情況該考慮吃預防藥，並逐一介紹四類傳統口服
   預防藥物 ⸺ 乙型阻斷劑、鈣離子通道阻斷劑、抗癲癇藥、抗憂鬱劑 ⸺ 各自的機制、副作用、
@@ -252,8 +252,8 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 ## 延伸閱讀
 
 - [2 分鐘，快速認識偏頭痛治療](https://blog.drminyangwu.com/2026/04/video-migraine-quick-guide-prevention-2-minutes.html)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](/posts/migraine-prevention-injections/)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 綜合比較與選擇建議](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
+- [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
+- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [為何治療高血壓的藥物，也同時有預防偏頭痛的效果？](https://blog.drminyangwu.com/2025/01/seminar%20Update%20on%20integrating%20new%20migraine%20treatment%20clinical%20pearls.html#point1)
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)

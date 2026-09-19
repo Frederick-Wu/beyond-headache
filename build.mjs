@@ -470,6 +470,10 @@ function collectList(lines, start, ordered) {
     if (!m || m[1].length !== base) break;
 
     const item = [m[2]];
+    /* 延續行要剝掉的縮排 = 項目符號本身的寬度。「- 」是 2，「1. 」是 3、「10. 」是 4。
+       原本一律只剝 2 格，編號清單的延續行就會殘留 1 個空格，
+       「   ▲旁註」變成「 ▲旁註」，段落收集認不出 ▲，旁註就黏進上一行。 */
+    const markerW = lines[i].length - m[2].length - m[1].length;
     i++;
 
     // 蒐集這個項目底下的延續行（縮排更深的內容，含巢狀清單）
@@ -478,7 +482,7 @@ function collectList(lines, start, ordered) {
       if (!cur.trim()) break;
       const indent = cur.match(/^\s*/)[0].length;
       if (indent > base) {
-        item.push(cur.slice(Math.min(indent, base + 2)));
+        item.push(cur.slice(Math.min(indent, base + markerW)));
         i++;
         continue;
       }

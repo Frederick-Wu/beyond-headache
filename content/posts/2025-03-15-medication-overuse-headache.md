@@ -1,7 +1,7 @@
 ---
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
 date: 2025-03-15
-updated: 2026-09-17
+updated: 2026-09-19
 summary: >
   止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險
   族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，
@@ -158,14 +158,14 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 目前有明確人體試驗支持對藥物過度使用頭痛有效的預防藥物包括：
 
 - [傳統口服預防藥物](/posts/migraine-prevention-oral/)：妥泰（Topiramate）、或者其他心血管藥物、抗癲癇用藥、抗憂鬱劑
-- [新型長效針劑](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)：[肉毒桿菌注射](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)，以及針劑劑型的 [CGRP 單株抗體](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
+- [新型長效針劑](/posts/migraine-injections-comparison/)：[肉毒桿菌注射](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)，以及針劑劑型的 [CGRP 單株抗體](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
 - [新型口服標靶](https://blog.drminyangwu.com/2024/10/2024-gepant.html)：Gepant 藥物 [Atogepant（艾妥達）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)。
 
 ### 4. 嘗試非藥物性的頭痛緩解方法
 
 - 規律作息、充足睡眠
 - 適度運動、放鬆身心
-- [頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point0)！
+- [頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](/posts/migraine-injections-comparison/#自費使用考量不只是買藥更是買時間)！
 
 相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](https://blog.drminyangwu.com/2024/10/2024-gepant.html) 受體拮抗劑當中，[Rimegepant（紐舒泰）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)。
 
@@ -197,7 +197,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [藥物知多少？偏頭痛「預防性治療」全攻略（一）：傳統口服藥篇](/posts/migraine-prevention-oral/)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 個論](/posts/migraine-prevention-injections/)
+- [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
 - [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)
 - [台灣新型 Gepant 口服藥物大車拼](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
 - [我只是這幾天睡不好頭比較痛，有需要去看醫生嗎？ 頭痛要留意的 10 個警訊](/posts/headache-red-flags/)

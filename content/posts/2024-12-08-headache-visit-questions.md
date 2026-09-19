@@ -1,7 +1,7 @@
 ---
 title: 頭痛看診前必讀，醫生會問我什麼問題？
 date: 2024-12-08
-updated: 2026-09-17
+updated: 2026-09-19
 summary: >
   進診間前先問自己這幾個問題，醫師能更快掌握你的狀況。這篇整理頭痛的 5 大觀察重點 ⸺
   位置、感受程度、持續時間與發作頻率、伴隨症狀、誘發與緩解因素 ⸺ 以及病史、用藥紀錄、
@@ -53,7 +53,7 @@ heroAlt: 頭痛看診前必讀封面，醫師與病人在診間看著平板討�
 
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
-- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
+- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
 
 ### 4. 伴隨症狀
 

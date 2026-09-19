@@ -6,7 +6,7 @@
     <description>「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Thu, 17 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>頭痛不是只能吃止痛藥</title>
@@ -56,6 +56,15 @@
       <description>門診裡最常聽到的主訴是頭痛，但真正花掉時間的，往往是頭痛以外的那些事。這篇講站名的由來、我為什麼把重心放在頭痛，以及為什麼想把這些寫在網路上，而不是只留在診間。</description>
       <category>關於本站</category>
       <category>門診觀察</category>
+    </item>
+    <item>
+      <title>偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)</title>
+      <link>https://drminyangwu.com/posts/migraine-injections-comparison/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/migraine-injections-comparison/</guid>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>長效針劑要等健保，還是先自費？自費大概要花多少、打多久才看得出效果、單株抗體和肉毒桿菌該怎麼選？這篇整理兩種單株抗體的差別、我在門診選藥時會考慮的八個面向，以及十個病友最常問的問題。</description>
+      <category>頭痛</category>
     </item>
     <item>
       <title>偏頭痛「預防藥治療」攻略：長效針劑 (二)</title>

@@ -1,7 +1,7 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：長效針劑 (二)
 date: 2026-03-29
-updated: 2026-09-17
+updated: 2026-09-19
 summary: >
   傳統口服藥效果不好或副作用受不了時，還有兩類長效針劑 ⸺ CGRP 單株抗體與肉毒桿菌素。
   這篇說明它們怎麼作用、適合誰、多久打一次、效果多快、有什麼副作用與禁忌症，
@@ -104,7 +104,7 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 
 ▲完整療程為半年，完畢後**半年內**不得再次申請。
 
-**自費施打**：請看下篇〔**[綜合比較與選擇建議](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)**〕的段落〔[自費使用考量](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point0)〕
+**自費施打**：請看下篇〔**[綜合比較與選擇建議](/posts/migraine-injections-comparison/)**〕的段落〔[自費使用考量](/posts/migraine-injections-comparison/#自費使用考量不只是買藥更是買時間)〕
 
 ## 二、多點持久戰力：肉毒桿菌素 (Botox)
 
@@ -141,7 +141,7 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 
 ▲我在門診會建議病人第一次打完針後，先觀察 30 分鐘，確認有無不適。回家之後再觀察兩個禮拜並回診，看看有無上述副作用。
 
-全身性的副作用較為罕見，請參考下一篇的段落〔**[病友迷思破解](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point4)**〕
+全身性的副作用較為罕見，請參考下一篇的段落〔**[病友迷思破解](/posts/migraine-injections-comparison/#病友迷思破解門診大哉問)**〕
 
 ▲肉毒桿菌阻斷頭痛訊號的同時，也有放鬆肌肉、麻痺神經的作用。若劑量或位置不正確，麻痺到重要的神經肌肉功能（例如呼吸肌肉），可就不是鬧著玩的！
 
@@ -171,18 +171,18 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 
 ▲完整療程為一年半，完畢後**半年內**不得再次申請。
 
-**自費施打**：請看下一篇〔**[綜合比較與選擇建議](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)**〕的〔[自費使用考量](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html#point0)〕段落
+**自費施打**：請看下一篇〔**[綜合比較與選擇建議](/posts/migraine-injections-comparison/)**〕的〔[自費使用考量](/posts/migraine-injections-comparison/#自費使用考量不只是買藥更是買時間)〕段落
 
 ## 下篇待續…
 
-先感謝你閱讀到這裡～我在撰寫的過程中發現，可以分享的內容蠻多的，決定再多一篇篇幅介紹它們。[下篇文章](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)，我會再將針劑藥物做綜合比較、自費方式考量、和整理幾個病友常見迷思與問題集等等。
+先感謝你閱讀到這裡～我在撰寫的過程中發現，可以分享的內容蠻多的，決定再多一篇篇幅介紹它們。[下篇文章](/posts/migraine-injections-comparison/)，我會再將針劑藥物做綜合比較、自費方式考量、和整理幾個病友常見迷思與問題集等等。
 
 ## 延伸閱讀
 
 - [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
-- [藥物知多少？偏頭痛「預防性治療」全攻略（二）：新型長效針劑篇 － 綜合比較與選擇建議](https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html)
+- [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
 - [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介 (上) — 機轉](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
 - [20250109 羅東博愛醫院大內科部 – 偏頭痛臨床實務與新知分享](https://blog.drminyangwu.com/2025/01/seminar%20Update%20on%20integrating%20new%20migraine%20treatment%20clinical%20pearls.html)
 
