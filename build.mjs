@@ -1547,10 +1547,11 @@ function pageJsonLd(page) {
  * .js／.css／圖片都一樣）⸺ 所以新搬一篇、補上 legacyUrl 之後，曾經載入過舊版
  * 對照表的讀者，最多要 4 小時才會開始被轉過去。影響只是「晚一點才轉」，不會轉錯。
  */
-/* 試營運：非空時，對照表只收這幾篇（slug）。站主第一次改 Blogger 主題時，
-   先只讓一篇會跳轉，確認舊站其他頁面都正常，再清空這個陣列讓全部生效。
-   選 headache-map-part1 是因為它沒有印在衛教單張上，出狀況也不影響掃 QR Code 的病人。 */
-const LEGACY_REDIRECT_PILOT = ["headache-map-part1"];
+/* 試營運：非空時，對照表只收這幾篇（slug）。日後若要改轉址程式的行為，
+   可以先放一篇在這裡試，確認沒問題再清空。
+   2026-09-19 首次上線時用 headache-map-part1 試過（它沒有印在衛教單張上），
+   站主手機實測沒問題後清空，已搬的文章全部生效。空陣列 = 全部生效。 */
+const LEGACY_REDIRECT_PILOT = [];
 
 function renderLegacyRedirect(posts) {
   const map = {};

@@ -29,7 +29,15 @@
 
   // build.mjs 會把這一行換成實際的對照表：{ "舊網址路徑": "新網址" }
   var MAP = {
-    "/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html": "https://drminyangwu.com/posts/headache-map-part1/"
+    "/2026/05/migraine-diet-recommendations-food-triggers.html": "https://drminyangwu.com/posts/migraine-diet/",
+    "/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html": "https://drminyangwu.com/posts/migraine-injections-comparison/",
+    "/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html": "https://drminyangwu.com/posts/migraine-prevention-injections/",
+    "/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html": "https://drminyangwu.com/posts/migraine-prevention-oral/",
+    "/2025/09/secondary-headache-causes-warning-signs.html": "https://drminyangwu.com/posts/headache-map-part2/",
+    "/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html": "https://drminyangwu.com/posts/headache-map-part1/",
+    "/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html": "https://drminyangwu.com/posts/medication-overuse-headache/",
+    "/2024/12/blog-post.html": "https://drminyangwu.com/posts/headache-visit-questions/",
+    "/2024/11/10.html": "https://drminyangwu.com/posts/headache-red-flags/"
   };
 
   var SECONDS = 3;
