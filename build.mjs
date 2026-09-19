@@ -502,6 +502,17 @@ const fmtNum = (n) =>
   Number.isInteger(n) ? String(n) : String(Math.round(n * 10) / 10);
 
 /**
+ * 單位是中文字時，數字和單位之間要空一格（站上的排版規則：中英數之間加空格）。
+ * 「5.3 倍」「3 個月」要空，「42%」「400mg」不空 ⸺ 符號與英文單位照一般寫法緊貼數字。
+ * 設定行會被 trim，所以沒辦法在 unit: 後面自己多打空格，只能在這裡補。
+ * 空格也跟著 data-unit 帶給跑數字的動畫，動畫結束時的字串才會和原始 HTML 一致。
+ */
+const spacedUnit = (u) => {
+  const t = String(u || "").trim();
+  return /^[㐀-鿿]/.test(t) ? " " + t : t;
+};
+
+/**
  * ```chart 區塊 → 水平長條圖。
  *
  *   title: 各型頭痛的一年盛行率
@@ -540,7 +551,7 @@ function renderChart(lines) {
   if (!rows.length) return "";
 
   const max = cfg.max && cfg.max > 0 ? cfg.max : Math.max(...rows.map((r) => r.value));
-  const unit = cfg.unit || "";
+  const unit = spacedUnit(cfg.unit);
 
   // 給螢幕閱讀器的完整敘述：圖形本身對他們沒有意義，數字才有
   const summary =
@@ -583,7 +594,7 @@ function renderStats(lines) {
     if (parts.length < 2) continue;
     const value = Number(parts[0]);
     if (Number.isNaN(value)) continue;
-    items.push({ value, unit: parts[1] || "", label: parts.slice(2).join(" | ") });
+    items.push({ value, unit: spacedUnit(parts[1]), label: parts.slice(2).join(" | ") });
   }
 
   if (!items.length) return "";

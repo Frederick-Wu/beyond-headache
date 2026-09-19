@@ -1498,8 +1498,10 @@ tbody tr:last-child td {
 }
 
 /* ---------- 長條圖 ---------- */
+/* ⚠️ 這裡不要寫 margin。figure 的預設外距在最上面的 reset 已經歸零，
+   再寫一次 margin: 0 會因為排在 .post-body > * + * 後面而把段距蓋掉 ⸺
+   圖表會緊貼上一段（2026-09-19 藥物過度使用頭痛那篇，貼著上面的清單）。 */
 .chart {
-  margin: 0;
   background: var(--paper-raised);
   border: 1px solid var(--rule);
   border-radius: var(--radius);

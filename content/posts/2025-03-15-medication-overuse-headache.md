@@ -30,7 +30,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 ## 甜蜜背後隱藏的危機
 
-![藥物過度使用頭痛](../../assets/medication-overuse-headache-02.jpg)
+![中年女性雙手托著下巴，一臉憂慮地看著餐桌上堆滿的各式藥罐與膠囊](../../assets/medication-overuse-headache-02.jpg)
 
 現代止痛藥取得容易，效果快又有效。除了頭痛患者，其他慢性疼痛病友（例如下背痛、肩頸疼痛患者），也常是這類疾病的受害者。 他們試過的止痛藥，從西藥、漢醫，或是民間偏方可能都試過一輪。
 
@@ -38,11 +38,11 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 如果有這樣的情形，小心是否患上了「**藥物過度使用頭痛（Medication Overuse Headache）**」、也有人稱為「反彈性頭痛（Rebound headache）」。
 
-藥物過度使用頭痛在一般人口的盛行率約為 1～2%，換句話說，光是在台灣，約有兩百多萬人罹患此病，其中慢性頭痛患者中更是高達 50%！平均年齡為 40～45 歲。大致上也和[偏頭痛盛行的年齡](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point0)相符。
+藥物過度使用頭痛在一般人口的盛行率約為 1～2%，換句話說，光是在台灣，約有二十多萬人罹患此病，其中慢性頭痛患者中更是高達 50%！平均年齡為 40～45 歲。大致上也和[偏頭痛盛行的年齡](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point0)相符。
 
 ## 如何診斷藥物過度使用頭痛？
 
-![如何診斷藥物過度使用頭痛](../../assets/medication-overuse-headache-03.jpg)
+![如何診斷藥物過度使用頭痛（依國際頭痛疾病分類 ICHD-3）：每個月頭痛天數超過 15 天；規律且過度使用至少一種頭痛急性治療藥物達 3 個月以上 ⸺ 普拿疼、非類固醇消炎藥每個月服藥超過 15 天，麥角胺、翠普登、鴉片類止痛藥、複方止痛藥每個月服藥超過 10 天；並排除其他可能引起頭痛的原因](../../assets/medication-overuse-headache-03.jpg)
 
 根據[國際頭痛疾病分類（ICHD-3）](https://ichd-3.org/wp-content/uploads/2019/11/ICHD-3_Taiwan-version_Mandarin_Traditional-Chinese.pdf)，定義為：
 
@@ -96,7 +96,18 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 - 鎮靜安眠藥
 - 鴉片類藥物（Opioids）
 
-![藥物過度使用頭痛各項危險因子的風險增加倍數折線圖：憂鬱焦慮 4.7 倍、代謝症候群 5.3 倍、鎮定劑安眠藥 5.2 倍、缺乏運動 2.7 倍](../../assets/medication-overuse-headache-05.jpg)
+```chart
+title: 藥物過度使用頭痛的危險因子（風險增加倍數）
+unit:  倍
+代謝症候群 | 5.3
+使用鎮定劑、安眠藥 | 5.2
+憂鬱症、焦慮症 | 4.7
+缺乏身體活動 | 2.7
+50 歲以下 | 1.8
+抽菸 | 1.8
+攝取較高咖啡因 | 1.4
+source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treatment of medication overuse headache](https://pubmed.ncbi.nlm.nih.gov/27615418/). Nat Rev Neurol 2016;12(10):575-83
+```
 
 從上面的圖表可以知道，**最容易**演變為藥物過度使用頭痛的危險因子為：
 
