@@ -1,5 +1,6 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)
+legacyUrl: https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html
 date: 2026-03-30
 updated: 2026-09-19
 summary: >

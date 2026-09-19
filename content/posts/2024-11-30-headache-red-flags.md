@@ -1,5 +1,6 @@
 ---
 title: 10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你
+legacyUrl: https://blog.drminyangwu.com/2024/11/10.html
 date: 2024-11-30
 updated: 2026-09-10
 summary: >

@@ -1,5 +1,6 @@
 ---
 title: 太陽穴兩邊隱隱作痛？6 大頭痛位置、可能病因、常見 3 個原發性頭痛一次看：頭痛地圖指南(上)
+legacyUrl: https://blog.drminyangwu.com/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html
 date: 2025-09-07
 updated: 2026-09-19
 summary: >

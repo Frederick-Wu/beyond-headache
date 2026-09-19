@@ -1,5 +1,6 @@
 ---
 title: 頭痛看診前必讀，醫生會問我什麼問題？
+legacyUrl: https://blog.drminyangwu.com/2024/12/blog-post.html
 date: 2024-12-08
 updated: 2026-09-19
 summary: >

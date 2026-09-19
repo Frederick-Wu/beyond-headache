@@ -1531,6 +1531,53 @@ function pageJsonLd(page) {
  * 讀取內容（文章與頁面）
  * ===================================================================== */
 
+/**
+ * 舊部落格的自動轉址腳本（給 Blogger 主題載入，不是給本站用）。
+ *
+ * 範本是 src/blogger-redirect.js，這裡只把裡面的 LEGACY_MAP 標記換成實際對照表。
+ * 對照表的來源是每篇文章 front matter 的 legacyUrl ⸺ 搬一篇就填一篇，
+ * 不必再進 Blogger 改主題。
+ *
+ * 鍵用「解碼後的路徑」：Blogger 有幾篇的網址含空格，瀏覽器的 location.pathname
+ * 會是 %20，腳本那邊也先 decodeURIComponent 再比對，兩邊才對得上。
+ * 只收 blog.drminyangwu.com 的網址 ⸺ 打錯網域的話建置時警告，而不是默默不轉。
+ *
+ * 輸出的檔名固定、不加 ?v= 雜湊：Blogger 主題裡寫死了這個網址。
+ * Cloudflare Pages 對 .js 預設 max-age=0、會重新驗證，改了對照表會立刻生效。
+ */
+function renderLegacyRedirect(posts) {
+  const map = {};
+  for (const p of posts) {
+    if (!p.legacyUrl) continue;
+    let u;
+    try {
+      u = new URL(p.legacyUrl);
+    } catch {
+      console.warn(`  ⚠ ${p.file} 的 legacyUrl 不是有效網址：${p.legacyUrl}`);
+      continue;
+    }
+    const host = u.hostname;
+    const isOldBlog = host === "blog.drminyangwu.com" || host.endsWith(".blogspot.com");
+    if (!isOldBlog) {
+      console.warn(`  ⚠ ${p.file} 的 legacyUrl 不是舊部落格的網址：${p.legacyUrl}`);
+      continue;
+    }
+    let key;
+    try {
+      key = decodeURIComponent(u.pathname);
+    } catch {
+      key = u.pathname;
+    }
+    if (map[key]) console.warn(`  ⚠ legacyUrl 重複：${key}（${p.file}）`);
+    map[key] = abs(`posts/${p.slug}/`);
+  }
+  const tpl = readFileSync(join(ROOT, "src", "blogger-redirect.js"), "utf8");
+  const marker = "/*LEGACY_MAP*/ {}";
+  if (!tpl.includes(marker)) throw new Error("src/blogger-redirect.js 裡找不到 " + marker);
+  // 用函式當第二個參數：網址裡若有 $ 字元，字串形式會被當成替換樣式
+  return tpl.replace(marker, () => JSON.stringify(map, null, 2).split("\n").join("\n  "));
+}
+
 function loadPosts() {
   if (!existsSync(POSTS_DIR)) return [];
 
@@ -1574,6 +1621,9 @@ function loadPosts() {
         mentions: Array.isArray(data.mentions) ? data.mentions : [],
         citation: Array.isArray(data.citation) ? data.citation : [],
         unlisted: data.unlisted === true,
+        // 這篇在舊部落格（Blogger）的網址。有填的文章會進 blogger-redirect.js 的
+        // 對照表，讀者打開舊網址時自動轉來這裡。見 renderLegacyRedirect()。
+        legacyUrl: String(data.legacyUrl || "").trim(),
         published,
         updated: updatedDate(data.updated, published, file),
         hero: data.hero ? heroFromFrontMatter(data) : CFG.hero,
@@ -3677,6 +3727,7 @@ function build() {
   copyFileSync(join(ROOT, "src", "styles.css"), join(OUT_DIR, "styles.css"));
   copyFileSync(join(ROOT, "src", "counter.js"), join(OUT_DIR, "counter.js"));
   copyFileSync(join(ROOT, "src", "enhance.js"), join(OUT_DIR, "enhance.js"));
+  write("blogger-redirect.js", renderLegacyRedirect(posts));
   const assets = copyDir(join(ROOT, "assets"), join(OUT_DIR, "assets"));
   copyDir(join(ROOT, "static"), OUT_DIR);
 

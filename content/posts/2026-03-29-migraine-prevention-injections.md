@@ -1,5 +1,6 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：長效針劑 (二)
+legacyUrl: https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html
 date: 2026-03-29
 updated: 2026-09-19
 summary: >

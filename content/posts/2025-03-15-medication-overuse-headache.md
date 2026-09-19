@@ -1,5 +1,6 @@
 ---
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
+legacyUrl: https://blog.drminyangwu.com/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html
 date: 2025-03-15
 updated: 2026-09-19
 summary: >

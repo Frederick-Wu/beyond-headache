@@ -1,5 +1,6 @@
 ---
 title: 偏頭痛「預防藥治療」攻略：傳統口服藥 (一)
+legacyUrl: https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html
 date: 2025-12-31
 updated: 2026-09-19
 summary: >

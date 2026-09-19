@@ -1,5 +1,6 @@
 ---
 title: 改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單
+legacyUrl: https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html
 date: 2026-05-27
 updated: 2026-09-19
 summary: >

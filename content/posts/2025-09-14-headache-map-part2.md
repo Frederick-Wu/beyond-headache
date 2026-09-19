@@ -1,5 +1,6 @@
 ---
 title: 當心致命「次發性頭痛」！ 一文看懂 7 個次發性頭痛原因、症狀、位置：頭痛地圖指南(下)
+legacyUrl: https://blog.drminyangwu.com/2025/09/secondary-headache-causes-warning-signs.html
 date: 2025-09-14
 updated: 2026-09-19
 summary: >
