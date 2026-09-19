@@ -37,7 +37,8 @@
     "/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html": "https://drminyangwu.com/posts/headache-map-part1/",
     "/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html": "https://drminyangwu.com/posts/medication-overuse-headache/",
     "/2024/12/blog-post.html": "https://drminyangwu.com/posts/headache-visit-questions/",
-    "/2024/11/10.html": "https://drminyangwu.com/posts/headache-red-flags/"
+    "/2024/11/10.html": "https://drminyangwu.com/posts/headache-red-flags/",
+    "/2024/10/2024-gepant.html": "https://drminyangwu.com/posts/gepant-intro/"
   };
 
   var SECONDS = 3;

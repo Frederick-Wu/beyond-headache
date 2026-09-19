@@ -46,7 +46,7 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 
 而「CGRP 單株抗體」堪稱全球少數可「專攻」偏頭痛的預防藥，像是一枚「精準導引飛彈」，它專門鎖定並阻斷偏頭痛關鍵角色 CGRP，只在頭痛發作路徑上發揮作用，不會波及全身其他機制。這種「狙擊式打擊」，不僅能更有效地預防頭痛，且副作用更少。此外，它也是減少「[藥物過度使用頭痛](/posts/medication-overuse-headache/)」的重要功臣之一！
 
-目前我們所有的**新型藥物（包含肉毒桿菌、單株抗體、還有新型口服標靶藥物）**，全都和 CGRP 有關！關於 CGRP 相關藥物的機轉，我在之前介紹[口服標靶藥物](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point2)也有提過，有興趣的讀者也可點個連結，一起服用。
+目前我們所有的**新型藥物（包含肉毒桿菌、單株抗體、還有新型口服標靶藥物）**，全都和 CGRP 有關！關於 CGRP 相關藥物的機轉，我在之前介紹[口服標靶藥物](/posts/gepant-intro/#淺談專一性藥物的治療機轉)也有提過，有興趣的讀者也可點個連結，一起服用。
 
 補充一下，肉毒桿菌的機制，除了可能和抑制 CGRP 的釋放有關以外，它們也能減低感覺神經的疼痛傳遞有關。就像是在神經末梢加裝了「靜音耳機」，讓疼痛訊號無法傳達到大腦。
 
@@ -184,7 +184,7 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
-- [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介 (上) — 機轉](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
+- [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
 - [20250109 羅東博愛醫院大內科部 – 偏頭痛臨床實務與新知分享](https://blog.drminyangwu.com/2025/01/seminar%20Update%20on%20integrating%20new%20migraine%20treatment%20clinical%20pearls.html)
 
 ## 參考資料

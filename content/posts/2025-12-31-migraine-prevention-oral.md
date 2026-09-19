@@ -68,7 +68,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 2. **鈣離子阻斷劑(Calcium channel blocker)**
 3. **抗癲癇藥(Anti-convulsant)**
 4. **抗憂鬱劑(Anti-depressant)**
-5. [口服標靶藥](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point3)（[艾妥達](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
+5. [口服標靶藥](/posts/gepant-intro/#新型口服藥物-gepant-有什麼亮點)（[艾妥達](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
 6. [單株抗體針劑](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
 7. [肉毒桿菌素針劑](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)
 
@@ -260,7 +260,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 - [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)
 - [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
-- [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
+- [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ## 參考資料

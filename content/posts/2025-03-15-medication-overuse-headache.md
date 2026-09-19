@@ -39,7 +39,7 @@ heroAlt: 藥物過度使用頭痛封面，主題為止痛藥為何吃越多越�
 
 如果有這樣的情形，小心是否患上了「**藥物過度使用頭痛（Medication Overuse Headache）**」、也有人稱為「反彈性頭痛（Rebound headache）」。
 
-藥物過度使用頭痛在一般人口的盛行率約為 1～2%，換句話說，光是在台灣，約有二十多萬人罹患此病，其中慢性頭痛患者中更是高達 50%！平均年齡為 40～45 歲。大致上也和[偏頭痛盛行的年齡](https://blog.drminyangwu.com/2024/10/2024-gepant.html#point0)相符。
+藥物過度使用頭痛在一般人口的盛行率約為 1～2%，換句話說，光是在台灣，約有二十多萬人罹患此病，其中慢性頭痛患者中更是高達 50%！平均年齡為 40～45 歲。大致上也和[偏頭痛盛行的年齡](/posts/gepant-intro/#每-10-個台灣人就有-1-人罹患偏頭痛)相符。
 
 ## 如何診斷藥物過度使用頭痛？
 
@@ -171,7 +171,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 
 - [傳統口服預防藥物](/posts/migraine-prevention-oral/)：妥泰（Topiramate）、或者其他心血管藥物、抗癲癇用藥、抗憂鬱劑
 - [新型長效針劑](/posts/migraine-injections-comparison/)：[肉毒桿菌注射](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)，以及針劑劑型的 [CGRP 單株抗體](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
-- [新型口服標靶](https://blog.drminyangwu.com/2024/10/2024-gepant.html)：Gepant 藥物 [Atogepant（艾妥達）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)。
+- [新型口服標靶](/posts/gepant-intro/)：Gepant 藥物 [Atogepant（艾妥達）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)。
 
 ### 4. 嘗試非藥物性的頭痛緩解方法
 
@@ -179,7 +179,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 - 適度運動、放鬆身心
 - [頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](/posts/migraine-injections-comparison/#自費使用考量不只是買藥更是買時間)！
 
-相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](https://blog.drminyangwu.com/2024/10/2024-gepant.html) 受體拮抗劑當中，[Rimegepant（紐舒泰）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)。
+相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](/posts/gepant-intro/) 受體拮抗劑當中，[Rimegepant（紐舒泰）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)。
 
 ## 什麼時候要考慮住院？
 

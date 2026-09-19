@@ -115,7 +115,7 @@ socialImageAlt: 偏頭痛之預防針劑比較表，並列單株抗體與肉毒�
 - 若要申請健保給付之**新型藥物（肉毒桿菌、單株抗體）**，一次僅可挑一種申請，無法同時申請併用。
 - 實務作法為：可申請健保給付一種新型藥物，同時自費使用另一種新型藥物。預防效果通常會更好！我有門診患者就是這樣使用。
 
-▲小提醒：**[新型口服標靶藥物](https://blog.drminyangwu.com/2024/10/2024-gepant.html)**，目前為全自費使用，尚未納入健保喔！
+▲小提醒：**[新型口服標靶藥物](/posts/gepant-intro/)**，目前為全自費使用，尚未納入健保喔！
 
 ### 4. 打肉毒也可用來放鬆肌肉或是止痛嗎？
 
@@ -173,7 +173,7 @@ socialImageAlt: 偏頭痛之預防針劑比較表，並列單株抗體與肉毒�
 - [市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛](/posts/medication-overuse-headache/)
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
-- [瞄準偏頭痛的銀色子彈 –2024 年新型口服藥（Gepant）簡介 (上) — 機轉](https://blog.drminyangwu.com/2024/10/2024-gepant.html)
+- [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
 
 ## 參考資料
