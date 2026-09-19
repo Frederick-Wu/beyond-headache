@@ -1543,7 +1543,9 @@ function pageJsonLd(page) {
  * 只收 blog.drminyangwu.com 的網址 ⸺ 打錯網域的話建置時警告，而不是默默不轉。
  *
  * 輸出的檔名固定、不加 ?v= 雜湊：Blogger 主題裡寫死了這個網址。
- * Cloudflare Pages 對 .js 預設 max-age=0、會重新驗證，改了對照表會立刻生效。
+ * ⚠️ 線上實測 Cache-Control 是 max-age=14400（4 小時，網域層級設定，站上所有
+ * .js／.css／圖片都一樣）⸺ 所以新搬一篇、補上 legacyUrl 之後，曾經載入過舊版
+ * 對照表的讀者，最多要 4 小時才會開始被轉過去。影響只是「晚一點才轉」，不會轉錯。
  */
 function renderLegacyRedirect(posts) {
   const map = {};
