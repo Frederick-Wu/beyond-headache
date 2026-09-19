@@ -16,6 +16,10 @@ hero: assets/migraine-diet-01.jpg
 heroWidth: 1200
 heroHeight: 628
 heroAlt: 偏頭痛飲食輔助指南封面插畫，餐廳裡一位女性按著額頭，面前擺滿各式菜餚
+socialImage: assets/migraine-diet-02.jpg
+socialImageWidth: 1200
+socialImageHeight: 628
+socialImageAlt: 偏頭痛加分飲食三類整理圖：穩定神經的鎂、抗發炎的高 Omega-3、維持代謝的維生素 B2，以及各自的代表食物
 ---
 偏頭痛治療，往往需要耐心與時間，除了按時服藥，寫頭痛日記之外，病友也常常提問：
 
