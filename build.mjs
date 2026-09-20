@@ -530,51 +530,113 @@ const spacedUnit = (u) => {
  *    爬蟲、螢幕閱讀器、關掉 JS 的人看到的都是正確數字。
  */
 function renderChart(lines) {
-  const cfg = { title: "", unit: "", max: null, source: "" };
+  const NL = String.fromCharCode(10);
+  const cfg = { title: "", unit: "", max: null, source: "", series: "", muted: "" };
   const rows = [];
 
   for (const raw of lines) {
     const line = raw.trim();
     if (!line) continue;
-    const kv = line.match(/^(title|unit|max|source)\s*:\s*(.*)$/i);
+    const kv = line.match(/^(title|unit|max|source|series|muted)s*:s*(.*)$/i);
     if (kv) {
       const k = kv[1].toLowerCase();
       cfg[k] = k === "max" ? Number(kv[2]) : kv[2].trim();
       continue;
     }
-    const parts = line.split("|").map((s) => s.trim());
-    if (parts.length >= 2 && parts[1] !== "" && !Number.isNaN(Number(parts[1]))) {
-      rows.push({ label: parts[0], value: Number(parts[1]) });
+    const parts = line.split("|").map((x) => x.trim());
+    const values = parts.slice(1).filter((x) => x !== "").map(Number);
+    if (parts.length >= 2 && values.length && values.every((v) => !Number.isNaN(v))) {
+      rows.push({ label: parts[0], values });
     }
   }
 
   if (!rows.length) return "";
 
-  const max = cfg.max && cfg.max > 0 ? cfg.max : Math.max(...rows.map((r) => r.value));
+  /* 多組並列：series 那一行給每組取名（「安慰劑 | Atogepant 60mg」），
+     資料行就跟著多幾個數字。沒寫 series 就是單組，行為與以前完全相同。
+     muted 列出的組別畫成中性灰 ⸺ 對照組、安慰劑這種「基準線」不該跟主角搶顏色。 */
+  const names = cfg.series ? cfg.series.split("|").map((x) => x.trim()).filter(Boolean) : [];
+  const count = Math.max(1, ...rows.map((r) => r.values.length));
+  const grouped = names.length > 1 || count > 1;
+  const mutedSet = new Set(cfg.muted.split("|").map((x) => x.trim()).filter(Boolean));
+  const seriesName = (i) => names[i] || `第 ${i + 1} 組`;
+  // 顏色順序固定，不依資料多寡輪替：--chart-1 是品牌色，--chart-2 是青銅色。
+  // 兩色的色盲分辨度與背景對比都驗證過（dataviz 的 validate_palette）。
+  /* 顏色只發給「非灰色」的組別：安慰劑設成灰之後，主角才拿得到品牌色 --chart-1，
+     而不是被灰色佔掉第一個位置、自己退到第二色。 */
+  const paletteIndex = new Map();
+  let nth = 0;
+  for (let i = 0; i < count; i++) {
+    const n = seriesName(i);
+    if (!mutedSet.has(n)) paletteIndex.set(n, nth++);
+  }
+  const colorVar = (i, name) =>
+    mutedSet.has(name) ? "--chart-muted" : `--chart-${((paletteIndex.get(name) ?? i) % 2) + 1}`;
+
+  const all = rows.flatMap((r) => r.values);
+  const max = cfg.max && cfg.max > 0 ? cfg.max : Math.max(...all);
   const unit = spacedUnit(cfg.unit);
 
   // 給螢幕閱讀器的完整敘述：圖形本身對他們沒有意義，數字才有
   const summary =
     (cfg.title ? cfg.title + "。" : "") +
-    rows.map((r) => `${r.label} ${fmtNum(r.value)}${unit}`).join("，") +
+    rows
+      .map((r) =>
+        grouped
+          ? `${r.label}：` +
+            r.values.map((v, i) => `${seriesName(i)} ${fmtNum(v)}${unit}`).join("、")
+          : `${r.label} ${fmtNum(r.values[0])}${unit}`
+      )
+      .join("，") +
     "。";
+
+  const bar = (v, i, name) => {
+    const pct = max > 0 ? (v / max) * 100 : 0;
+    return `<span class="chart-track"><span class="chart-fill" style="--w:${pct.toFixed(2)}%;--c:var(${colorVar(i, name)})"></span></span>
+            <span class="chart-value" style="--c:var(${colorVar(i, name)})" data-count-to="${v}" data-unit="${esc(unit)}">${esc(fmtNum(v) + unit)}</span>`;
+  };
 
   const bars = rows
     .map((r) => {
-      const pct = max > 0 ? (r.value / max) * 100 : 0;
-      return `          <li class="chart-row">
+      if (!grouped) {
+        return `          <li class="chart-row">
             <span class="chart-label">${esc(r.label)}</span>
-            <span class="chart-track"><span class="chart-fill" style="--w:${pct.toFixed(2)}%"></span></span>
-            <span class="chart-value" data-count-to="${r.value}" data-unit="${esc(unit)}">${esc(fmtNum(r.value) + unit)}</span>
+            ${bar(r.values[0], 0, seriesName(0))}
+          </li>`;
+      }
+      const inner = r.values
+        .map(
+          (v, i) => `              <li class="chart-row chart-row-sub">
+                <span class="chart-label">${esc(seriesName(i))}</span>
+                ${bar(v, i, seriesName(i))}
+              </li>`
+        )
+        .join(NL);
+      return `          <li class="chart-group">
+            <p class="chart-group-label">${esc(r.label)}</p>
+            <ul class="chart-subbars">
+${inner}
+            </ul>
           </li>`;
     })
-    .join("\n");
+    .join(NL);
+
+  const legend = grouped
+    ? `        <ul class="chart-legend" aria-hidden="true">
+${names
+  .map(
+    (n, i) =>
+      `          <li><span class="chart-swatch" style="--c:var(${colorVar(i, n)})"></span>${esc(n)}</li>`
+  )
+  .join(NL)}
+        </ul>${NL}`
+    : "";
 
   return `<figure class="chart reveal" role="img" aria-label="${esc(summary)}">
-${cfg.title ? `        <figcaption class="chart-title">${esc(cfg.title)}</figcaption>\n` : ""}        <ul class="chart-bars" aria-hidden="true">
+${cfg.title ? `        <figcaption class="chart-title">${esc(cfg.title)}</figcaption>${NL}` : ""}${legend}        <ul class="chart-bars" aria-hidden="true">
 ${bars}
         </ul>
-${cfg.source ? `        <p class="chart-source">${inline(cfg.source)}</p>\n` : ""}      </figure>`;
+${cfg.source ? `        <p class="chart-source">${inline(cfg.source)}</p>${NL}` : ""}      </figure>`;
 }
 
 /**

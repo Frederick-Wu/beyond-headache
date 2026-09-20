@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://drminyangwu.com/</loc>
-    <lastmod>2026-09-19T00:00:00+08:00</lastmod>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://drminyangwu.com/posts/migraine-prevention-oral/</loc>
-    <lastmod>2026-09-19T00:00:00+08:00</lastmod>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://drminyangwu.com/posts/medication-overuse-headache/</loc>
-    <lastmod>2026-09-19T00:00:00+08:00</lastmod>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -87,6 +87,12 @@
   <url>
     <loc>https://drminyangwu.com/posts/headache-red-flags/</loc>
     <lastmod>2026-09-10T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://drminyangwu.com/posts/gepant-atogepant/</loc>
+    <lastmod>2024-10-28T00:00:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -104,13 +110,13 @@
   </url>
   <url>
     <loc>https://drminyangwu.com/tags/</loc>
-    <lastmod>2026-09-19T00:00:00+08:00</lastmod>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://drminyangwu.com/tags/headache/</loc>
-    <lastmod>2026-09-19T00:00:00+08:00</lastmod>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

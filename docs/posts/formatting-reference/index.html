@@ -33,7 +33,7 @@
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../styles.css?v=b1b4a966">
+  <link rel="stylesheet" href="../../styles.css?v=f43ef7d8">
   <link rel="alternate" type="application/rss+xml" title="頭痛之外" href="https://drminyangwu.com/feed.xml">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -334,7 +334,7 @@
 
         <nav class="toc" aria-labelledby="toc-heading">
           <h2 class="toc-heading" id="toc-heading">本篇目錄</h2>
-          <ul class="toc-list"><li><a href="#標題">標題</a><ul class="toc-sub"><li><a href="#這是三級標題">這是三級標題</a></li></ul></li><li><a href="#文字強調">文字強調</a></li><li><a href="#清單">清單</a></li><li><a href="#引用">引用</a></li><li><a href="#旁註">旁註</a></li><li><a href="#表格">表格</a></li><li><a href="#連結">連結</a></li><li><a href="#程式碼區塊">程式碼區塊</a></li><li><a href="#圖片">圖片</a></li><li><a href="#長條圖">長條圖</a></li><li><a href="#數值">數值</a></li><li><a href="#關於這些動畫">關於這些動畫</a></li><li><a href="#分隔線">分隔線</a></li></ul>
+          <ul class="toc-list"><li><a href="#標題">標題</a><ul class="toc-sub"><li><a href="#這是三級標題">這是三級標題</a></li></ul></li><li><a href="#文字強調">文字強調</a></li><li><a href="#清單">清單</a></li><li><a href="#引用">引用</a></li><li><a href="#旁註">旁註</a></li><li><a href="#表格">表格</a></li><li><a href="#連結">連結</a></li><li><a href="#程式碼區塊">程式碼區塊</a></li><li><a href="#圖片">圖片</a></li><li><a href="#長條圖">長條圖</a><ul class="toc-sub"><li><a href="#多組並列">多組並列</a></li></ul></li><li><a href="#數值">數值</a></li><li><a href="#關於這些動畫">關於這些動畫</a></li><li><a href="#分隔線">分隔線</a></li></ul>
         </nav>
 
         <div class="post-body">
@@ -389,29 +389,87 @@
         <ul class="chart-bars" aria-hidden="true">
           <li class="chart-row">
             <span class="chart-label">甲項目</span>
-            <span class="chart-track"><span class="chart-fill" style="--w:84.00%"></span></span>
-            <span class="chart-value" data-count-to="42" data-unit="%">42%</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:84.00%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="42" data-unit="%">42%</span>
           </li>
           <li class="chart-row">
             <span class="chart-label">乙項目</span>
-            <span class="chart-track"><span class="chart-fill" style="--w:53.00%"></span></span>
-            <span class="chart-value" data-count-to="26.5" data-unit="%">26.5%</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:53.00%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="26.5" data-unit="%">26.5%</span>
           </li>
           <li class="chart-row">
             <span class="chart-label">丙項目</span>
-            <span class="chart-track"><span class="chart-fill" style="--w:22.00%"></span></span>
-            <span class="chart-value" data-count-to="11" data-unit="%">11%</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:22.00%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="11" data-unit="%">11%</span>
           </li>
           <li class="chart-row">
             <span class="chart-label">丁項目</span>
-            <span class="chart-track"><span class="chart-fill" style="--w:4.00%"></span></span>
-            <span class="chart-value" data-count-to="2" data-unit="%">2%</span>
+            <span class="chart-track"><span class="chart-fill" style="--w:4.00%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="2" data-unit="%">2%</span>
           </li>
         </ul>
         <p class="chart-source">這一行是 source，用來寫出處。放真實數據時務必填上，並附連結。</p>
       </figure>
 <blockquote><p>上面的項目名稱與數字都是假的，只用來示範排版。真的要放臨床數據時，記得把 <code>source</code> 換成可查證的出處 ⸺ 讀者不會因為文章標題是「排版參考」就自動認定裡面的數字不能引用。</p></blockquote>
 <p><code>title</code>、<code>unit</code>、<code>max</code>、<code>source</code> 四個都可以省略。<code>max</code> 省略時會取資料裡的最大值當滿格。</p>
+<h3 id="多組並列">多組並列</h3>
+<p>要同時比較兩組（例如安慰劑和藥物），加一行 <code>series</code> 幫每組取名，資料行就跟著多寫一個數字。 <code>muted</code> 可以指定哪一組畫成灰色 ⸺ 用在安慰劑、對照組這類基準線上，讓主角的顏色跳出來。</p>
+<figure class="chart reveal" role="img" aria-label="這是多組並列的圖表。甲項目：對照組 12%、實驗組 42%，乙項目：對照組 9%、實驗組 26.5%，丙項目：對照組 20%、實驗組 11%。">
+        <figcaption class="chart-title">這是多組並列的圖表</figcaption>
+        <ul class="chart-legend" aria-hidden="true">
+          <li><span class="chart-swatch" style="--c:var(--chart-muted)"></span>對照組</li>
+          <li><span class="chart-swatch" style="--c:var(--chart-1)"></span>實驗組</li>
+        </ul>
+        <ul class="chart-bars" aria-hidden="true">
+          <li class="chart-group">
+            <p class="chart-group-label">甲項目</p>
+            <ul class="chart-subbars">
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">對照組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:28.57%;--c:var(--chart-muted)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-muted)" data-count-to="12" data-unit="%">12%</span>
+              </li>
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">實驗組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:100.00%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="42" data-unit="%">42%</span>
+              </li>
+            </ul>
+          </li>
+          <li class="chart-group">
+            <p class="chart-group-label">乙項目</p>
+            <ul class="chart-subbars">
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">對照組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:21.43%;--c:var(--chart-muted)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-muted)" data-count-to="9" data-unit="%">9%</span>
+              </li>
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">實驗組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:63.10%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="26.5" data-unit="%">26.5%</span>
+              </li>
+            </ul>
+          </li>
+          <li class="chart-group">
+            <p class="chart-group-label">丙項目</p>
+            <ul class="chart-subbars">
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">對照組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:47.62%;--c:var(--chart-muted)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-muted)" data-count-to="20" data-unit="%">20%</span>
+              </li>
+              <li class="chart-row chart-row-sub">
+                <span class="chart-label">實驗組</span>
+                <span class="chart-track"><span class="chart-fill" style="--w:26.19%;--c:var(--chart-1)"></span></span>
+            <span class="chart-value" style="--c:var(--chart-1)" data-count-to="11" data-unit="%">11%</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="chart-source">一樣別忘了出處。這組數字是假的。</p>
+      </figure>
+<p>每一組除了顏色不同，也都標上自己的名稱 ⸺ 色盲的讀者、或是把網頁列印成黑白的人，照樣分得出來。</p>
 <h2 id="數值">數值</h2>
 <p>用 <code> </code>`<code>stats </code> 開區塊，每行寫「數值 | 單位 | 說明」。單位可以留空，但分隔線要留著。</p>
 <div class="stats reveal">

@@ -59,6 +59,13 @@ ol[class] {
   --rule: #e0e4ec;
   --accent: #23417d;
   --accent-soft: #edf1f8;
+  /* 長條圖的資料顏色。單組時只用 --chart-1（就是品牌色）。
+     多組並列才會用到 --chart-2；--chart-muted 給安慰劑、對照組這種基準線用。
+     這三個值跑過 dataviz 的配色驗證：兩兩之間的色盲辨識度 ΔE 都在 15 以上
+     （門檻 8），與卡片底色的對比也都過 3:1。改色之前請重跑那支驗證。 */
+  --chart-1: var(--accent);
+  --chart-2: #a16207;
+  --chart-muted: #7d8496;
   --focus: #2b6cb0;
 
   /* 內容文字區寬度，Hero 圖以此為上限。
@@ -92,6 +99,10 @@ ol[class] {
     --rule: #363f5c;
     --accent: #a8c0ea;
     --accent-soft: #252f4a;
+    /* 深色模式要自己選一組，不能把淺色那組反過來用 ⸺ 青銅色 #a16207 在深底上
+       幾乎看不見。這組同樣驗證過：彼此的色盲辨識度與深色卡片底的對比都合格。 */
+    --chart-2: #e0b060;
+    --chart-muted: #7b86a3;
     --focus: #7cb3ea;
   }
 }
@@ -927,6 +938,12 @@ a.tag:focus-visible {
   margin-top: 0.75rem;
 }
 
+/* 但「圖片緊接著圖片」不算同一組 ⸺ 上面那條 0.75rem 是為了讓圖片和它的說明文字靠在一起，
+   兩張圖各自是一組，收那麼緊會擠在一起（2026-09-20 艾妥達那篇，站主提出）。 */
+.post-body > p:has(> img:only-child) + p:has(> img:only-child) {
+  margin-top: 2rem;
+}
+
 /* 說明文字跟上面的標籤是同一組，一起收緊 ⸺ 圖、標籤、說明三者讀起來要像一塊，
    而不是三段各自獨立的內容。排除掉圖片段落，免得連續兩張圖也被收緊；
    （原本還排除「整段只有粗體」的小標，但 CSS 的 :only-child 只看元素不看文字，
@@ -1001,9 +1018,10 @@ a.tag:focus-visible {
 }
 
 /* 圖片下方接二級標題時留多一點 ⸺ 二級標題字比較大、又是一節的開場，
-   貼太近會像壓在圖片上。這個值刻意大於標題與內文之間的 0.75rem。 */
+   貼太近會像壓在圖片上。這個值刻意大於標題與內文之間的 0.75rem。
+   1.5rem 試過還是太擠（2026-09-20 艾妥達那篇的「口服 CGRP 哪些患者適合？」），改成 2.5rem。 */
 .post-body > p:has(> img:only-child) + h2 {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 /* 但如果這個二級標題底下「緊接著又是一張圖」，它就被上下兩張圖夾住了 ⸺ 上面 1.5rem、
@@ -1570,8 +1588,83 @@ tbody tr:last-child td {
   height: 100%;
   width: var(--w);
   border-radius: inherit;
-  background: var(--accent);
+  /* --c 由 build.mjs 逐條帶進來（單組時就是 --chart-1）。留一個退路，
+     免得日後有人手寫 HTML 忘了帶 --c，長條變成透明看不見。 */
+  background: var(--c, var(--chart-1));
   transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.08s;
+}
+
+/* ---------- 多組並列 ---------- */
+/* 一個分類（例如「便祕」）底下放各組的長條。分類名稱獨立一行，
+   各組用自己的名稱當標籤 ⸺ 顏色不是唯一的識別方式，關掉顏色也讀得懂。 */
+.chart-group + .chart-group {
+  margin-top: 1.5rem;
+}
+
+.chart-group-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.chart-subbars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chart-row-sub + .chart-row-sub {
+  margin-top: 0.7rem;
+}
+
+.chart-row-sub .chart-label,
+.chart-row-sub .chart-value {
+  font-size: 0.8125rem;
+}
+
+/* 數值的顏色跟著它自己那一組，這樣即使長條很短也認得出是哪一組。 */
+.chart-value {
+  color: var(--c, var(--accent));
+}
+
+.chart-legend {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* 每一項的高度要一致，否則色塊會上下錯開 ⸺ 中文與英文（「安慰劑」與
+     「Atogepant 60mg」）的文字行盒高度不同，交給預設的 stretch 會各自為政。
+     固定 line-height 再一起置中，兩項就對齊了。 */
+  align-items: center;
+  gap: 0.35rem 1.1rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* 選擇器帶上 .post-body 是為了贏過 .post-body li + li（那條的權重比 .chart-legend li 高）。 */
+.post-body .chart-legend li,
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: inherit;
+  /* 圖例是同一列的並排項目，不吃內文清單的 li + li 段距（0.6rem）⸺
+     沒歸零的話第二項會被往下推 9.6px，色塊就跟第一項對不齊。 */
+  margin: 0;
+  /* 組名不斷行：窄螢幕上「Atogepant 60mg」被折成兩行時，那一項會比隔壁高，
+     色塊就跟著錯開。要換行的話整項一起換到下一列（靠 ul 的 flex-wrap）。 */
+  white-space: nowrap;
+}
+
+.chart-swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+  background: var(--c);
+  flex-shrink: 0;
 }
 
 .js .reveal:not(.is-visible) .chart-fill {

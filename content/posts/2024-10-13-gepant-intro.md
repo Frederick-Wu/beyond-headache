@@ -80,7 +80,7 @@ heroAlt: 2024 偏頭痛新型口服藥簡介封面，一位男性手扶著頭，
 
 2024 年，我陸陸續續了參加幾場有關於偏頭痛新藥的說明會和學術講座。台灣預計在 2024 年引進的藥物一共有兩種，分別如下：
 
-- **[Atogepant（Qualipta®，艾妥達®）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html#point3)**，台灣的適應症是用作**長期預防**藥物，預計 2024 年底上市。
+- **[Atogepant（Qualipta®，艾妥達®）](/posts/gepant-atogepant/#atogepantqualipta艾妥達藥物說明)**，台灣的適應症是用作**長期預防**藥物，預計 2024 年底上市。
 - **[Rimegepant（Nurtec® ODT，紐舒泰®）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)**，台灣的適應症是用作**急性止痛**藥物，2024 年已經上市。
 
 誠如上段所說，新型口服藥物較不會直接導致血管收縮，因此對於有心血管疾病病史的偏頭痛患者，是一個相當理想的替代藥物。此外，目前台灣健保尚未給付，皆須自費使用。
@@ -105,7 +105,7 @@ heroAlt: 2024 偏頭痛新型口服藥簡介封面，一位男性手扶著頭，
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
 - 偏頭痛預防性治療攻略：新型口服標靶藥物 (四)
   - [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
-  - [偏頭痛標靶藥│2024 新型口服 Gepant － Atogepant 艾妥達](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)
+  - [偏頭痛標靶藥│2024 新型口服 Gepant － Atogepant 艾妥達](/posts/gepant-atogepant/)
   - [偏頭痛標靶藥│2024 新型口服Gepant － Rimegepant 紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)
   - [偏頭痛 2 種標靶藥比較│Atogepant & Rimegepant 服藥頻率、療效、選擇考量](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
 

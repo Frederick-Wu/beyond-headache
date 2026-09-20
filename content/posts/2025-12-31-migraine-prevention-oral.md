@@ -2,7 +2,7 @@
 title: 偏頭痛「預防藥治療」攻略：傳統口服藥 (一)
 legacyUrl: https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html
 date: 2025-12-31
-updated: 2026-09-19
+updated: 2026-09-20
 summary: >
   偏頭痛不該只是「痛了才醫」。這篇說明什麼情況該考慮吃預防藥，並逐一介紹四類傳統口服
   預防藥物 ⸺ 乙型阻斷劑、鈣離子通道阻斷劑、抗癲癇藥、抗憂鬱劑 ⸺ 各自的機制、副作用、
@@ -68,7 +68,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 2. **鈣離子阻斷劑(Calcium channel blocker)**
 3. **抗癲癇藥(Anti-convulsant)**
 4. **抗憂鬱劑(Anti-depressant)**
-5. [口服標靶藥](/posts/gepant-intro/#新型口服藥物-gepant-有什麼亮點)（[艾妥達](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
+5. [口服標靶藥](/posts/gepant-intro/#新型口服藥物-gepant-有什麼亮點)（[艾妥達](/posts/gepant-atogepant/) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
 6. [單株抗體針劑](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
 7. [肉毒桿菌素針劑](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)
 

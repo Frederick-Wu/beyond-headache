@@ -6,7 +6,7 @@
     <description>「頭痛之外」不只談頭痛。這是神經內科醫師吳旻陽的衛教網站，以頭痛與偏頭痛為核心，也分享腦中風、失智症、癲癇等疾病。我會整理門診常見問題及分享神經醫學知識。</description>
     <language>zh-Hant-TW</language>
     <copyright>© 2026 吳旻陽 醫師</copyright>
-    <lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://drminyangwu.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>頭痛不是只能吃止痛藥</title>
@@ -138,6 +138,15 @@
       <dc:creator>吳旻陽 醫師</dc:creator>
       <description>頭痛什麼時候該看醫生？這篇整理 10 個需要就醫評估的危險警訊 ⸺ 雷擊型頭痛、伴隨神經症狀或發燒、50 歲後才出現的頭痛、姿勢改變或用力會影響疼痛、懷孕與產後、慢性病史，以及止痛藥越吃越重卻沒有改善。</description>
       <category>就醫準備</category>
+      <category>頭痛</category>
+    </item>
+    <item>
+      <title>偏頭痛標靶藥│2024 新型口服 Gepant － Atogepant 艾妥達</title>
+      <link>https://drminyangwu.com/posts/gepant-atogepant/</link>
+      <guid isPermaLink="true">https://drminyangwu.com/posts/gepant-atogepant/</guid>
+      <pubDate>Mon, 28 Oct 2024 00:00:00 +0800</pubDate>
+      <dc:creator>吳旻陽 醫師</dc:creator>
+      <description>艾妥達（Atogepant, Qualipta®）是台灣第一個核准用於偏頭痛「預防」的口服標靶藥。這篇整理它的三個臨床試驗 ⸺ 陣發性、慢性、以及傳統藥物失敗的難治族群 ⸺ 各自減少多少頭痛天數，常見副作用有哪些，用法劑量與特殊族群的注意事項，以及我認為哪些人特別適合。</description>
       <category>頭痛</category>
     </item>
     <item>

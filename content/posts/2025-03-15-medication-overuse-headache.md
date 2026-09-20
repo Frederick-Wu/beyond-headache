@@ -2,7 +2,7 @@
 title: 市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛
 legacyUrl: https://blog.drminyangwu.com/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html
 date: 2025-03-15
-updated: 2026-09-19
+updated: 2026-09-20
 summary: >
   止痛藥吃久了反而更常頭痛，這叫藥物過度使用頭痛。這篇說明它的診斷條件、哪些人是高風險
   族群、背後的四個機轉，以及該怎麼擺脫這個惡性循環 ⸺ 從限制用藥、過渡期療法到預防性藥物，
@@ -171,7 +171,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 
 - [傳統口服預防藥物](/posts/migraine-prevention-oral/)：妥泰（Topiramate）、或者其他心血管藥物、抗癲癇用藥、抗憂鬱劑
 - [新型長效針劑](/posts/migraine-injections-comparison/)：[肉毒桿菌注射](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)，以及針劑劑型的 [CGRP 單株抗體](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
-- [新型口服標靶](/posts/gepant-intro/)：Gepant 藥物 [Atogepant（艾妥達）](https://blog.drminyangwu.com/2024/10/2024-gepant_28.html)。
+- [新型口服標靶](/posts/gepant-intro/)：Gepant 藥物 [Atogepant（艾妥達）](/posts/gepant-atogepant/)。
 
 ### 4. 嘗試非藥物性的頭痛緩解方法
 
