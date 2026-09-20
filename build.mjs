@@ -1646,7 +1646,10 @@ function renderLegacyRedirect(posts) {
   const marker = "/*LEGACY_MAP*/ {}";
   if (!tpl.includes(marker)) throw new Error("src/blogger-redirect.js 裡找不到 " + marker);
   // 用函式當第二個參數：網址裡若有 $ 字元，字串形式會被當成替換樣式
-  return tpl.replace(marker, () => JSON.stringify(map, null, 2).split("\n").join("\n  "));
+  const js = tpl.replace(marker, () => JSON.stringify(map, null, 2).split("\n").join("\n  "));
+  // 對照表另外輸出一份 JSON：腳本會以 no-store 抓它，所以搬完新文章立刻生效，
+  // 不必等腳本自己的 4 小時瀏覽器快取過期。內嵌那份只是抓不到時的備援。
+  return { js, json: JSON.stringify(map, null, 2) + "\n" };
 }
 
 function loadPosts() {
@@ -3798,7 +3801,9 @@ function build() {
   copyFileSync(join(ROOT, "src", "styles.css"), join(OUT_DIR, "styles.css"));
   copyFileSync(join(ROOT, "src", "counter.js"), join(OUT_DIR, "counter.js"));
   copyFileSync(join(ROOT, "src", "enhance.js"), join(OUT_DIR, "enhance.js"));
-  write("blogger-redirect.js", renderLegacyRedirect(posts));
+  const legacy = renderLegacyRedirect(posts);
+  write("blogger-redirect.js", legacy.js);
+  write("blogger-redirect-map.json", legacy.json);
   const assets = copyDir(join(ROOT, "assets"), join(OUT_DIR, "assets"));
   copyDir(join(ROOT, "static"), OUT_DIR);
 

@@ -27,8 +27,13 @@
 (function () {
   "use strict";
 
-  // build.mjs 會把這一行換成實際的對照表：{ "舊網址路徑": "新網址" }
+  /* build.mjs 會把這一行換成建置當下的對照表：{ "舊網址路徑": "新網址" }。
+     ⚠️ 它只是「備援」⸺ 這支檔案本身會被瀏覽器快取 4 小時（網域層級設定），
+     所以每搬一篇新文章，內嵌的這份都可能是舊的。真正用的是下面另外抓的
+     blogger-redirect-map.json，那個抓取指定 no-store，一定拿到最新的。
+     2026-09-20 站主就踩到這個：艾妥達上線後，他的瀏覽器還在用稍早快取的版本。 */
   var MAP = /*LEGACY_MAP*/ {};
+  var MAP_URL = "https://drminyangwu.com/blogger-redirect-map.json";
 
   var SECONDS = 3;
   var UTM = "utm_source=blog.drminyangwu.com&utm_medium=redirect";
@@ -41,9 +46,6 @@
     return;
   }
 
-  var target = MAP[path];
-  if (!target) return;
-
   if (/[?&]stay(=|&|$)/.test(location.search)) return;
 
   var STAY_KEY = "bh-stay:" + path;
@@ -53,6 +55,29 @@
     // 無痕模式或封鎖儲存空間時 sessionStorage 會丟錯 ⸺ 照常轉址即可
   }
 
+  // 先拿最新的對照表；抓不到（離線、新站掛了、瀏覽器擋了）就用內嵌那份
+  if (typeof fetch === "function") {
+    fetch(MAP_URL, { cache: "no-store" })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (fresh) {
+        start(fresh && typeof fresh === "object" ? fresh : MAP);
+      })
+      .catch(function () {
+        start(MAP);
+      });
+  } else {
+    start(MAP);
+  }
+
+  function start(map) {
+    var target = map[path];
+    if (!target) return;
+    run(target);
+  }
+
+  function run(target) {
   var dest = target + (target.indexOf("?") < 0 ? "?" : "&") + UTM;
 
   function show() {
@@ -112,6 +137,7 @@
     });
   }
 
-  if (document.body) show();
-  else document.addEventListener("DOMContentLoaded", show);
+    if (document.body) show();
+    else document.addEventListener("DOMContentLoaded", show);
+  }
 })();
