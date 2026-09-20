@@ -80,7 +80,7 @@ heroAlt: 2024 偏頭痛新型口服藥簡介封面，一位男性手扶著頭，
 
 2024 年，我陸陸續續了參加幾場有關於偏頭痛新藥的說明會和學術講座。台灣預計在 2024 年引進的藥物一共有兩種，分別如下：
 
-- **[Atogepant（Qualipta®，艾妥達®）](/posts/gepant-atogepant/#atogepantqualipta艾妥達藥物說明)**，台灣的適應症是用作**長期預防**藥物，預計 2024 年底上市。
+- **[Atogepant（Aquipta®，艾妥達®）](/posts/gepant-atogepant/#atogepantaquipta艾妥達藥物說明)**，台灣的適應症是用作**長期預防**藥物，預計 2024 年底上市。
 - **[Rimegepant（Nurtec® ODT，紐舒泰®）](/posts/gepant-rimegepant/)**，台灣的適應症是用作**急性止痛**藥物，2024 年已經上市。
 
 誠如上段所說，新型口服藥物較不會直接導致血管收縮，因此對於有心血管疾病病史的偏頭痛患者，是一個相當理想的替代藥物。此外，目前台灣健保尚未給付，皆須自費使用。

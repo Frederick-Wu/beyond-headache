@@ -3,7 +3,7 @@ title: 偏頭痛標靶藥│2024 新型口服 Gepant － Atogepant 艾妥達
 legacyUrl: https://blog.drminyangwu.com/2024/10/2024-gepant_28.html
 date: 2024-10-28
 summary: >
-  艾妥達（Atogepant, Qualipta®）是台灣第一個核准用於偏頭痛「預防」的口服標靶藥。
+  艾妥達（Atogepant, Aquipta®）是台灣第一個核准用於偏頭痛「預防」的口服標靶藥。
   這篇整理它的三個臨床試驗 ⸺ 陣發性、慢性、以及傳統藥物失敗的難治族群 ⸺ 各自減少多少
   頭痛天數，常見副作用有哪些，用法劑量與特殊族群的注意事項，以及我認為哪些人特別適合。
 tags: [頭痛]
@@ -19,9 +19,9 @@ citation:
 hero: assets/gepant-atogepant-01.jpg
 heroWidth: 1200
 heroHeight: 628
-heroAlt: 2024 偏頭痛新型口服藥簡介・Atogepant 艾妥達 (Qualipta) 封面，一位男性手上拿著一顆白色藥錠，桌上放著一杯水
+heroAlt: 2024 偏頭痛新型口服藥簡介・Atogepant 艾妥達 (Aquipta) 封面，一位男性手上拿著一顆白色藥錠，桌上放著一杯水
 ---
-[上一篇](/posts/gepant-intro/#淺談專一性藥物的治療機轉)為各位介紹了 Gepant（吉朋）類藥物的機轉及亮點。本文會介紹台灣的新型口服**預防用藥** – Atogepant（Qualipta、艾妥達）。
+[上一篇](/posts/gepant-intro/#淺談專一性藥物的治療機轉)為各位介紹了 Gepant（吉朋）類藥物的機轉及亮點。本文會介紹台灣的新型口服**預防用藥** – Atogepant（Aquipta、艾妥達）。
 
 面對偏頭痛，除了止痛藥，[預防性治療](/posts/migraine-prevention-oral/#為什麼需要預防性治療-偏頭痛重要心法)也扮演重要角色。預防性藥物不僅可以改善偏頭痛發作頻率、疼痛持續時間、頭痛嚴重度、以及生活品質，也可減少病人反覆就醫的花費，並減少[止痛藥物依賴](/posts/medication-overuse-headache/)的風險。針對病人每月頭痛發作＞4 天以上、或是嚴重影響生活品質，就應該要考慮加上預防性藥物（可參考連結[我需要預防治療嗎？](/posts/migraine-prevention-oral/#我需要預防治療嗎主動防火比被動救火更重要)）。
 
@@ -162,7 +162,7 @@ source: 資料來源：Ailani J, et al. [N Engl J Med 2021;385(8):695-706](https
 
 副作用在 Atogepant 10mg、30mg、60mg 三種劑量之間的發生比率類似，並不會因為劑量較高，就容易產生副作用。
 
-## Atogepant（Qualipta®，艾妥達®）藥物說明
+## Atogepant（Aquipta®，艾妥達®）藥物說明
 
 - **適應症**：適用於每個月偏頭痛發作 4 次以上的成人偏頭痛預防
 - **用法與劑量**：對於陣發型偏頭痛、及慢性偏頭痛，建議劑量為 60mg 口服，一天服用一次。

@@ -37,7 +37,7 @@ socialImageAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的兩種藥外盒�
 
 ## 適應症與用途
 
-**Atogepant** (Qualipta 艾妥達)：主要用於預防，包括陣發性偏頭痛和慢性偏頭痛。它是一種每日服用的口服藥物，適合需要長期預防偏頭痛的患者。
+**Atogepant** (Aquipta 艾妥達)：主要用於預防，包括陣發性偏頭痛和慢性偏頭痛。它是一種每日服用的口服藥物，適合需要長期預防偏頭痛的患者。
 
 **Rimegepant** (Nurtec 紐舒泰)：既可用於急性治療偏頭痛（不管是有預兆發生的、或是無預兆的偏頭痛），也可用於**預防陣發性偏頭痛**。它可以每兩天或是每天服用一次的口服溶解錠，適合需要同時進行急性治療和預防的患者。病患不再需要分開吃「止痛藥」和「預防藥」
 
@@ -47,7 +47,7 @@ socialImageAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的兩種藥外盒�
 
 ## 服藥頻率和方式
 
-|  | Qulipta 艾妥達 | Nurtec 紐舒泰 |
+|  | Aquipta 艾妥達 | Nurtec 紐舒泰 |
 | --- | --- | --- |
 | 適應症 | **陣發性**偏頭痛 & **慢性**偏頭痛 **預防**用藥 | 偏頭痛急性**止痛** |
 | 劑型 | 口服錠 | 口**溶**錠 |
@@ -55,7 +55,7 @@ socialImageAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的兩種藥外盒�
 | 重度肝功能不全 | **避免使用** | **避免使用** |
 | 重度腎臟病 | 10mg | **避免使用** |
 
-**Atogepant** (Qualipta 艾妥達) 是口服錠劑，每日服用一次。一般劑量為 10 mg、30 mg 或 60 mg。台灣預計 2024 上市的是 60mg 的劑型，預計隔年上市 10mg 的劑型，可給特殊族群（重度腎臟病友）使用。
+**Atogepant** (Aquipta 艾妥達) 是口服錠劑，每日服用一次。一般劑量為 10 mg、30 mg 或 60 mg。台灣 2024 上市的是 60mg 的劑型，2025 年上市 10mg 的劑型，可給特殊族群（重度腎臟病友）使用。
 
 **Rimegepant** (Nurtec 紐舒泰) 是口溶錠，可於在舌上溶解，用於急性發作時可立即緩解頭痛，用於預防用途時則每兩天服用一次。兩種用途的單次劑量皆為 75 mg。
 
@@ -63,7 +63,7 @@ socialImageAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的兩種藥外盒�
 
 ## 臨床療效比較
 
-[研究](https://journals.lww.com/neurotodayonline/fulltext/2024/04180/how_does_atogepant_compare_with_rimegepant_for.1.aspx)顯示，**Atogepant** (Qualipta 艾妥達) 在第 1 至 12 週，或者是第 9 至 12 週都顯示出，平均每月偏頭痛天數改善的幅度較大；Atogepant 在 12 週內平均減少了 1.65 天的每月偏頭痛天數，且在減少急性用藥天數方面也優於 Rimegepant (Nurtec 紐舒泰)。
+[研究](https://journals.lww.com/neurotodayonline/fulltext/2024/04180/how_does_atogepant_compare_with_rimegepant_for.1.aspx)顯示，**Atogepant** (Aquipta 艾妥達) 在第 1 至 12 週，或者是第 9 至 12 週都顯示出，平均每月偏頭痛天數改善的幅度較大；Atogepant 在 12 週內平均減少了 1.65 天的每月偏頭痛天數，且在減少急性用藥天數方面也優於 Rimegepant (Nurtec 紐舒泰)。
 
 根據目前我找到的[文獻](https://www.healio.com/news/neurology/20240328/atogepant-superior-to-rimegepant-in-reducing-monthly-migraine-days-at-12-weeks)，客觀顯示了：Atogepant 在減少急性藥物使用天數和提升生活品質方面的效果優於 Rimegepant。
 
@@ -93,7 +93,7 @@ source: 資料來源：Ailani J, et al. [Headache 2024;64(10):1253-1263](https:/
 
 實際上，從個別藥物的臨床試驗中，Atogepant 和 Rimegepant 兩者的安全性與副作用是差不多的。它們皆可能出現噁心、疲勞、口乾和頭暈等副作用。**Atogepant 則有便秘的副作用（6.9%）、Rimegepant 比較不會有便祕情形**。兩者皆屬於 CGRP 受體拮抗劑，因此從[機轉](/posts/gepant-intro/)上來看，安全性較傳統偏頭痛預防藥物高。
 
-- **Atogepant** (Qualipta 艾妥達)：噁心、便秘、疲勞和食慾下降。
+- **Atogepant** (Aquipta 艾妥達)：噁心、便秘、疲勞和食慾下降。
 - **Rimegepant** (Nurtec 紐舒泰)：噁心、蛋白尿、胃痛和消化不良。
 
 以上這些副作用通常是輕微至中等程度，因此多數患者可以忍受，遇到了較不會導致藥物中斷。
