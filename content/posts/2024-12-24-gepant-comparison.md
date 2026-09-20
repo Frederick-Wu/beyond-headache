@@ -18,6 +18,10 @@ hero: assets/gepant-comparison-01.jpg
 heroWidth: 1200
 heroHeight: 1006
 heroAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的適應症對照圖，兩種藥的外盒與藥錠並排。艾妥達不能用於偏頭痛急性止痛，可用於陣發型與慢性偏頭痛的長期預防；紐舒泰可用於急性止痛與陣發型偏頭痛的長期預防，但不用於慢性偏頭痛
+socialImage: assets/gepant-comparison-share.jpg
+socialImageWidth: 1200
+socialImageHeight: 630
+socialImageAlt: 艾妥達 Atogepant 與紐舒泰 Rimegepant 的兩種藥外盒與藥錠並排，中間是 VS 字樣
 ---
 前三篇介紹了兩種台灣上市的偏頭痛藥物：[Atogepant 艾妥達](/posts/gepant-atogepant/)、[Rimegepant 紐舒泰](/posts/gepant-rimegepant/)，儘管在台灣有不同的適應症，但機轉上來說是同類藥物。有趣的是，兩者間的使用情境有重疊，都能作為**陣發型偏頭痛患者**的**預防**用藥！
 
