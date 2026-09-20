@@ -68,7 +68,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 2. **鈣離子阻斷劑(Calcium channel blocker)**
 3. **抗癲癇藥(Anti-convulsant)**
 4. **抗憂鬱劑(Anti-depressant)**
-5. [口服標靶藥](/posts/gepant-intro/#新型口服藥物-gepant-有什麼亮點)（[艾妥達](/posts/gepant-atogepant/) (Aquipta)、[紐舒泰](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html) (Nurtec)）
+5. [口服標靶藥](/posts/gepant-intro/#新型口服藥物-gepant-有什麼亮點)（[艾妥達](/posts/gepant-atogepant/) (Aquipta)、[紐舒泰](/posts/gepant-rimegepant/) (Nurtec)）
 6. [單株抗體針劑](/posts/migraine-prevention-injections/#一精準打擊cgrp-單株抗體針劑)
 7. [肉毒桿菌素針劑](/posts/migraine-prevention-injections/#二多點持久戰力肉毒桿菌素-botox)
 

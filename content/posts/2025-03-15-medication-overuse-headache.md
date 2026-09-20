@@ -179,7 +179,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 - 適度運動、放鬆身心
 - [頭痛日記](/posts/headache-visit-questions/#頭痛病友小幫手頭痛日記)，使用日記記錄頭痛天數和止痛藥使用天數，有助於追蹤病情和評估治療效果。更重要的是，頭痛日記寫得好，也能[幫自己省錢](/posts/migraine-injections-comparison/#自費使用考量不只是買藥更是買時間)！
 
-相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](/posts/gepant-intro/) 受體拮抗劑當中，[Rimegepant（紐舒泰）](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)。
+相較之下，美國的一篇大型[臨床試驗](https://pubmed.ncbi.nlm.nih.gov/38659334/)顯示，[偏頭痛新型口服 CGRP](/posts/gepant-intro/) 受體拮抗劑當中，[Rimegepant（紐舒泰）](/posts/gepant-rimegepant/)和 Ubrogepant 用於急性偏頭痛發作時，**不會增加**併發藥物過度使用頭痛的風險。其他細節亦可參考我之前寫過的[文章](/posts/gepant-rimegepant/#現行偏頭痛的止痛藥已有許多選項為何還需要新藥呢)。
 
 ## 什麼時候要考慮住院？
 
@@ -210,7 +210,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [藥物知多少？偏頭痛「預防性治療」全攻略（一）：傳統口服藥篇](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
-- [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](https://blog.drminyangwu.com/2024/11/2024-gepant-rimegepantnurtec.html#point1)
+- [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](/posts/gepant-rimegepant/#現行偏頭痛的止痛藥已有許多選項為何還需要新藥呢)
 - [台灣新型 Gepant 口服藥物大車拼](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
 - [我只是這幾天睡不好頭比較痛，有需要去看醫生嗎？ 頭痛要留意的 10 個警訊](/posts/headache-red-flags/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
