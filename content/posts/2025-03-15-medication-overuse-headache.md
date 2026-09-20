@@ -211,7 +211,7 @@ source: 資料來源：Diener HC, et al. [Pathophysiology, prevention, and treat
 - [藥物知多少？偏頭痛「預防性治療」全攻略（一）：傳統口服藥篇](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑 (二)](/posts/migraine-prevention-injections/)
 - [現行偏頭痛的止痛藥已有許多選項，為何還需要新藥呢？](/posts/gepant-rimegepant/#現行偏頭痛的止痛藥已有許多選項為何還需要新藥呢)
-- [台灣新型 Gepant 口服藥物大車拼](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
+- [台灣新型 Gepant 口服藥物大車拼](/posts/gepant-comparison/)
 - [我只是這幾天睡不好頭比較痛，有需要去看醫生嗎？ 頭痛要留意的 10 個警訊](/posts/headache-red-flags/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 

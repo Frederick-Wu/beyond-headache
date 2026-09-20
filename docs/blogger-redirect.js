@@ -40,6 +40,7 @@
     "/2025/09/secondary-headache-causes-warning-signs.html": "https://drminyangwu.com/posts/headache-map-part2/",
     "/2025/09/primary-headache-types-diagnosis-migraine-tension-cluster.html": "https://drminyangwu.com/posts/headache-map-part1/",
     "/2025/03/medication-overuse-headache-painkiller-management-drug-addiction-Substance-dependence.html": "https://drminyangwu.com/posts/medication-overuse-headache/",
+    "/2024/12/Gepant-atogepant-Qualipta vs Rimegepant - Nurtec - comparison-oral- new drug - 2024  .html": "https://drminyangwu.com/posts/gepant-comparison/",
     "/2024/12/blog-post.html": "https://drminyangwu.com/posts/headache-visit-questions/",
     "/2024/11/10.html": "https://drminyangwu.com/posts/headache-red-flags/",
     "/2024/11/2024-gepant-rimegepantnurtec.html": "https://drminyangwu.com/posts/gepant-rimegepant/",

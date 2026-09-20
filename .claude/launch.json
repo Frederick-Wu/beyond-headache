@@ -4,8 +4,9 @@
     {
       "name": "blog",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["serve.mjs", "4321"],
-      "port": 4321
+      "runtimeArgs": ["serve.mjs"],
+      "port": 4321,
+      "autoPort": true
     }
   ]
 }

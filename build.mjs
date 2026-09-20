@@ -496,10 +496,19 @@ function collectList(lines, start, ordered) {
 
 /**
  * 把「數字 → 顯示字串」的格式統一，避免長條圖與數值區塊各寫一套。
- * 整數不補小數點，小數保留一位。
+ * 整數不補小數點，小數保留一位，四位數以上加千分位。
+ *
+ * 千分位是為了「每增加一位良好療效者的成本」那種五位數金額 ⸺ 73029 要瞄很久
+ * 才數得出位數，73,029 一眼就看得出來。enhance.js 的跑數字動畫有一份一樣的
+ * group()，兩邊要一起改，否則動畫收尾時逗號會不見。
  */
+const group = (s) => {
+  const parts = String(s).split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+};
 const fmtNum = (n) =>
-  Number.isInteger(n) ? String(n) : String(Math.round(n * 10) / 10);
+  group(Number.isInteger(n) ? String(n) : String(Math.round(n * 10) / 10));
 
 /**
  * 單位是中文字時，數字和單位之間要空一格（站上的排版規則：中英數之間加空格）。
@@ -564,8 +573,15 @@ function renderChart(lines) {
   // 兩色的色盲分辨度與背景對比都驗證過（dataviz 的 validate_palette）。
   /* 顏色只發給「非灰色」的組別：安慰劑設成灰之後，主角才拿得到品牌色 --chart-1，
      而不是被灰色佔掉第一個位置、自己退到第二色。 */
+  /* 單組長條圖的 muted 比對的是「每一列的標籤」而不是組名 ⸺ 一張圖只有一組時，
+     作者寫 muted: 安慰劑 指的顯然是那一根長條。非灰的列一律拿 --chart-1，
+     不跟著輪替，否則單組圖會無端變成雙色。沒寫 muted 就完全維持原本的行為。 */
+  const soloMuting = !grouped && mutedSet.size > 0;
   const paletteIndex = new Map();
   let nth = 0;
+  if (soloMuting) {
+    for (const r of rows) if (!mutedSet.has(r.label)) paletteIndex.set(r.label, 0);
+  } else
   for (let i = 0; i < count; i++) {
     const n = seriesName(i);
     if (!mutedSet.has(n)) paletteIndex.set(n, nth++);
@@ -601,7 +617,7 @@ function renderChart(lines) {
       if (!grouped) {
         return `          <li class="chart-row">
             <span class="chart-label">${esc(r.label)}</span>
-            ${bar(r.values[0], 0, seriesName(0))}
+            ${bar(r.values[0], 0, soloMuting ? r.label : seriesName(0))}
           </li>`;
       }
       const inner = r.values

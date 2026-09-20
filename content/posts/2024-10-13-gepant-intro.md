@@ -107,7 +107,7 @@ heroAlt: 2024 偏頭痛新型口服藥簡介封面，一位男性手扶著頭，
   - [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
   - [偏頭痛標靶藥│2024 新型口服 Gepant － Atogepant 艾妥達](/posts/gepant-atogepant/)
   - [偏頭痛標靶藥│2024 新型口服Gepant － Rimegepant 紐舒泰](/posts/gepant-rimegepant/)
-  - [偏頭痛 2 種標靶藥比較│Atogepant & Rimegepant 服藥頻率、療效、選擇考量](https://blog.drminyangwu.com/2024/12/Gepant-atogepant-Qualipta%20vs%20Rimegepant%20-%20Nurtec%20-%20comparison-oral-%20new%20drug%20-%202024%20%20.html)
+  - [偏頭痛 2 種標靶藥比較│Atogepant & Rimegepant 服藥頻率、療效、選擇考量](/posts/gepant-comparison/)
 
 ## 參考資料
 

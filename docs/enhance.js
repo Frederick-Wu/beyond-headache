@@ -78,7 +78,16 @@
    *
    * HTML 裡就是最終數字，這裡先歸零再跑上去。
    * 小數位數跟著目標值走，避免 14.4 跑成 14。
+   *
+   * 千分位要跟 build.mjs 的 fmtNum 一模一樣 ⸺ 動畫結束時的字串必須和原始
+   * HTML 相同，否則跑完數字會突然少掉逗號（15,823 → 15823）。
    * ------------------------------------------------------------- */
+  function group(s) {
+    var parts = String(s).split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
+
   function countUp(scope) {
     var nodes = scope.querySelectorAll("[data-count-to]");
     Array.prototype.forEach.call(nodes, function (node) {
@@ -95,12 +104,12 @@
         var t = Math.min((now - start) / duration, 1);
         // easeOutCubic：一開始快、收尾慢，像儀表指針停下來
         var eased = 1 - Math.pow(1 - t, 3);
-        node.textContent = (target * eased).toFixed(decimals) + unit;
+        node.textContent = group((target * eased).toFixed(decimals)) + unit;
         if (t < 1) requestAnimationFrame(frame);
-        else node.textContent = target.toFixed(decimals) + unit;
+        else node.textContent = group(target.toFixed(decimals)) + unit;
       }
 
-      node.textContent = (0).toFixed(decimals) + unit;
+      node.textContent = group((0).toFixed(decimals)) + unit;
       requestAnimationFrame(frame);
     });
   }

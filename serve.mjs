@@ -4,6 +4,7 @@
  *
  * 用法：  node serve.mjs        （預設 http://localhost:4321）
  *        node serve.mjs 8080
+ *        PORT=8080 node serve.mjs   （給會自己指派連接埠的工具用）
  */
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
@@ -12,7 +13,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "docs");
-const PORT = Number(process.argv[2]) || 4321;
+const PORT = Number(process.argv[2]) || Number(process.env.PORT) || 4321;
 
 const TYPES = {
   ".html": "text/html; charset=utf-8",
