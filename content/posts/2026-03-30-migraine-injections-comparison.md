@@ -2,7 +2,7 @@
 title: 偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)
 legacyUrl: https://blog.drminyangwu.com/2026/03/migraine-injections-comparison-cgrp-vs-botox-how-to-choose-cost-and-decision-guide.html
 date: 2026-03-30
-updated: 2026-09-19
+updated: 2026-10-01
 summary: >
   長效針劑要等健保，還是先自費？自費大概要花多少、打多久才看得出效果、
   單株抗體和肉毒桿菌該怎麼選？這篇整理兩種單株抗體的差別、我在門診選藥時會考慮的
@@ -168,7 +168,7 @@ socialImageAlt: 偏頭痛之預防針劑比較表，並列單株抗體與肉毒�
 
 ## 延伸閱讀
 
-- [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
+- [頭痛看診前必讀，醫師會問我什麼問題？](/posts/headache-visit-questions/)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [市售止痛藥，為何吃越多越沒效？認識藥物過度使用頭痛](/posts/medication-overuse-headache/)
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)

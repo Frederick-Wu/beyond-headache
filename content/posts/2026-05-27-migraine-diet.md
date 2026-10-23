@@ -2,7 +2,7 @@
 title: 改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單
 legacyUrl: https://blog.drminyangwu.com/2026/05/migraine-diet-recommendations-food-triggers.html
 date: 2026-05-27
-updated: 2026-09-19
+updated: 2026-10-01
 summary: >
   偏頭痛的人該怎麼吃？這篇整理研究上對偏頭痛有幫助的三種營養素 ⸺ 鎂、Omega-3、
   維生素 B2 ⸺ 與它們的食物來源，常被視為誘發因子的四類地雷食物，怎麼用飲食日記
@@ -185,8 +185,8 @@ EVE 止痛藥一次 2 顆、一天 3 次 | 240
 
 頭痛入門必讀
 
-- [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
-- [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)
+- [頭痛看診前必讀，醫師會問我什麼問題？](/posts/headache-visit-questions/)
+- [10 大危險頭痛警訊！哪些情況需要看醫師，一次告訴你](/posts/headache-red-flags/)
 
 頭痛地圖：痛哪裡找哪裡
 

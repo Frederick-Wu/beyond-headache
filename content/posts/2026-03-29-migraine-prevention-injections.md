@@ -2,7 +2,7 @@
 title: 偏頭痛「預防藥治療」攻略：長效針劑 (二)
 legacyUrl: https://blog.drminyangwu.com/2026/03/migraine-prevention-part2-injections-cgrp-ajovy-emgality-botox.html
 date: 2026-03-29
-updated: 2026-09-19
+updated: 2026-10-01
 summary: >
   傳統口服藥效果不好或副作用受不了時，還有兩類長效針劑 ⸺ CGRP 單株抗體與肉毒桿菌素。
   這篇說明它們怎麼作用、適合誰、多久打一次、效果多快、有什麼副作用與禁忌症，
@@ -180,7 +180,7 @@ heroAlt: 偏頭痛預防性治療全攻略・長效針劑篇封面，一家人�
 
 ## 延伸閱讀
 
-- [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
+- [頭痛看診前必讀，醫師會問我什麼問題？](/posts/headache-visit-questions/)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [偏頭痛「預防藥治療」攻略：傳統口服藥 (一)](/posts/migraine-prevention-oral/)
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)

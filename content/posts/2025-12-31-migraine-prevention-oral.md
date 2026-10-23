@@ -2,7 +2,7 @@
 title: 偏頭痛「預防藥治療」攻略：傳統口服藥 (一)
 legacyUrl: https://blog.drminyangwu.com/2025/12/migraine-prevention-guid-daily-pillse-part1-oral-medication.html
 date: 2025-12-31
-updated: 2026-09-20
+updated: 2026-10-01
 summary: >
   偏頭痛不該只是「痛了才醫」。這篇說明什麼情況該考慮吃預防藥，並逐一介紹四類傳統口服
   預防藥物 ⸺ 乙型阻斷劑、鈣離子通道阻斷劑、抗癲癇藥、抗憂鬱劑 ⸺ 各自的機制、副作用、
@@ -82,7 +82,7 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 
 然而，在我的門診常有患者擔憂，自己本身並沒有憂鬱症、癲癇、高血壓的問題，為什麼要長期服用這些藥物呢？
 
-以下這些藥物都可以調控神經傳導物質的平衡。在門診我都會說這算是一種「**神經穩定劑**」，臨床研究證實，它們也同時有預防偏頭痛的療效，不只侷限在高血壓、憂鬱症或癲癇。因此醫生開立這些藥物，不是因為病友有癲癇或是憂鬱症，是因為它們也可以減少頭痛發作。
+以下這些藥物都可以調控神經傳導物質的平衡。在門診我都會說這算是一種「**神經穩定劑**」，臨床研究證實，它們也同時有預防偏頭痛的療效，不只侷限在高血壓、憂鬱症或癲癇。因此醫師開立這些藥物，不是因為病友有癲癇或是憂鬱症，是因為它們也可以減少頭痛發作。
 
 這些傳統口服藥物用於預防偏頭痛用途時，所需的劑量也比治療原生疾病（憂鬱、癲癇）低很多。舉例來說，妥泰藥物用在癲癇，劑量可達一天 400mg，但是用在偏頭痛的劑量約 50mg ~ 200mg 就已足夠；平躁藥物用在憂鬱症的劑量約莫在 100mg ~ 300mg 左右，但是偏頭痛只需用 10mg ~ 150mg 就行。此外，也因為劑量較低，對身體的負擔也較低。
 
@@ -257,8 +257,8 @@ heroAlt: 偏頭痛預防性治療全攻略・傳統口服藥篇封面，一家�
 - [偏頭痛「預防藥治療」攻略：長效針劑比較和選擇 (三)](/posts/migraine-injections-comparison/)
 - [偏頭痛不是多吃止痛藥就能解決！超過 7 成患者忽略的「關火法」才是關鍵](https://blog.drminyangwu.com/2025/06/migraine-medication-User-guide-prevention.html)
 - [為何治療高血壓的藥物，也同時有預防偏頭痛的效果？](https://blog.drminyangwu.com/2025/01/seminar%20Update%20on%20integrating%20new%20migraine%20treatment%20clinical%20pearls.html#point1)
-- [10 大危險頭痛警訊！哪些情況需要看醫生，一次告訴你](/posts/headache-red-flags/)
-- [頭痛看診前必讀，醫生會問我什麼問題？](/posts/headache-visit-questions/)
+- [10 大危險頭痛警訊！哪些情況需要看醫師，一次告訴你](/posts/headache-red-flags/)
+- [頭痛看診前必讀，醫師會問我什麼問題？](/posts/headache-visit-questions/)
 - [「頭痛」不是小事！認識「偏頭痛」的失能危機](https://blog.drminyangwu.com/2025/02/migraine-disability-cost-anxiety-.html)
 - [偏頭痛標靶藥│2024 新型口服 Gepant 簡介、機轉](/posts/gepant-intro/)
 - [改善偏頭痛，該吃什麼呢？加分飲食 vs 地雷食物清單](/posts/migraine-diet/)
